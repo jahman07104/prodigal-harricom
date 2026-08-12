@@ -1,0 +1,21 @@
+.vscode/
+node_modules/
+.next/
+.env*.local
+*.pem
+*-key.json
+*_key.json
+*key*.json
+*Key*.json
+service-account*.json
+serviceAccount*.json
+firebase-adminsdk-*.json
+
+# Python / backend local artifacts
+**/__pycache__/
+*.pyc
+backend/.env
+backend/*.db
+backend/tests/*.db
+.venv/
+.venv-1/

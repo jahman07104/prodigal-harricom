@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+  <title>Island Cuts - Book on WhatsApp 24/7 - Any Parish in Jamaica | HarriCom Demo</title>
+  <meta name="description" content="Barbershop ANYWHERE in Jamaica - Kingston, MoBay, Ocho Rios, Negril, Spanish Town, Mandeville - Book anytime on WhatsApp. AI answers in 3 seconds even when closed. Built by HarriCom - 32yr Verizon Field Tech.">
+  <style>
+    :root{ --accent:#00ff88; --dark:#0a0a0a; --card:#181b22; --text:#f5f5f5; --muted:#aaa; }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:system-ui,sans-serif; background:var(--dark); color:var(--text); line-height:1.6;}
+    .security-badge{background:#111; color:var(--accent); font-family:monospace; text-align:center; padding:6px; font-size:11px; letter-spacing:1px;}
+    header{padding:20px; text-align:center; border-bottom:1px solid #222;}
+    header h1{font-size:28px; letter-spacing:1px;}
+    header p{color:var(--muted); font-size:14px;}
+    .hero{display:grid; grid-template-columns:1fr 1fr; gap:20px; max-width:1000px; margin:30px auto; padding:20px;}
+    .hero-text h2{font-size:32px; margin-bottom:12px; line-height:1.2;}
+    .hero-text h2 span{color:var(--accent);}
+    .price-list{background:var(--card); padding:16px; border-radius:12px; margin:16px 0;}
+    .price-row{display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #222; font-size:14px;}
+    .chat-widget{background:#0f1115; border:2px solid #222; border-radius:16px; overflow:hidden; max-width:380px; margin:0 auto;}
+    .chat-header{background:#075e54; color:white; padding:12px 16px; display:flex; justify-content:space-between; align-items:center; font-size:14px;}
+    .chat-messages{height:320px; overflow-y:auto; padding:12px; background:#e5ddd5; display:flex; flex-direction:column; gap:8px;}
+    .msg{padding:8px 12px; border-radius:12px; max-width:80%; font-size:14px; line-height:1.4; word-wrap:break-word;}
+    .msg.user{align-self:flex-start; background:white; color:#111;}
+    .msg.bot{align-self:flex-end; background:#dcf8c6; color:#111;}
+    .msg.time{text-align:center; font-size:10px; color:#888; background:transparent; align-self:center;}
+    .chat-input{display:flex; padding:10px; background:white; gap:8px;}
+    .chat-input input{flex:1; border:1px solid #ddd; border-radius:20px; padding:8px 14px; font-size:14px;}
+    .chat-input button{background:#25D366; border:none; border-radius:50%; width:36px; height:36px; cursor:pointer; font-size:18px;}
+    .cta-bar{max-width:1000px; margin:20px auto; padding:0 20px; display:flex; gap:10px; flex-wrap:wrap;}
+    .btn{padding:12px 20px; border-radius:999px; text-decoration:none; font-weight:700; font-size:14px; display:inline-block; text-align:center; cursor:pointer; border:none;}
+    .btn-primary{background:var(--accent); color:#000;}
+    .btn-secondary{background:transparent; color:var(--accent); border:1px solid var(--accent);}
+    .trust{max-width:1000px; margin:30px auto; padding:20px; background:var(--card); border-radius:12px; font-size:13px; border-left:4px solid var(--accent);}
+    @media(max-width:700px){ .hero{grid-template-columns:1fr;} }
+  </style>
+</head>
+<body>
+  <div class="security-badge">🔒 SECURE • CSP • HSTS • NO TRACKING • BUILT BY 32YR VERIZON FIELD TECH • RACK STACK INSTALL REPAIR</div>
+  
+  <header>
+    <h1>✂️ ISLAND CUTS — JAMAICA</h1>
+    <p>ISLAND-WIDE • 14 Parishes • Open 9am-7pm • AI Books 24/7 on WhatsApp</p>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h2>Cut at 10am Saturday?<br><span>Booked at 9:42pm<br>while we were closed.</span></h2>
+      <p>Most barbers lose 3-5 customers per week because they don't answer WhatsApp fast. This AI answers in 3 seconds, even at 10pm.</p>
+      
+      <div class="price-list">
+        <div class="price-row"><span>Adult Cut</span><strong>J$3,000</strong></div>
+        <div class="price-row"><span>Cut + Beard</span><strong>J$4,000</strong></div>
+        <div class="price-row"><span>Kids Cut</span><strong>J$2,000</strong></div>
+        <div class="price-row"><span>Line Up</span><strong>J$1,500</strong></div>
+      </div>
+
+      <div class="cta-bar" style="padding:0;">
+        <a class="btn btn-primary" id="book-now-btn" href="#">Book Now on WhatsApp →</a>
+        <button class="btn btn-secondary" id="demo-ai-btn">See AI Demo →</button>
+      </div>
+
+      <div class="trust">
+        <strong>Built by Patrick Harrison, HarriCom</strong><br>
+        Field Systems Tech - 32 years Verizon, 10 years airport tech Essex County including Newark Liberty, 1 year Verizon NOC + L3Harris NOC, Vodafone Germany.<br>
+        Rack, stack, install, repair. Built to stay up like airport comms.
+      </div>
+    </div>
+
+    <div class="chat-widget" id="chat-widget">
+      <div class="chat-header">
+        <span>💬 Island Cuts AI</span>
+        <span style="font-size:11px; background:#25D366; color:#000; padding:2px 8px; border-radius:10px;">● ONLINE • REPLIES IN 2s</span>
+      </div>
+      <div class="chat-messages" id="chat-messages">
+        <div class="msg time">Today • AI replies even when shop closed • 9:42 PM</div>
+        <div class="msg user">How much for cut Saturday?</div>
+        <div class="msg bot">Hey! Adult cut J$3,000. We have 10am & 2pm open Saturday at Half Way Tree. Want me to book 10am? Reply YES 😊</div>
+        <div class="msg user">YES 10am</div>
+        <div class="msg bot">Booked! 🔥 See you Sat 10am - Your Road - Any Parish in Jamaica. Pay at shop. Thanks! - Island Cuts (AI)</div>
+        <div class="msg time">⚡ Booked in 18 seconds • Customer saved • $3,000 JMD</div>
+      </div>
+      <div class="chat-input">
+        <input type="text" id="chat-input" placeholder="Try: How much for beard trim?" maxlength="120" aria-label="Ask barber AI">
+        <button id="chat-send" aria-label="Send">➤</button>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:1000px; margin:20px auto; padding:20px; text-align:center;">
+    <h3>How This Makes You Money</h3>
+    <p style="color:#aaa; font-size:14px; margin:10px 0 20px;">Old: Customer messages at 9pm → you reply next morning → they already went elsewhere. New: AI books instantly.</p>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px; text-align:left;">
+      <div style="background:#181b22; padding:14px; border-radius:10px;"><strong>3 bookings/week saved</strong><br><span style="color:#aaa; font-size:13px;">× J$3,000 = J$36k/month extra</span></div>
+      <div style="background:#181b22; padding:14px; border-radius:10px;"><strong>No extra work</strong><br><span style="color:#aaa; font-size:13px;">You wake up to calendar full</span></div>
+      <div style="background:#181b22; padding:14px; border-radius:10px;"><strong>You own it</strong><br><span style="color:#aaa; font-size:13px;">No Wix monthly. J$75k setup + J$8k/mo AI</span></div>
+    </div>
+  </section>
+
+  <footer style="text-align:center; padding:20px; color:#666; font-size:12px;">
+    Demo by HarriCom — Secure, WhatsApp AI Ready — <a href="../catalog/index.html" style="color:#00ff88;">See All Templates</a><br>
+    Built with vanilla JS - no tracking, no cookies, no WordPress vulnerabilities
+  </footer>
+
+<script>
+// SECURE WHATSAPP AI BOOKING WIDGET - PURE JS - NO API KEYS
+(function(){
+  const BUSINESS_WHATSAPP = "18763892243"; // Replace with real barber number
+  const BUSINESS_NAME = "Island Cuts - Any Parish";
+  const PRICES = {
+    "cut": "Adult cut J$3,000",
+    "beard": "Beard trim J$1,500, Cut + Beard J$4,000",
+    "kids": "Kids cut J$2,000",
+    "line": "Line up J$1,500",
+    "hours": "Open Mon-Sat 9am-7pm, Sun closed. AI books 24/7 here.",
+    "location": "Your Shop - Any Parish in Jamaica - Kingston to Negril, 14 Parishes"
+  };
+
+  const messagesEl = document.getElementById('chat-messages');
+  const inputEl = document.getElementById('chat-input');
+  const sendBtn = document.getElementById('chat-send');
+  const bookBtn = document.getElementById('book-now-btn');
+  const demoBtn = document.getElementById('demo-ai-btn');
+
+  function sanitize(str){
+    return String(str||'').replace(/[<>]/g,'').slice(0,120);
+  }
+
+  function addMessage(text, who){
+    const div = document.createElement('div');
+    div.className = 'msg ' + (who==='user'?'user':'bot');
+    div.textContent = sanitize(text); // textContent = no XSS
+    messagesEl.appendChild(div);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+
+  function addTime(text){
+    const div = document.createElement('div');
+    div.className = 'msg time';
+    div.textContent = sanitize(text);
+    messagesEl.appendChild(div);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+
+  function botReply(userText){
+    const lower = userText.toLowerCase();
+    let reply = "";
+
+    if(lower.includes('price')||lower.includes('how much')||lower.includes('cost')){
+      if(lower.includes('beard')) reply = PRICES.beard + ". Want me to book? Reply YES + time (10am or 2pm)";
+      else if(lower.includes('kid')) reply = PRICES.kids + ". We have 10am open Saturday. Book?";
+      else reply = PRICES.cut + ". We have 10am & 2pm Sat open. Want 10am? Reply YES";
+    } else if(lower.includes('hour')||lower.includes('open')||lower.includes('close')){
+      reply = PRICES.hours;
+    } else if(lower.includes('where')||lower.includes('location')||lower.includes('address')){
+      reply = PRICES.location + ". Book now? Reply YES";
+    } else if(lower.includes('yes')||lower.includes('book')||lower.includes('10am')||lower.includes('2pm')){
+      const time = lower.includes('2pm') ? '2pm' : '10am Saturday';
+      reply = "Booked! 🔥 See you " + time + " at " + PRICES.location + ". Pay at shop. I'll send WhatsApp confirmation. - " + BUSINESS_NAME + " (AI)";
+      addTime("⚡ Booked • Customer saved • J$3,000");
+      // Generate real WhatsApp link
+      setTimeout(()=>{
+        const waText = encodeURIComponent("Hi " + BUSINESS_NAME + "! Book me " + time + " - " + userText);
+        const waLink = "https://wa.me/" + BUSINESS_WHATSAPP + "?text=" + waText;
+        addMessage("Tap to confirm on WhatsApp: " + waLink, 'bot');
+      }, 600);
+    } else {
+      reply = "Hey! " + PRICES.cut + ". Open 9am-7pm but I book 24/7 here. We have 10am & 2pm Sat open. Want me to hold 10am? Reply YES 😊";
+    }
+
+    setTimeout(()=> addMessage(reply, 'bot'), 400 + Math.random()*600);
+  }
+
+  function handleSend(){
+    const text = sanitize(inputEl.value.trim());
+    if(!text) return;
+    addMessage(text, 'user');
+    inputEl.value = '';
+    botReply(text);
+  }
+
+  sendBtn.addEventListener('click', handleSend);
+  inputEl.addEventListener('keydown', (e)=>{ if(e.key==='Enter') handleSend(); });
+
+  // CTA buttons - secure - no inline JS
+  bookBtn.addEventListener('click', (e)=>{
+    e.preventDefault();
+    const waText = encodeURIComponent("Hi Island Cuts! I want to book a cut Saturday 10am");
+    window.open("https://wa.me/" + BUSINESS_WHATSAPP + "?text=" + waText, "_blank", "noopener,noreferrer");
+  });
+
+  demoBtn.addEventListener('click', ()=>{
+    document.getElementById('chat-widget').scrollIntoView({behavior:'smooth'});
+    inputEl.focus();
+  });
+
+  console.log('%cHarriCom Barber AI Ready - No API keys, no tracking, secure', 'color:#00ff88');
+})();
+</script>
+</body>
+</html>

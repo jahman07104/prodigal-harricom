@@ -1,0 +1,1693 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HarriCom WhatsApp Analytics Cockpit</title>
+    <style>
+      :root {
+        --bg: #111827;
+        --panel: #1b2638;
+        --panel-2: #202e45;
+        --muted: #93a4c1;
+        --text: #f4f7fd;
+        --border: #31435f;
+        --accent: #ff7a1a;
+        --good: #3ddc97;
+        --warn: #ffd166;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family:
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          sans-serif;
+        background:
+          radial-gradient(
+            1100px 500px at 6% -10%,
+            rgba(255, 122, 26, 0.18),
+            rgba(255, 122, 26, 0)
+          ),
+          linear-gradient(180deg, #162132, #0f1827 72%);
+        color: var(--text);
+        padding: 22px;
+      }
+
+      .shell {
+        max-width: 1280px;
+        margin: 0 auto;
+      }
+
+      .header h1 {
+        margin: 0 0 6px;
+        font-size: clamp(1.35rem, 2.8vw, 2rem);
+      }
+      .header p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .toolbar {
+        margin: 16px 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .btn,
+      select,
+      input[type="date"] {
+        border: 1px solid var(--border);
+        background: var(--panel);
+        color: var(--text);
+        border-radius: 10px;
+        padding: 10px 12px;
+        font-size: 0.92rem;
+      }
+
+      .btn {
+        cursor: pointer;
+        font-weight: 700;
+      }
+      .btn:hover {
+        border-color: var(--accent);
+      }
+      .btn-danger:hover {
+        border-color: #ef4444;
+        color: #ffd2d2;
+      }
+
+      .filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+
+      .pill {
+        border: 1px solid var(--border);
+        background: var(--panel);
+        color: var(--text);
+        border-radius: 999px;
+        padding: 8px 12px;
+        cursor: pointer;
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+
+      .pill.active {
+        background: #8a3f06;
+        border-color: #b65a11;
+        color: #ffffff;
+      }
+
+      .kpi-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 10px;
+        margin: 12px 0;
+      }
+
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 12px;
+      }
+
+      .k-label {
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
+        font-size: 0.72rem;
+      }
+      .k-val {
+        margin-top: 4px;
+        font-size: 1.45rem;
+        font-weight: 800;
+      }
+      .k-good {
+        color: var(--good);
+      }
+      .k-warn {
+        color: var(--warn);
+      }
+
+      .section-title {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 12px;
+        margin: 18px 0 8px;
+      }
+
+      .section-title h2 {
+        margin: 0;
+        font-size: 1rem;
+        letter-spacing: 0.03em;
+      }
+
+      .section-title p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.82rem;
+      }
+
+      .attempt-outcome {
+        display: inline-flex;
+        align-items: center;
+        padding: 4px 8px;
+        border-radius: 999px;
+        font-size: 0.74rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .attempt-applied {
+        color: var(--good);
+      }
+      .attempt-deduplicated {
+        color: var(--warn);
+      }
+      .attempt-failed {
+        color: #ff8f8f;
+      }
+      .attempt-ignored {
+        color: var(--muted);
+      }
+
+      .empty-note {
+        color: var(--muted);
+        font-size: 0.84rem;
+      }
+
+      .split-3 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+
+      @media (max-width: 980px) {
+        .split-3 {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .list {
+        list-style: none;
+        padding: 0;
+        margin: 8px 0 0;
+      }
+
+      .list li {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        border-bottom: 1px dashed rgba(255, 255, 255, 0.09);
+        padding: 8px 0;
+        font-size: 0.9rem;
+      }
+
+      .list li:last-child {
+        border-bottom: none;
+      }
+      .badge {
+        color: #ffd8bf;
+        font-weight: 800;
+      }
+      .mono {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+
+      .trend-wrap,
+      .table-wrap {
+        margin-top: 10px;
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        overflow: auto;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 780px;
+      }
+
+      th,
+      td {
+        text-align: left;
+        padding: 10px 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        font-size: 0.86rem;
+        vertical-align: top;
+      }
+
+      th {
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        font-size: 0.74rem;
+        background: var(--panel-2);
+        position: sticky;
+        top: 0;
+        z-index: 1;
+      }
+
+      .hint {
+        color: var(--muted);
+        font-size: 0.82rem;
+      }
+
+      .api-bar {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 10px 14px;
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        margin-bottom: 12px;
+        font-size: 0.88rem;
+      }
+
+      .api-bar label {
+        color: var(--muted);
+        white-space: nowrap;
+      }
+
+      .api-bar input[type="text"] {
+        flex: 1 1 220px;
+        border: 1px solid var(--border);
+        background: #111827;
+        color: var(--text);
+        border-radius: 8px;
+        padding: 8px 10px;
+        font-size: 0.88rem;
+        font-family: ui-monospace, Menlo, Consolas, monospace;
+      }
+
+      #apiStatus {
+        font-size: 0.82rem;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+
+      .status-ok {
+        color: var(--good);
+      }
+      .status-err {
+        color: #ef4444;
+      }
+      .status-idle {
+        color: var(--muted);
+      }
+
+      .live-bar {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 10px 14px;
+        margin-bottom: 12px;
+        background: rgba(27, 38, 56, 0.7);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        font-size: 0.84rem;
+      }
+
+      .live-bar label {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--muted);
+      }
+
+      .live-bar select {
+        padding: 8px 10px;
+        font-size: 0.84rem;
+      }
+
+      .tab-bar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+
+      .tab-btn {
+        border: 1px solid var(--border);
+        background: var(--panel);
+        color: var(--text);
+        border-radius: 999px;
+        padding: 9px 14px;
+        cursor: pointer;
+        font-size: 0.84rem;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .tab-btn.active {
+        background: #8a3f06;
+        border-color: #b65a11;
+        color: #ffffff;
+      }
+
+      .panel.hidden {
+        display: none;
+      }
+
+      .loading .card,
+      .loading .trend-wrap,
+      .loading .table-wrap {
+        opacity: 0.62;
+        transition: opacity 0.18s ease;
+      }
+
+      .loading .k-val::after {
+        content: " ...";
+        font-size: 0.92rem;
+        color: var(--muted);
+        font-weight: 600;
+      }
+
+      .panel-actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 10px;
+        flex-wrap: wrap;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <div class="header">
+        <h1>WhatsApp Analytics Cockpit</h1>
+        <p>
+          Local + server-side lead diagnostics. Filter by date, page, and
+          number, then export for reporting.
+        </p>
+      </div>
+
+      <div class="api-bar">
+        <label for="apiUrlInput">Backend API:</label>
+        <input
+          id="apiUrlInput"
+          type="text"
+          placeholder="http://localhost:8787 (leave blank for local-only mode)"
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <input
+          id="apiTokenInput"
+          type="password"
+          style="flex: 0 1 160px"
+          placeholder="Admin token (if set)"
+          autocomplete="off"
+        />
+        <button class="btn" id="apiConnectBtn">Connect</button>
+        <span id="apiStatus" class="status-idle">⬤ local only</span>
+      </div>
+
+      <div class="live-bar">
+        <label
+          ><input id="autoRefreshToggle" type="checkbox" /> Auto-refresh</label
+        >
+        <label for="autoRefreshInterval">Interval</label>
+        <select id="autoRefreshInterval">
+          <option value="15000">15s</option>
+          <option value="30000" selected>30s</option>
+          <option value="60000">60s</option>
+        </select>
+        <span id="autoRefreshStatus" class="hint">Live refresh is off.</span>
+        <span id="refreshState" class="hint">Idle</span>
+        <span id="lastRefreshText" class="hint">Not refreshed yet.</span>
+      </div>
+
+      <div class="tab-bar">
+        <button class="tab-btn active" data-panel="analyticsPanel">
+          Analytics
+        </button>
+        <button class="tab-btn" data-panel="webhookPanel">Webhook Ops</button>
+      </div>
+
+      <div class="toolbar">
+        <button class="btn" id="refreshBtn">Refresh</button>
+        <button class="btn" id="exportBtn">Export CSV</button>
+        <button class="btn" id="exportWebhooksBtn">Export Webhooks CSV</button>
+        <button class="btn" id="copyBtn">Copy JSON</button>
+        <button class="btn" id="copySummaryBtn">Copy Summary</button>
+        <button class="btn btn-danger" id="clearBtn">Clear Events</button>
+        <button class="btn" onclick="location.href = '../index.html'">
+          Back to Site
+        </button>
+      </div>
+
+      <section id="analyticsPanel" class="panel">
+        <div class="filters">
+          <button class="pill active" data-range="today">Today</button>
+          <button class="pill" data-range="7d">Last 7 Days</button>
+          <button class="pill" data-range="30d">Last 30 Days</button>
+          <button class="pill" data-range="all">All Time</button>
+          <input id="fromDate" type="date" />
+          <input id="toDate" type="date" />
+          <select id="pageFilter">
+            <option value="">All Pages</option>
+          </select>
+          <select id="numberFilter">
+            <option value="">All Numbers</option>
+          </select>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="card">
+            <div class="k-label">Filtered Clicks</div>
+            <div id="kpiClicks" class="k-val">0</div>
+          </div>
+          <div class="card">
+            <div class="k-label">Today</div>
+            <div id="kpiToday" class="k-val">0</div>
+          </div>
+          <div class="card">
+            <div class="k-label">Last 7 Days</div>
+            <div id="kpi7d" class="k-val">0</div>
+          </div>
+          <div class="card">
+            <div class="k-label">Last 30 Days</div>
+            <div id="kpi30d" class="k-val">0</div>
+          </div>
+          <div class="card">
+            <div class="k-label">Unique Pages</div>
+            <div id="kpiPages" class="k-val k-good">0</div>
+          </div>
+          <div class="card">
+            <div class="k-label">Unique CTAs</div>
+            <div id="kpiCtas" class="k-val k-good">0</div>
+          </div>
+          <div class="card">
+            <div class="k-label">Destination Numbers</div>
+            <div id="kpiNumbers" class="k-val k-warn">0</div>
+          </div>
+          <div class="card">
+            <div class="k-label">Unique Visitors</div>
+            <div id="kpiVisitors" class="k-val">0</div>
+          </div>
+        </div>
+
+        <div class="split-3">
+          <div class="card">
+            <div class="k-label">Top Pages</div>
+            <ul id="topPages" class="list"></ul>
+          </div>
+          <div class="card">
+            <div class="k-label">Top CTAs</div>
+            <ul id="topCtas" class="list"></ul>
+          </div>
+          <div class="card">
+            <div class="k-label">Number Split</div>
+            <ul id="topNumbers" class="list"></ul>
+          </div>
+        </div>
+
+        <div class="trend-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Clicks</th>
+                <th>Unique Pages</th>
+                <th>Unique CTAs</th>
+                <th>Unique Visitors</th>
+              </tr>
+            </thead>
+            <tbody id="trendBody"></tbody>
+          </table>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Page</th>
+                <th>CTA</th>
+                <th>Number</th>
+                <th>Visitor</th>
+                <th>Session</th>
+                <th>UTM</th>
+                <th>URL</th>
+              </tr>
+            </thead>
+            <tbody id="eventsBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="webhookPanel" class="panel hidden">
+        <div class="section-title">
+          <h2>Webhook Health</h2>
+          <p id="webhookStatusText">
+            Connect backend to load payment webhook diagnostics.
+          </p>
+        </div>
+
+        <div class="filters">
+          <select id="webhookProviderFilter">
+            <option value="">All Providers</option>
+          </select>
+          <select id="webhookOutcomeFilter">
+            <option value="">All Outcomes</option>
+            <option value="applied">Applied</option>
+            <option value="deduplicated">Deduplicated</option>
+            <option value="failed">Failed</option>
+            <option value="ignored">Ignored</option>
+          </select>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="card">
+            <div class="k-label">Webhook Attempts</div>
+            <div id="webhookTotal" class="k-val">-</div>
+          </div>
+          <div class="card">
+            <div class="k-label">Applied</div>
+            <div id="webhookApplied" class="k-val k-good">-</div>
+          </div>
+          <div class="card">
+            <div class="k-label">Deduplicated</div>
+            <div id="webhookDeduplicated" class="k-val k-warn">-</div>
+          </div>
+          <div class="card">
+            <div class="k-label">Failed</div>
+            <div id="webhookFailed" class="k-val">-</div>
+          </div>
+        </div>
+
+        <div class="split-3">
+          <div class="card">
+            <div class="k-label">Webhook Providers</div>
+            <ul id="webhookProviders" class="list"></ul>
+          </div>
+          <div class="card">
+            <div class="k-label">Recent Failures</div>
+            <ul id="webhookFailures" class="list"></ul>
+          </div>
+          <div class="card">
+            <div class="k-label">Outcome Mix</div>
+            <ul id="webhookOutcomes" class="list"></ul>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Provider</th>
+                <th>Event ID</th>
+                <th>Outcome</th>
+                <th>Order</th>
+                <th>Failure Reason</th>
+              </tr>
+            </thead>
+            <tbody id="webhookAttemptsBody"></tbody>
+          </table>
+        </div>
+
+        <div class="panel-actions">
+          <button class="btn" id="loadMoreWebhooksBtn" type="button">
+            Load More Attempts
+          </button>
+          <span id="webhookPagingText" class="hint"
+            >Showing latest attempts.</span
+          >
+        </div>
+      </section>
+
+      <p class="hint">
+        Data source:
+        <span class="mono">localStorage.harricom_whatsapp_clicks</span> ·
+        Connect a backend above for shared team analytics.
+      </p>
+    </div>
+
+    <script>
+      const STORAGE_KEY = "harricom_whatsapp_clicks";
+      const API_URL_KEY = "harricom_api_url";
+      const API_TOK_KEY = "harricom_api_token";
+      const AUTO_REFRESH_ENABLED_KEY = "harricom_auto_refresh_enabled";
+      const AUTO_REFRESH_INTERVAL_KEY = "harricom_auto_refresh_interval";
+      const ACTIVE_PANEL_KEY = "harricom_active_panel";
+      let activeRange = "today";
+      let apiUrl = "";
+      let apiToken = "";
+      let autoRefreshHandle = null;
+      let latestWebhookSummary = null;
+      let webhookAttemptRows = [];
+      let webhookNextCursor = null;
+      let webhookHasMore = false;
+
+      // ---------------------------------------------------------------------------
+      // Backend connection
+      // ---------------------------------------------------------------------------
+      function loadApiConfig() {
+        apiUrl = localStorage.getItem(API_URL_KEY) || "";
+        apiToken = localStorage.getItem(API_TOK_KEY) || "";
+        document.getElementById("apiUrlInput").value = apiUrl;
+        document.getElementById("apiTokenInput").value = apiToken;
+        updateApiStatus(apiUrl ? "idle" : "local");
+        loadAutoRefreshConfig();
+      }
+
+      function saveApiConfig() {
+        apiUrl = document
+          .getElementById("apiUrlInput")
+          .value.trim()
+          .replace(/\/$/, "");
+        apiToken = document.getElementById("apiTokenInput").value.trim();
+        localStorage.setItem(API_URL_KEY, apiUrl);
+        localStorage.setItem(API_TOK_KEY, apiToken);
+      }
+
+      function loadAutoRefreshConfig() {
+        const enabled = localStorage.getItem(AUTO_REFRESH_ENABLED_KEY) === "1";
+        const interval =
+          localStorage.getItem(AUTO_REFRESH_INTERVAL_KEY) || "30000";
+        document.getElementById("autoRefreshToggle").checked = enabled;
+        document.getElementById("autoRefreshInterval").value = interval;
+        syncAutoRefresh();
+      }
+
+      function saveAutoRefreshConfig() {
+        const enabled = document.getElementById("autoRefreshToggle").checked;
+        const interval = document.getElementById("autoRefreshInterval").value;
+        localStorage.setItem(AUTO_REFRESH_ENABLED_KEY, enabled ? "1" : "0");
+        localStorage.setItem(AUTO_REFRESH_INTERVAL_KEY, interval);
+      }
+
+      function updateApiStatus(state, msg) {
+        const el = document.getElementById("apiStatus");
+        let stateClass = "idle";
+        if (state === "ok") {
+          stateClass = "ok";
+        } else if (state === "err") {
+          stateClass = "err";
+        }
+        el.className = "status-" + stateClass;
+        const icons = {
+          ok: "⬤ connected",
+          err: "⬤ error",
+          idle: "⬤ not connected",
+          local: "⬤ local only",
+        };
+        el.textContent = (icons[state] || "⬤") + (msg ? " — " + msg : "");
+        syncAutoRefresh();
+      }
+
+      function updateAutoRefreshStatus(text) {
+        document.getElementById("autoRefreshStatus").textContent = text;
+      }
+
+      function updateRefreshState(text) {
+        document.getElementById("refreshState").textContent = text;
+      }
+
+      function updateLastRefreshText(date) {
+        const el = document.getElementById("lastRefreshText");
+        if (!date) {
+          el.textContent = "Not refreshed yet.";
+          return;
+        }
+        el.textContent = "Last refreshed: " + date.toLocaleTimeString();
+      }
+
+      function setPanelLoading(panelId, isLoading) {
+        const panel = document.getElementById(panelId);
+        if (!panel) return;
+        panel.classList.toggle("loading", isLoading);
+      }
+
+      function stopAutoRefresh() {
+        if (autoRefreshHandle) {
+          clearInterval(autoRefreshHandle);
+          autoRefreshHandle = null;
+        }
+      }
+
+      function syncAutoRefresh() {
+        stopAutoRefresh();
+
+        const enabled = document.getElementById("autoRefreshToggle")?.checked;
+        const interval = Number(
+          document.getElementById("autoRefreshInterval")?.value || "30000",
+        );
+        if (!enabled) {
+          updateAutoRefreshStatus("Live refresh is off.");
+          return;
+        }
+
+        if (!apiUrl) {
+          updateAutoRefreshStatus(
+            "Auto-refresh paused until a backend is connected.",
+          );
+          return;
+        }
+
+        autoRefreshHandle = setInterval(() => {
+          void refresh();
+        }, interval);
+        updateAutoRefreshStatus(
+          `Refreshing every ${Math.round(interval / 1000)}s while connected.`,
+        );
+      }
+
+      function setActivePanel(panelId) {
+        const tabs = document.querySelectorAll(".tab-btn[data-panel]");
+        const panels = document.querySelectorAll(".panel");
+        tabs.forEach((tab) =>
+          tab.classList.toggle("active", tab.dataset.panel === panelId),
+        );
+        panels.forEach((panel) =>
+          panel.classList.toggle("hidden", panel.id !== panelId),
+        );
+        localStorage.setItem(ACTIVE_PANEL_KEY, panelId);
+      }
+
+      function bindTabs() {
+        const saved =
+          localStorage.getItem(ACTIVE_PANEL_KEY) || "analyticsPanel";
+        setActivePanel(saved);
+        document.querySelectorAll(".tab-btn[data-panel]").forEach((tab) => {
+          tab.addEventListener("click", () =>
+            setActivePanel(tab.dataset.panel),
+          );
+        });
+      }
+
+      async function testConnection() {
+        if (!apiUrl) {
+          updateApiStatus("local");
+          return false;
+        }
+        updateApiStatus("idle", "connecting…");
+        try {
+          const headers = apiToken
+            ? { Authorization: "Bearer " + apiToken }
+            : {};
+          const res = await fetch(apiUrl + "/healthz", { headers });
+          if (res.ok) {
+            updateApiStatus("ok", apiUrl);
+            return true;
+          }
+          updateApiStatus("err", "HTTP " + res.status);
+          return false;
+        } catch (err) {
+          updateApiStatus("err", err.message || "unreachable");
+          return false;
+        }
+      }
+
+      async function fetchServerEvents() {
+        if (!apiUrl) return null;
+        try {
+          const headers = {
+            "Content-Type": "application/json",
+            ...(apiToken ? { Authorization: "Bearer " + apiToken } : {}),
+          };
+          const res = await fetch(apiUrl + "/events?limit=1000", { headers });
+          if (!res.ok) return null;
+          const data = await res.json();
+          return Array.isArray(data.events)
+            ? data.events.map(normalizeServerEvent)
+            : null;
+        } catch (err) {
+          console.warn("fetchServerEvents failed", err);
+          return null;
+        }
+      }
+
+      async function fetchWebhookDiagnostics(cursor) {
+        if (!apiUrl) return null;
+        try {
+          const headers = apiToken
+            ? { Authorization: "Bearer " + apiToken }
+            : {};
+          const params = new URLSearchParams({ limit: "20" });
+          const provider = document.getElementById(
+            "webhookProviderFilter",
+          ).value;
+          const outcome = document.getElementById("webhookOutcomeFilter").value;
+          if (cursor) params.set("cursor", String(cursor));
+          if (provider) params.set("provider", provider);
+          if (outcome) params.set("outcome", outcome);
+          const res = await fetch(
+            apiUrl + "/payments/webhooks/diagnostics?" + params.toString(),
+            { headers },
+          );
+          if (!res.ok) {
+            return { error: "HTTP " + res.status };
+          }
+          return await res.json();
+        } catch (err) {
+          console.warn("fetchWebhookDiagnostics failed", err);
+          return { error: err.message || "unreachable" };
+        }
+      }
+
+      function normalizeServerEvent(row) {
+        return {
+          ts: row.ts,
+          page: row.page || "",
+          cta: row.cta || "",
+          number: row.number || "",
+          href: row.href || "",
+          visitorId: row.visitor_id || "",
+          sessionId: row.session_id || "",
+          device: row.device || "",
+          referrer: row.referrer || "",
+          language: row.language || "",
+          timezone: row.timezone || "",
+          utm: {
+            source: row.utm_source || "",
+            medium: row.utm_medium || "",
+            campaign: row.utm_campaign || "",
+            term: row.utm_term || "",
+            content: row.utm_content || "",
+          },
+        };
+      }
+
+      // ---------------------------------------------------------------------------
+      // Local events
+      // ---------------------------------------------------------------------------
+      function loadEvents() {
+        try {
+          const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+          return Array.isArray(parsed) ? parsed : [];
+        } catch (err) {
+          console.warn("Diagnostics parse failed", err);
+          return [];
+        }
+      }
+
+      function parseTs(ts) {
+        const d = new Date(ts || 0);
+        return Number.isNaN(d.getTime()) ? null : d;
+      }
+
+      function dayKey(date) {
+        const y = date.getFullYear();
+        const m = String(date.getMonth() + 1).padStart(2, "0");
+        const d = String(date.getDate()).padStart(2, "0");
+        return `${y}-${m}-${d}`;
+      }
+
+      function inRange(date, range, from, to) {
+        if (!date) return false;
+        const now = new Date();
+        const startOfToday = new Date(
+          now.getFullYear(),
+          now.getMonth(),
+          now.getDate(),
+        );
+        if (range === "today") {
+          return date >= startOfToday;
+        }
+        if (range === "7d") {
+          const start = new Date(startOfToday);
+          start.setDate(start.getDate() - 6);
+          return date >= start;
+        }
+        if (range === "30d") {
+          const start = new Date(startOfToday);
+          start.setDate(start.getDate() - 29);
+          return date >= start;
+        }
+        if (from || to) {
+          const after = from ? date >= from : true;
+          const before = to ? date <= to : true;
+          return after && before;
+        }
+        return true;
+      }
+
+      function byCount(items, keyFn) {
+        const map = new Map();
+        items.forEach((item) => {
+          const key = keyFn(item) || "unknown";
+          map.set(key, (map.get(key) || 0) + 1);
+        });
+        return [...map.entries()].sort((a, b) => b[1] - a[1]);
+      }
+
+      function fillList(el, rows) {
+        if (!rows.length) {
+          const li = document.createElement("li");
+          const message = document.createElement("span");
+          message.classList.add("hint");
+          message.textContent = "No data";
+          li.append(message, document.createElement("span"));
+          el.replaceChildren(li);
+          return;
+        }
+
+        const items = rows.slice(0, 8).map(([label, count]) => {
+          const li = document.createElement("li");
+          const labelSpan = document.createElement("span");
+          const countSpan = document.createElement("span");
+          labelSpan.textContent = label;
+          countSpan.classList.add("badge");
+          countSpan.textContent = count;
+          li.append(labelSpan, countSpan);
+          return li;
+        });
+        el.replaceChildren(...items);
+      }
+
+      function fillTextList(el, rows, emptyMessage) {
+        if (!rows.length) {
+          const li = document.createElement("li");
+          const message = document.createElement("span");
+          message.classList.add("empty-note");
+          message.textContent = emptyMessage;
+          li.append(message, document.createElement("span"));
+          el.replaceChildren(li);
+          return;
+        }
+
+        const items = rows.map(([label, value]) => {
+          const li = document.createElement("li");
+          const labelSpan = document.createElement("span");
+          const valueSpan = document.createElement("span");
+          labelSpan.textContent = label;
+          valueSpan.classList.add("mono");
+          valueSpan.textContent = value;
+          li.append(labelSpan, valueSpan);
+          return li;
+        });
+        el.replaceChildren(...items);
+      }
+
+      function setKpi(id, value) {
+        document.getElementById(id).textContent = String(value);
+      }
+
+      function getDateInputs() {
+        const fromVal = document.getElementById("fromDate").value;
+        const toVal = document.getElementById("toDate").value;
+        const from = fromVal ? new Date(fromVal + "T00:00:00") : null;
+        const to = toVal ? new Date(toVal + "T23:59:59") : null;
+        return { from, to };
+      }
+
+      function applyFilters(events) {
+        const pageFilter = document.getElementById("pageFilter").value;
+        const numberFilter = document.getElementById("numberFilter").value;
+        const { from, to } = getDateInputs();
+
+        return events.filter((ev) => {
+          const d = parseTs(ev.ts);
+          if (!inRange(d, activeRange, from, to)) return false;
+          if (pageFilter && (ev.page || "") !== pageFilter) return false;
+          if (numberFilter && (ev.number || "") !== numberFilter) return false;
+          return true;
+        });
+      }
+
+      function renderTrend(events) {
+        const body = document.getElementById("trendBody");
+        if (!events.length) {
+          const tr = document.createElement("tr");
+          const td = document.createElement("td");
+          td.colSpan = 5;
+          td.classList.add("hint");
+          td.textContent = "No events in selected range.";
+          tr.appendChild(td);
+          body.replaceChildren(tr);
+          return;
+        }
+
+        const bucket = new Map();
+        events.forEach((ev) => {
+          const d = parseTs(ev.ts);
+          if (!d) return;
+          const key = dayKey(d);
+          if (!bucket.has(key)) {
+            bucket.set(key, {
+              count: 0,
+              pages: new Set(),
+              ctas: new Set(),
+              visitors: new Set(),
+            });
+          }
+          const row = bucket.get(key);
+          row.count += 1;
+          row.pages.add(ev.page || "unknown");
+          row.ctas.add(ev.cta || "unknown");
+          row.visitors.add(ev.visitorId || "unknown");
+        });
+
+        const rows = [...bucket.entries()]
+          .sort((a, b) => b[0].localeCompare(a[0]))
+          .slice(0, 20)
+          .map(([date, row]) => {
+            const tr = document.createElement("tr");
+            const cells = [
+              date,
+              row.count,
+              row.pages.size,
+              row.ctas.size,
+              row.visitors.size,
+            ];
+            cells.forEach((value, index) => {
+              const td = document.createElement("td");
+              if (index === 0) td.classList.add("mono");
+              td.textContent = value;
+              tr.appendChild(td);
+            });
+            return tr;
+          });
+        body.replaceChildren(...rows);
+      }
+
+      function renderEvents(events) {
+        const body = document.getElementById("eventsBody");
+        if (!events.length) {
+          const tr = document.createElement("tr");
+          const td = document.createElement("td");
+          td.colSpan = 8;
+          td.classList.add("hint");
+          td.textContent = "No events in selected range.";
+          tr.appendChild(td);
+          body.replaceChildren(tr);
+          return;
+        }
+
+        const rows = events
+          .slice()
+          .sort((a, b) => String(b.ts).localeCompare(String(a.ts)))
+          .map((ev) => {
+            const utm = ev.utm || {};
+            const utmText =
+              [utm.source, utm.medium, utm.campaign]
+                .filter(Boolean)
+                .join(" / ") || "-";
+            const tr = document.createElement("tr");
+            const cells = [
+              ev.ts ? new Date(ev.ts).toLocaleString() : "-",
+              ev.page || "-",
+              ev.cta || "-",
+              ev.number || "-",
+              ev.visitorId || "-",
+              ev.sessionId || "-",
+              utmText,
+              ev.href || "-",
+            ];
+            cells.forEach((value, index) => {
+              const td = document.createElement("td");
+              if (index > 0) td.classList.add("mono");
+              td.textContent = value;
+              tr.appendChild(td);
+            });
+            return tr;
+          });
+        body.replaceChildren(...rows);
+      }
+
+      function fillSelectors(allEvents) {
+        const pageSel = document.getElementById("pageFilter");
+        const numberSel = document.getElementById("numberFilter");
+        const currentPage = pageSel.value;
+        const currentNumber = numberSel.value;
+
+        const pages = [
+          ...new Set(allEvents.map((e) => e.page || "").filter(Boolean)),
+        ].sort();
+        const numbers = [
+          ...new Set(allEvents.map((e) => e.number || "").filter(Boolean)),
+        ].sort();
+
+        fillSelect(pageSel, pages, "All Pages", currentPage);
+        fillSelect(numberSel, numbers, "All Numbers", currentNumber);
+      }
+
+      function countWindow(allEvents, days) {
+        const now = new Date();
+        const start = new Date(
+          now.getFullYear(),
+          now.getMonth(),
+          now.getDate(),
+        );
+        start.setDate(start.getDate() - (days - 1));
+        return allEvents.filter((ev) => {
+          const d = parseTs(ev.ts);
+          return d && d >= start;
+        }).length;
+      }
+
+      function summarize(filtered, allEvents) {
+        setKpi("kpiClicks", filtered.length);
+        setKpi("kpiToday", countWindow(allEvents, 1));
+        setKpi("kpi7d", countWindow(allEvents, 7));
+        setKpi("kpi30d", countWindow(allEvents, 30));
+        setKpi(
+          "kpiPages",
+          new Set(filtered.map((e) => e.page || "unknown")).size,
+        );
+        setKpi(
+          "kpiCtas",
+          new Set(filtered.map((e) => e.cta || "unknown")).size,
+        );
+        setKpi(
+          "kpiNumbers",
+          new Set(filtered.map((e) => e.number || "unknown")).size,
+        );
+        setKpi(
+          "kpiVisitors",
+          new Set(filtered.map((e) => e.visitorId || "unknown")).size,
+        );
+
+        fillList(
+          document.getElementById("topPages"),
+          byCount(filtered, (e) => e.page),
+        );
+        fillList(
+          document.getElementById("topCtas"),
+          byCount(filtered, (e) => e.cta),
+        );
+        fillList(
+          document.getElementById("topNumbers"),
+          byCount(filtered, (e) => e.number),
+        );
+      }
+
+      function renderWebhookAttempts(attempts) {
+        const body = document.getElementById("webhookAttemptsBody");
+        if (!attempts || !attempts.length) {
+          const tr = document.createElement("tr");
+          const td = document.createElement("td");
+          td.colSpan = 6;
+          td.classList.add("hint");
+          td.textContent = "No webhook attempts recorded yet.";
+          tr.appendChild(td);
+          body.replaceChildren(tr);
+          return;
+        }
+
+        const rows = attempts.map((item) => {
+          const tr = document.createElement("tr");
+          const cells = [
+            item.created_at ? new Date(item.created_at).toLocaleString() : "-",
+            item.provider || "-",
+            item.event_id || "-",
+            item.order_id || "-",
+            item.failure_reason || "-",
+          ];
+          cells.slice(0, 3).forEach((value, index) => {
+            const td = document.createElement("td");
+            if (index > 0) td.classList.add("mono");
+            td.textContent = value;
+            tr.appendChild(td);
+          });
+          const outcomeCell = document.createElement("td");
+          const outcome = String(item.outcome || "ignored");
+          const outcomeSpan = document.createElement("span");
+          const safeOutcome = [
+            "applied",
+            "deduplicated",
+            "failed",
+            "ignored",
+          ].includes(outcome)
+            ? outcome
+            : "ignored";
+          outcomeSpan.classList.add(
+            "attempt-outcome",
+            "attempt-" + safeOutcome,
+          );
+          outcomeSpan.textContent = item.outcome || "-";
+          outcomeCell.appendChild(outcomeSpan);
+          tr.appendChild(outcomeCell);
+          cells.slice(3).forEach((value, index) => {
+            const td = document.createElement("td");
+            if (index === 0) td.classList.add("mono");
+            td.textContent = value;
+            tr.appendChild(td);
+          });
+          return tr;
+        });
+        body.replaceChildren(...rows);
+      }
+
+      function fillSelect(el, values, defaultLabel, currentValue) {
+        const defaultOption = document.createElement("option");
+        defaultOption.value = "";
+        defaultOption.textContent = defaultLabel;
+        const options = values.map((value) => {
+          const option = document.createElement("option");
+          option.value = value;
+          option.textContent = value;
+          return option;
+        });
+        el.replaceChildren(defaultOption, ...options);
+        if (currentValue && values.includes(currentValue)) {
+          el.value = currentValue;
+        }
+      }
+
+      function updateWebhookPagingUi() {
+        const pagingText = document.getElementById("webhookPagingText");
+        const loadMoreBtn = document.getElementById("loadMoreWebhooksBtn");
+        if (!apiUrl) {
+          pagingText.textContent =
+            "Connect backend to browse webhook attempts.";
+          loadMoreBtn.disabled = true;
+          return;
+        }
+        if (!webhookAttemptRows.length) {
+          pagingText.textContent = "No webhook attempts loaded.";
+          loadMoreBtn.disabled = true;
+          return;
+        }
+        pagingText.textContent = webhookHasMore
+          ? `Showing ${webhookAttemptRows.length} attempts. Load more is available.`
+          : `Showing ${webhookAttemptRows.length} attempts. End of results.`;
+        loadMoreBtn.disabled = !webhookHasMore;
+      }
+
+      function renderWebhookDiagnosticsFromState() {
+        const summary = latestWebhookSummary;
+        const statusText = document.getElementById("webhookStatusText");
+        const providerFilter = document.getElementById("webhookProviderFilter");
+        const outcomeFilter = document.getElementById("webhookOutcomeFilter");
+
+        if (!apiUrl) {
+          statusText.textContent =
+            "Connect backend to load payment webhook diagnostics.";
+          setKpi("webhookTotal", "-");
+          setKpi("webhookApplied", "-");
+          setKpi("webhookDeduplicated", "-");
+          setKpi("webhookFailed", "-");
+          fillSelect(providerFilter, [], "All Providers", "");
+          outcomeFilter.value = "";
+          fillTextList(
+            document.getElementById("webhookProviders"),
+            [],
+            "Backend not connected",
+          );
+          fillTextList(
+            document.getElementById("webhookFailures"),
+            [],
+            "Backend not connected",
+          );
+          fillTextList(
+            document.getElementById("webhookOutcomes"),
+            [],
+            "Backend not connected",
+          );
+          webhookAttemptRows = [];
+          webhookHasMore = false;
+          webhookNextCursor = null;
+          renderWebhookAttempts([]);
+          updateWebhookPagingUi();
+          return;
+        }
+
+        if (!summary || summary.error) {
+          statusText.textContent =
+            "Webhook diagnostics unavailable" +
+            (summary?.error ? ": " + summary.error : ".");
+          setKpi("webhookTotal", "!");
+          setKpi("webhookApplied", "!");
+          setKpi("webhookDeduplicated", "!");
+          setKpi("webhookFailed", "!");
+          fillSelect(providerFilter, [], "All Providers", providerFilter.value);
+          fillTextList(
+            document.getElementById("webhookProviders"),
+            [],
+            "Could not load provider stats",
+          );
+          fillTextList(
+            document.getElementById("webhookFailures"),
+            [],
+            "Could not load recent failures",
+          );
+          fillTextList(
+            document.getElementById("webhookOutcomes"),
+            [],
+            "Could not load outcomes",
+          );
+          webhookAttemptRows = [];
+          webhookHasMore = false;
+          webhookNextCursor = null;
+          renderWebhookAttempts([]);
+          updateWebhookPagingUi();
+          return;
+        }
+
+        const providerValues = [
+          ...new Set(
+            webhookAttemptRows.map((item) => item.provider).filter(Boolean),
+          ),
+        ].sort();
+        fillSelect(
+          providerFilter,
+          providerValues,
+          "All Providers",
+          providerFilter.value,
+        );
+
+        const filterBits = [];
+        if (providerFilter.value)
+          filterBits.push("provider=" + providerFilter.value);
+        if (outcomeFilter.value)
+          filterBits.push("outcome=" + outcomeFilter.value);
+        statusText.textContent = filterBits.length
+          ? "Live backend webhook telemetry (" + filterBits.join(", ") + ")."
+          : "Live backend webhook telemetry for payment callbacks.";
+        setKpi("webhookTotal", summary.total_attempts || 0);
+        setKpi(
+          "webhookApplied",
+          (summary.by_outcome || []).find((item) => item.outcome === "applied")
+            ?.count || 0,
+        );
+        setKpi(
+          "webhookDeduplicated",
+          (summary.by_outcome || []).find(
+            (item) => item.outcome === "deduplicated",
+          )?.count || 0,
+        );
+        setKpi(
+          "webhookFailed",
+          (summary.by_outcome || []).find((item) => item.outcome === "failed")
+            ?.count || 0,
+        );
+
+        fillList(
+          document.getElementById("webhookProviders"),
+          (summary.by_provider || []).map((item) => [
+            item.provider,
+            item.count,
+          ]),
+        );
+        fillList(
+          document.getElementById("webhookOutcomes"),
+          (summary.by_outcome || []).map((item) => [item.outcome, item.count]),
+        );
+        fillTextList(
+          document.getElementById("webhookFailures"),
+          (summary.recent_failures || []).map((item) => [
+            item.provider + " · " + (item.failure_reason || "unknown failure"),
+            item.event_id || "-",
+          ]),
+          "No recent failures",
+        );
+        renderWebhookAttempts(webhookAttemptRows);
+        updateWebhookPagingUi();
+      }
+
+      async function loadMoreWebhookAttempts() {
+        if (!apiUrl || !webhookHasMore || !webhookNextCursor) {
+          updateWebhookPagingUi();
+          return;
+        }
+
+        updateRefreshState("Loading more webhook attempts…");
+        const summary = await fetchWebhookDiagnostics(webhookNextCursor);
+        if (!summary || summary.error) {
+          latestWebhookSummary = summary;
+          renderWebhookDiagnosticsFromState();
+          return;
+        }
+
+        const moreRows = summary.recent_attempts || [];
+        webhookAttemptRows = webhookAttemptRows.concat(moreRows);
+        webhookNextCursor = summary.paging?.next_cursor ?? null;
+        webhookHasMore = Boolean(summary.paging?.has_more);
+        latestWebhookSummary = {
+          ...latestWebhookSummary,
+          ...summary,
+          recent_attempts: webhookAttemptRows,
+        };
+        renderWebhookDiagnosticsFromState();
+        updateRefreshState("Connected view is current.");
+        updateLastRefreshText(new Date());
+      }
+
+      async function refresh() {
+        updateRefreshState("Refreshing…");
+        setPanelLoading("analyticsPanel", true);
+        setPanelLoading("webhookPanel", true);
+        let allEvents = loadEvents();
+        latestWebhookSummary = null;
+
+        // Prefer server data when connected; merge with local as fallback
+        if (apiUrl) {
+          const serverEvents = await fetchServerEvents();
+          latestWebhookSummary = await fetchWebhookDiagnostics();
+          webhookAttemptRows =
+            latestWebhookSummary && !latestWebhookSummary.error
+              ? latestWebhookSummary.recent_attempts || []
+              : [];
+          webhookNextCursor =
+            latestWebhookSummary && !latestWebhookSummary.error
+              ? (latestWebhookSummary.paging?.next_cursor ?? null)
+              : null;
+          webhookHasMore = Boolean(
+            latestWebhookSummary &&
+            !latestWebhookSummary.error &&
+            latestWebhookSummary.paging?.has_more,
+          );
+          if (serverEvents) {
+            // Deduplicate by ts+page+cta+visitorId; server is authoritative
+            const serverKeys = new Set(
+              serverEvents.map((e) => e.ts + e.page + e.cta + e.visitorId),
+            );
+            const localOnly = allEvents.filter(
+              (e) => !serverKeys.has(e.ts + e.page + e.cta + e.visitorId),
+            );
+            allEvents = [...serverEvents, ...localOnly];
+          }
+        }
+
+        fillSelectors(allEvents);
+        const filtered = applyFilters(allEvents);
+        summarize(filtered, allEvents);
+        renderWebhookDiagnosticsFromState();
+        renderTrend(filtered);
+        renderEvents(filtered);
+        updateRefreshState(
+          apiUrl ? "Connected view is current." : "Local view is current.",
+        );
+        updateLastRefreshText(new Date());
+        setPanelLoading("analyticsPanel", false);
+        setPanelLoading("webhookPanel", false);
+      }
+
+      function exportCsv() {
+        const filtered = applyFilters(loadEvents());
+        const rows = [
+          [
+            "ts",
+            "page",
+            "cta",
+            "number",
+            "visitorId",
+            "sessionId",
+            "utmSource",
+            "utmMedium",
+            "utmCampaign",
+            "href",
+          ],
+        ];
+        filtered.forEach((ev) => {
+          const utm = ev.utm || {};
+          rows.push([
+            ev.ts || "",
+            ev.page || "",
+            ev.cta || "",
+            ev.number || "",
+            ev.visitorId || "",
+            ev.sessionId || "",
+            utm.source || "",
+            utm.medium || "",
+            utm.campaign || "",
+            ev.href || "",
+          ]);
+        });
+        const csv = rows
+          .map((r) =>
+            r.map((v) => '"' + String(v).replaceAll('"', '""') + '"').join(","),
+          )
+          .join("\n");
+        const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "harricom-whatsapp-analytics.csv";
+        a.click();
+        URL.revokeObjectURL(url);
+      }
+
+      async function exportWebhookCsv() {
+        if (!apiUrl) {
+          alert("Connect the backend first to export webhook attempts.");
+          return;
+        }
+
+        try {
+          const headers = apiToken
+            ? { Authorization: "Bearer " + apiToken }
+            : {};
+          const params = new URLSearchParams({ limit: "1000" });
+          const provider = document.getElementById(
+            "webhookProviderFilter",
+          ).value;
+          const outcome = document.getElementById("webhookOutcomeFilter").value;
+          if (provider) params.set("provider", provider);
+          if (outcome) params.set("outcome", outcome);
+          const res = await fetch(
+            apiUrl + "/payments/webhooks/export.csv?" + params.toString(),
+            { headers },
+          );
+          if (!res.ok) {
+            alert("Webhook export failed: HTTP " + res.status);
+            return;
+          }
+          const blob = await res.blob();
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = "harricom-payment-webhooks.csv";
+          a.click();
+          URL.revokeObjectURL(url);
+        } catch (err) {
+          console.warn("Export webhook CSV failed", err);
+          alert("Webhook export failed.");
+        }
+      }
+
+      async function copyJson() {
+        const filtered = applyFilters(loadEvents());
+        try {
+          await navigator.clipboard.writeText(
+            JSON.stringify(filtered, null, 2),
+          );
+          alert("Filtered JSON copied.");
+        } catch (err) {
+          console.warn("Copy JSON failed", err);
+          alert("Clipboard copy failed.");
+        }
+      }
+
+      async function copySummary() {
+        const filtered = applyFilters(loadEvents());
+        const topPage = byCount(filtered, (e) => e.page)[0];
+        const topCta = byCount(filtered, (e) => e.cta)[0];
+        const topNumber = byCount(filtered, (e) => e.number)[0];
+        const lines = [
+          "HarriCom WhatsApp Summary",
+          "Range: " + activeRange,
+          "Clicks: " + filtered.length,
+          "Top Page: " +
+            (topPage ? topPage[0] + " (" + topPage[1] + ")" : "n/a"),
+          "Top CTA: " + (topCta ? topCta[0] + " (" + topCta[1] + ")" : "n/a"),
+          "Top Number: " +
+            (topNumber ? topNumber[0] + " (" + topNumber[1] + ")" : "n/a"),
+        ].join("\n");
+
+        try {
+          await navigator.clipboard.writeText(lines);
+          alert("Summary copied.");
+        } catch (err) {
+          console.warn("Copy summary failed", err);
+          alert("Clipboard copy failed.");
+        }
+      }
+
+      function clearEvents() {
+        if (!confirm("Clear all locally stored WhatsApp click events?")) return;
+        localStorage.removeItem(STORAGE_KEY);
+        refresh();
+      }
+
+      function bindRangePills() {
+        const pills = [...document.querySelectorAll(".pill[data-range]")];
+        pills.forEach((pill) => {
+          pill.addEventListener("click", function () {
+            activeRange = pill.dataset.range || "today";
+            pills.forEach((p) => p.classList.toggle("active", p === pill));
+            refresh();
+          });
+        });
+      }
+
+      document
+        .getElementById("apiConnectBtn")
+        .addEventListener("click", async () => {
+          saveApiConfig();
+          const ok = await testConnection();
+          if (ok) refresh();
+        });
+
+      document
+        .getElementById("autoRefreshToggle")
+        .addEventListener("change", () => {
+          saveAutoRefreshConfig();
+          syncAutoRefresh();
+        });
+      document
+        .getElementById("autoRefreshInterval")
+        .addEventListener("change", () => {
+          saveAutoRefreshConfig();
+          syncAutoRefresh();
+        });
+
+      document.getElementById("refreshBtn").addEventListener("click", refresh);
+      document.getElementById("exportBtn").addEventListener("click", exportCsv);
+      document
+        .getElementById("exportWebhooksBtn")
+        .addEventListener("click", exportWebhookCsv);
+      document
+        .getElementById("loadMoreWebhooksBtn")
+        .addEventListener("click", loadMoreWebhookAttempts);
+      document.getElementById("copyBtn").addEventListener("click", copyJson);
+      document
+        .getElementById("copySummaryBtn")
+        .addEventListener("click", copySummary);
+      document
+        .getElementById("clearBtn")
+        .addEventListener("click", clearEvents);
+      document.getElementById("pageFilter").addEventListener("change", refresh);
+      document
+        .getElementById("numberFilter")
+        .addEventListener("change", refresh);
+      document.getElementById("fromDate").addEventListener("change", refresh);
+      document.getElementById("toDate").addEventListener("change", refresh);
+      document
+        .getElementById("webhookProviderFilter")
+        .addEventListener("change", refresh);
+      document
+        .getElementById("webhookOutcomeFilter")
+        .addEventListener("change", refresh);
+
+      bindRangePills();
+      bindTabs();
+      loadApiConfig();
+      void refresh();
+    </script>
+  </body>
+</html>

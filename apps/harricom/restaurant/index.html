@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+  <title>Norman's Kitchen | Authentic Jamaican Flavours</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <style id="site-topbar-styles">
+    .site-topbar {
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      display: grid;
+      grid-template-columns: 76px 1fr;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 16px;
+      margin-bottom: 20px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background:
+        linear-gradient(180deg, rgba(34, 46, 66, 0.9), rgba(24, 33, 49, 0.82));
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
+      backdrop-filter: blur(6px);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    }
+
+    /* Ensure all cards, sections, and containers get high-contrast backgrounds and borders */
+    @media (max-width: 700px) {
+      .card, .section, .container {
+        background: #181b22 !important;
+        color: #fff !important;
+        border: 2px solid #ff7a1a !important;
+        box-shadow: 0 4px 18px 0 #000 !important;
+      }
+    }
+    @media (min-width: 701px) {
+      .card, .section, .container {
+        background: #181b22 !important;
+        color: #f8f8f8 !important;
+        border: 2px solid #ff7a1a !important;
+        box-shadow: 0 4px 24px 0 #000 !important;
+      }
+    }
+
+    /* High-contrast theme for mobile and desktop */
+    :root {
+      --text: #f8f8f8;
+      --muted: #c0c4d0;
+    }
+    @media (max-width: 700px) {
+      body {
+        background: #0a0a0e !important;
+        color: #fff !important;
+      }
+      .card {
+        background: #181b22 !important;
+        border: 2px solid #ff7a1a !important;
+        color: #fff !important;
+        box-shadow: 0 4px 18px 0 #000 !important;
+      }
+      .card h3 {
+        color: #fff !important;
+        text-shadow: 0 2px 8px #000a;
+      }
+      .card p {
+        color: #e0e0e0 !important;
+      }
+      .btn-primary {
+        background: #ff7a1a !important;
+        color: #181b22 !important;
+        border: 2px solid #ff7a1a !important;
+        font-weight: bold !important;
+        text-shadow: none !important;
+      }
+      .btn-primary:hover {
+        background: #fff !important;
+        color: #ff7a1a !important;
+        border-color: #ff7a1a !important;
+      }
+      .site-topbar {
+        background: #181b22 !important;
+        border-color: #ff7a1a !important;
+      }
+      .site-topbar-title {
+        color: #fff !important;
+        text-shadow: 0 2px 8px #000a;
+      }
+    }
+    @media (min-width: 701px) {
+      body {
+        background: #0a0a0e !important;
+        color: #f8f8f8 !important;
+      }
+      .card {
+        background: #181b22 !important;
+        border: 2px solid #ff7a1a !important;
+        color: #f8f8f8 !important;
+        box-shadow: 0 4px 24px 0 #000 !important;
+      }
+      .card h3 {
+        color: #fff !important;
+        text-shadow: 0 2px 8px #000a;
+        font-weight: 700 !important;
+      }
+      .card p {
+        color: #e0e0e0 !important;
+        font-weight: 500 !important;
+      }
+      .btn-primary {
+        background: #ff7a1a !important;
+        color: #181b22 !important;
+        border: 2px solid #ff7a1a !important;
+        font-weight: bold !important;
+        text-shadow: none !important;
+      }
+      .btn-primary:hover {
+        background: #fff !important;
+        color: #ff7a1a !important;
+        border-color: #ff7a1a !important;
+      }
+      .site-topbar {
+        background: #181b22 !important;
+        border-color: #ff7a1a !important;
+      }
+      .site-topbar-title {
+        color: #fff !important;
+        text-shadow: 0 2px 8px #000a;
+      }
+    }
+
+    .site-topbar:hover {
+      border-color: #ff7a1a;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 0 0 14px rgba(255, 122, 26, 0.35);
+      transform: translateY(-1px);
+    }
+
+    .site-topbar-logo {
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid rgba(255, 235, 214, 0.92);
+      background: #f5efe4;
+      display: block;
+      box-shadow:
+        0 0 0 2px rgba(255, 122, 0, 0.2),
+        0 10px 22px rgba(0, 0, 0, 0.32),
+        0 0 20px rgba(255, 122, 0, 0.3);
+    }
+
+    .site-topbar-logo img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: 50% 49%;
+      transform: scale(1.6);
+      filter: brightness(1.08) contrast(1.36) saturate(1.4)
+        drop-shadow(0 1px 2px rgba(0, 0, 0, 0.58))
+        drop-shadow(0 0 10px rgba(255, 173, 96, 0.28));
+    }
+
+    .site-topbar-title {
+      margin: 0;
+      color: #ffffff;
+      font-size: clamp(1.15rem, 2.6vw, 1.7rem);
+      line-height: 1.1;
+      font-weight: 680;
+      letter-spacing: 0.01em;
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+    }
+
+    .card:hover {
+      border-color: #ff7a1a;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 14px rgba(255, 122, 26, 0.32) !important;
+    }
+  </style>
+
+</head>
+<body>
+    <a class="site-topbar" href="../index.html" aria-label="Back to HarriCom home">
+      <div class="site-topbar-logo" aria-label="HarriCom Doctor Bird logo">
+        <img src="../assets/images/doctorbird.jpg" alt="" loading="eager" decoding="async">
+      </div>
+      <p class="site-topbar-title">HarriCom Web Studio</p>
+    </a>
+
+  <header class="hero">
+    <div class="container">
+      <h1>Norman's Kitchen</h1>
+      <p>Home‑style Jamaican dishes, cooked fresh and served with love.</p>
+      <a class="btn-primary" href="https://wa.me/18763892243?text=Hi%20HarriCom%2C%20I%20am%20interested%20in%20the%20Restaurant%20template." target="_blank" rel="noopener noreferrer">
+        WhatsApp to Order
+      </a>
+    </div>
+  </header>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Today’s Menu</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Curried Goat</h3>
+          <p>Served with rice & peas and vegetables.</p>
+        </div>
+        <div class="card">
+          <h3>Fried Chicken</h3>
+          <p>Crispy, seasoned, and served with fries or festival.</p>
+        </div>
+        <div class="card">
+          <h3>Stew Peas</h3>
+          <p>Rich, hearty, and slow‑cooked the traditional way.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Why Customers Love Us</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Authentic Flavour</h3>
+          <p>Recipes passed down through generations.</p>
+        </div>
+        <div class="card">
+          <h3>Fresh Ingredients</h3>
+          <p>Locally sourced produce and meats.</p>
+        </div>
+        <div class="card">
+          <h3>Fast Service</h3>
+          <p>Call or WhatsApp ahead and pick up on time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Order & Pickup</h2>
+      <ol class="steps">
+        <li><strong>1.</strong> Send your order on WhatsApp.</li>
+        <li><strong>2.</strong> Get confirmation and pickup time.</li>
+        <li><strong>3.</strong> Collect and enjoy your meal.</li>
+      </ol>
+      <a class="btn-primary" href="https://wa.me/18763892243?text=Hi%20HarriCom%2C%20I%20am%20interested%20in%20the%20Restaurant%20template." target="_blank" rel="noopener noreferrer">
+        Place Order on WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container contact">
+      <h2>Location & Hours</h2>
+      <p><strong>Phone:</strong> (876) 389-2243</p>
+      <p><strong>WhatsApp:</strong> (876) 389-2243</p>
+      <p><strong>Location:</strong> Greenwood, St. James, Jamaica</p>
+      <p><strong>Hours:</strong> Mon–Sat, 11:00am – 9:00pm</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+        <p>© <span id="year"></span> Norman's Kitchen · Website by HarriCom</p>
+        <div style="text-align:center; margin:1.5rem 0;">
+          <div style="font-size:0.95em; color:#555; margin-top:0.5em;">Scan to visit this page</div>
+          <canvas id="qrcode" style="display:block; margin:1em auto;"></canvas>
+        </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+      // Simple QR code for this page
+      document.addEventListener('DOMContentLoaded', function() {
+        if (window.QRCode && typeof QRCode.toCanvas === 'function') {
+          QRCode.toCanvas(document.getElementById('qrcode'), window.location.href);
+        } else {
+          document.getElementById('qrcode').innerHTML = '<span style="color:red">QR code library not loaded</span>';
+        }
+      });
+  </script>
+  <script src="../assets/js/whatsapp-tracking.js" defer></script>
+  </body>
+  </html>
+</body>
+</html>

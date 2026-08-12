@@ -1,0 +1,221 @@
+/* --- Copied and updated from styles.css for cache busting --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+:root {
+  --dark-bg: #111111;
+  --dark-card: #1a1a1a;
+  --dark-bg-soft: #1b2331;
+  --dark-bg-deep: #141b27;
+  --orange: #FF7A00;
+  --orange-light: #FFB066;
+  --text-light: #E6E6E6;
+  --text-white: #FFFFFF;
+  --border-dark: #333333;
+}
+
+body {
+  background: var(--dark-bg);
+  color: var(--text-light);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  margin: 0;
+}
+
+h1, h2, h3 {
+  color: var(--text-white);
+  font-weight: 700;
+}
+
+abbr {
+  text-decoration: underline dotted rgba(255, 122, 0, 0.6);
+  text-underline-offset: 4px;
+  cursor: help;
+  transition: all 0.2s ease;
+}
+
+abbr:hover {
+  text-decoration-color: var(--orange);
+  color: var(--orange-light);
+}
+
+.info-icon {
+  display: inline-block;
+  margin-left: 4px;
+  cursor: help;
+  font-size: 0.9em;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+  position: relative;
+}
+
+.info-icon:hover {
+  opacity: 1;
+}
+
+.info-icon::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 125%;
+  left: 20px;
+  background: rgba(255, 122, 0, 0.95);
+  color: var(--text-white);
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.85em;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 1000;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.info-icon:hover::after {
+  opacity: 1;
+}
+
+.info-icon::before {
+  content: '';
+  position: absolute;
+  bottom: 121%;
+  left: 20px;
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid rgba(255, 122, 0, 0.95);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 1000;
+}
+
+.info-icon:hover::before {
+  opacity: 1;
+}
+
+.btn-primary {
+  background: var(--orange);
+  color: var(--text-white);
+  padding: 12px 22px;
+  border-radius: 10px;
+  display: inline-block;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  background: var(--orange-light);
+  box-shadow: 0 0 12px rgba(255,122,0,0.5);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-white);
+  padding: 12px 22px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  display: inline-block;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-secondary:hover {
+  border-color: var(--orange);
+  color: var(--orange-light);
+  box-shadow: 0 0 12px rgba(255,122,0,0.3);
+}
+
+.hero-container {
+  padding: 28px 16px 18px;
+}
+
+.hero-image {
+  position: relative;
+  border: 1px solid var(--border-dark);
+  border-radius: 20px;
+  overflow: hidden;
+  max-width: 1120px;
+  margin: 0 auto;
+  height: 840px !important;
+  min-height: 840px !important;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.home-page .hero-image {
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow:
+    0 16px 38px rgba(0, 0, 0, 0.34),
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+}
+
+.hero-image:hover {
+  border-color: var(--orange);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4), 0 0 14px rgba(255,122,0,0.35);
+}
+
+.home-page .hero-image:hover {
+  box-shadow:
+    0 20px 48px rgba(0, 0, 0, 0.48),
+    0 0 20px rgba(255, 122, 0, 0.24);
+}
+
+.hero-rainbow {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero-rainbow::before {
+  content: "";
+  position: absolute;
+  width: min(108%, 1200px);
+  height: min(122%, 620px);
+  left: -2%;
+  top: -30%;
+  background: conic-gradient(from 292deg at 76% 86%,
+    #ffd700 0deg,
+    #ffb800 18deg,
+    #ffd740 36deg,
+    #82c61c 54deg,
+    #229b47 72deg,
+    #009b3a 90deg,
+    #ffd700 108deg,
+    #ffb800 126deg,
+    #ffd700 144deg);
+  mask: radial-gradient(132% 116% at 76% 86%, transparent 55%, #000 58.5%, #000 63.8%, transparent 67.2%);
+  filter: blur(1.6px) saturate(var(--rainbow-saturation));
+  opacity: var(--rainbow-opacity);
+  transform: rotate(-7deg);
+  mix-blend-mode: screen;
+}
+
+.hero-content-overlay {
+  background: linear-gradient(120deg, rgba(18, 22, 32, 0.08) 60%, rgba(18, 22, 32, 0.04) 100%);
+  box-shadow: 0 6px 32px 0 rgba(0,0,0,0.09);
+  border-radius: 18px;
+  padding: 32px 6vw 28px 6vw;
+  margin: 32px auto 32px auto;
+  max-width: 600px;
+  backdrop-filter: blur(1.5px);
+}
+
+.hero-content-overlay h1,
+.hero-content-overlay p,
+.hero-content-overlay .hero-audience-line,
+.hero-content-overlay .cta-subtext {
+  text-shadow: 0 2px 16px rgba(0,0,0,0.32), 0 1px 2px rgba(0,0,0,0.18);
+}
+
+.cta-subtext {
+  color: #fff;
+  font-size: 1.08rem;
+}
+
+/* ...existing code... */
