@@ -1,6 +1,6 @@
 {
   "framework": "nextjs",
-  "buildCommand": "pnpm --filter harricom-templates build && rm -rf .next && cp -r apps/harricom/.next .next && mkdir -p public && cp -r apps/harricom/public ./public 2>/dev/null || true",
+  "buildCommand": "pnpm --filter harricom-templates build",
   "installCommand": "corepack enable && corepack prepare pnpm@9.12.3 --activate && pnpm install --no-frozen-lockfile",
-  "outputDirectory": ".next"
+  "outputDirectory": "apps/harricom/.next"
 }
