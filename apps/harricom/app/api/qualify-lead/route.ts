@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 import { qualifyLead } from "../../actions/qualify-lead";
 
 const corsHeaders = {
