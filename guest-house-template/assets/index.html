@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Island Guest House - Tourist Booking AI - Any Parish Jamaica | HarriCom</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box} body{font-family:system-ui,sans-serif; background:#0a0f1a; color:#f5f5f5; line-height:1.6;}
+.top{background:#111; color:#00ff88; font-family:monospace; text-align:center; padding:6px; font-size:11px;}
+header{text-align:center; padding:24px; border-bottom:1px solid #222;}
+.wrap{max-width:1100px; margin:20px auto; padding:0 16px;}
+/* IMAGE GALLERY - FIXED FOR PNGs */
+.gallery{display:grid; grid-template-columns:2fr 1fr 1fr; gap:10px; margin:16px 0; border-radius:12px; overflow:hidden;}
+.gallery img{width:100%; height:100%; object-fit:cover; display:block; min-height:160px; background:#1a2a3a;}
+.gallery .main{grid-row:span 2; min-height:330px;}
+.gallery img:hover{opacity:0.9; transform:scale(1.02); transition:0.2s;}
+@media(max-width:700px){ .gallery{grid-template-columns:1fr 1fr;} .gallery .main{grid-row:span 1; grid-column:span 2;} }
+.card{background:#141b2a; padding:14px; border-radius:12px; margin:10px 0; font-size:14px;}
+.row{display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #222;}
+.btn{padding:12px 20px; border-radius:999px; font-weight:700; text-decoration:none; display:inline-block; cursor:pointer; border:none; font-size:14px;}
+.btn-primary{background:#00bfff; color:#000;} .btn-sec{background:transparent; color:#00bfff; border:1px solid #00bfff;}
+.split{display:grid; grid-template-columns:1fr 380px; gap:20px; margin-top:20px;}
+.chat{border:2px solid #222; border-radius:16px; overflow:hidden; background:#0f1115; position:sticky; top:20px;}
+.chat-head{background:#075e54; color:white; padding:12px; display:flex; justify-content:space-between; font-size:13px;}
+.chat-body{height:360px; overflow-y:auto; padding:12px; background:#e5ddd5; display:flex; flex-direction:column; gap:8px;}
+.bubble{padding:8px 12px; border-radius:12px; max-width:82%; font-size:13px; line-height:1.4; word-break:break-word;}
+.user{align-self:flex-start; background:white; color:#111;} .bot{align-self:flex-end; background:#dcf8c6; color:#111;}
+.time{align-self:center; font-size:10px; color:#777;}
+.inputbar{display:flex; padding:10px; background:white; gap:8px;}
+.inputbar input{flex:1; border:1px solid #ddd; border-radius:20px; padding:8px 14px;}
+.inputbar button{background:#25D366; border:none; border-radius:50%; width:36px; height:36px; cursor:pointer;}
+@media(max-width:900px){ .split{grid-template-columns:1fr;} .chat{position:relative; top:0;} }
+</style>
+</head>
+<body>
+<div class="top">🔒 FIXED IMAGES • PNG SUPPORT • ISLAND-WIDE • 14 PARISHES • SECURE</div>
+<header>
+<h1>🏝️ ISLAND GUEST HOUSE — JAMAICA</h1>
+<p>ISLAND-WIDE • Negril • MoBay • Ochi • Port Antonio • Kingston • Tourist Booking AI 24/7</p>
+</header>
+
+<div class="wrap">
+<!-- IMAGE GALLERY - NOW LOOKS FOR YOUR PNGs - WILL SHOW -->
+<div class="gallery">
+  <img class="main" src="./images/hero.png" alt="Main Guest House View" onerror="this.src='./images/hero-image.png'; this.onerror=function(){this.src='./opengraph.jpg'; this.onerror=function(){this.src='../assets/images/guest-house.jpg'; this.onerror=function(){this.style.background='#1a2a3a'; this.alt='Add your guest house photo to images/hero.png'}}}">
+  <img src="./images/room1.png" alt="Room 1" onerror="this.src='./images/room-1.png'; this.onerror=function(){this.src='./images/bedroom.png'; this.onerror=function(){this.style.display='none'}}">
+  <img src="./images/room2.png" alt="Room 2" onerror="this.src='./images/room-2.png'; this.onerror=function(){this.src='./images/standard.png'; this.onerror=function(){this.style.display='none'}}">
+  <img src="./images/pool.png" alt="Pool or Outside" onerror="this.src='./images/exterior.png'; this.onerror=function(){this.src='./images/outside.png'; this.onerror=function(){this.style.display='none'}}">
+  <img src="./images/view.png" alt="View" onerror="this.src='./images/seaview.png'; this.onerror=function(){this.src='./images/balcony.png'; this.onerror=function(){this.style.display='none'}}">
+</div>
+<p style="text-align:center; font-size:11px; color:#666; margin-bottom:16px;">⬆️ Your PNGs from images/ folder - if any image missing, it hides automatically, no broken icons</p>
+
+<div class="split">
+<div>
+<h2 style="font-size:28px; line-height:1.2;">Tourist in Germany at 2am books your room<br><span style="color:#00bfff;">while you sleep — US$360</span></h2>
+<p style="color:#aaa; font-size:14px; margin:12px 0;">Most guest houses lose bookings because tourist messages at midnight your time. AI answers instantly with your real photos.</p>
+
+<div class="card">
+<div class="row"><span>Standard — Fan, WiFi</span><strong>US$85 / J$13k</strong></div>
+<div class="row"><span>Deluxe Sea View — AC, Breakfast</span><strong>US$120 / J$19k</strong></div>
+<div class="row"><span>Family Villa — 3 Beds, Kitchen</span><strong>US$250 / J$40k</strong></div>
+<div class="row"><span>Airport Pickup MBJ/NMIA</span><strong>US$30</strong></div>
+</div>
+
+<div style="display:flex; gap:10px; flex-wrap:wrap; margin:14px 0;">
+<a class="btn btn-primary" id="bookBtn" href="#">Book on WhatsApp →</a>
+<button class="btn btn-sec" id="demoBtn">Try Tourist Demo →</button>
+</div>
+
+<div class="card" style="border-left:4px solid #00bfff; font-size:13px;">
+<strong>Built by Patrick Harrison, HarriCom — Island-Wide</strong><br>
+32yrs Verizon field tech — rack, stack, install, repair. 10yrs airport tech Essex County incl. Newark Liberty. Verizon NOC + L3Harris NOC. Vodafone Germany. Built for uptime like airport comms.
+<br><br><strong>To change pictures:</strong> Just replace files in <code>guest-house-template/images/</code> with your client's photos. Keep same names: hero.png, room1.png, room2.png. No code change needed.
+</div>
+</div>
+
+<div class="chat" id="chatBox">
+<div class="chat-head"><span>🏝️ Guest House AI</span><span style="background:#25D366; color:#000; padding:2px 8px; border-radius:10px; font-size:11px;">● ONLINE 2s</span></div>
+<div class="chat-body" id="chatBody">
+<div class="bubble time">Today 2:14 AM Germany — Owner asleep — AI booking</div>
+<div class="bubble user">Hi, do you have room Dec 15-18? Price? From Germany.</div>
+<div class="bubble bot">Hello! Yes Deluxe Sea View available Dec 15-18 (3 nights) US$360. Free WiFi, pickup US$30. Hold it? Reply YES + name 😊</div>
+<div class="bubble user">YES Thomas Mueller 2 people</div>
+<div class="bubble bot">Held! 🔥 Deluxe Dec 15-18 for Thomas Mueller, 2 people US$360. Deposit US$108: [WiPay Link]. Balance at check-in. Pickup from MBJ? - Island Guest House (AI)</div>
+<div class="bubble time">⚡ US$360 booked while owner slept</div>
+</div>
+<div class="inputbar">
+<input id="chatInput" placeholder="Try: Do you have room tomorrow? Dec 15-18 deluxe?" maxlength="120">
+<button id="chatSend">➤</button>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+(function(){
+  const WA="18763892243";
+  const body=document.getElementById('chatBody'), input=document.getElementById('chatInput'), send=document.getElementById('chatSend');
+  function clean(s){ return String(s||'').replace(/[<>]/g,'').slice(0,120); }
+  function addMsg(t,who){ const d=document.createElement('div'); d.className='bubble '+who; d.textContent=clean(t); body.appendChild(d); body.scrollTop=body.scrollHeight; }
+  function addTime(t){ const d=document.createElement('div'); d.className='bubble time'; d.textContent=clean(t); body.appendChild(d); body.scrollTop=body.scrollHeight; }
+  function reply(txt){
+    const l=txt.toLowerCase(); let r="";
+    if(l.includes('deluxe')) r="Deluxe Sea View US$120/night - sea view, AC, breakfast, WiFi. What dates? Reply 'Dec 15-18 deluxe'";
+    else if(l.includes('standard')) r="Standard US$85/night - fan, WiFi. Available tonight. Hold? Reply YES + name";
+    else if(l.includes('villa')) r="Family Villa US$250/night - 3 beds, kitchen, sea view. Available this week. Hold? Reply YES";
+    else if(l.includes('price')||l.includes('how much')||l.includes('cost')||l.includes('rate')) r="Standard US$85, Deluxe US$120, Villa US$250 per night. Which dates? Reply 'Dec 15-18'";
+    else if(l.includes('yes')){ r="Held! "+txt+" - Deposit 30% to confirm: [WiPay Link]. Balance at check-in. Pickup needed? Reply YES - Island Guest House (AI)"; addTime("⚡ Tourist booked • Deposit link sent"); setTimeout(()=>{ const t=encodeURIComponent("Hi! Booking: "+txt); addMsg("Confirm on WhatsApp: https://wa.me/"+WA+"?text="+t,"bot"); },700); }
+    else r="Hello! Standard US$85, Deluxe US$120, Villa US$250. Free WiFi. What dates? Reply dates like 'Dec 15-18'";
+    setTimeout(()=> addMsg(r,'bot'), 600);
+  }
+  function handle(){ const t=clean(input.value.trim()); if(!t) return; addMsg(t,'user'); input.value=''; reply(t); }
+  send.addEventListener('click', handle);
+  input.addEventListener('keydown', e=>{ if(e.key==='Enter') handle(); });
+  document.getElementById('bookBtn').addEventListener('click', e=>{ e.preventDefault(); const t=encodeURIComponent("Hi Island Guest House! Do you have room Dec 15-18?"); window.open("https://wa.me/"+WA+"?text="+t,"_blank","noopener,noreferrer"); });
+  document.getElementById('demoBtn').addEventListener('click', ()=>{ document.getElementById('chatBox').scrollIntoView({behavior:'smooth'}); input.focus(); });
+})();
+</script>
+</body>
+</html>

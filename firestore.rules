@@ -1,0 +1,53 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isAdmin() {
+      return request.auth != null && request.auth.token.admin == true;
+    }
+
+    function isRelocationClient(userId) {
+      return request.auth != null && request.auth.uid == userId;
+    }
+
+    function isValidLead(lead) {
+      return lead.keys().hasAll([
+          'businessName',
+          'industry',
+          'requirements',
+          'budgetRange'
+        ]) &&
+        lead.keys().hasOnly([
+          'businessName',
+          'industry',
+          'requirements',
+          'budgetRange'
+        ]) &&
+        lead.businessName is string &&
+        lead.businessName.size() >= 2 &&
+        lead.businessName.size() <= 100 &&
+        lead.industry is string &&
+        lead.industry.size() >= 2 &&
+        lead.industry.size() <= 80 &&
+        lead.requirements is string &&
+        lead.requirements.size() >= 10 &&
+        lead.requirements.size() <= 2000 &&
+        lead.budgetRange is string &&
+        lead.budgetRange.size() >= 2 &&
+        lead.budgetRange.size() <= 100;
+    }
+
+    match /leads/{leadId} {
+      allow create: if isValidLead(request.resource.data);
+      allow read, update, delete: if isAdmin();
+    }
+
+    match /relocation_clients/{userId} {
+      allow read, write: if isRelocationClient(userId);
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

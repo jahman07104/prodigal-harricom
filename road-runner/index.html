@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+  <title>Road Runner – Harricom Template</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+  <!-- Road Runner template — coming soon -->
+  <script src="../assets/js/whatsapp-tracking.js" defer></script>
+    <footer class="footer">
+      <span>© 2026 Your Road Runner Brand · Powered by Harricom</span>
+      <div style="text-align:center; margin:1.5rem 0;">
+        <div style="font-size:0.95em; color:#555; margin-top:0.5em;">Scan to visit this page</div>
+        <canvas id="qrcode" style="display:block; margin:1em auto;"></canvas>
+      </div>
+    </footer>
+    <script>
+      // Simple QR code for this page
+      document.addEventListener('DOMContentLoaded', function() {
+        if (window.QRCode && typeof QRCode.toCanvas === 'function') {
+          QRCode.toCanvas(document.getElementById('qrcode'), window.location.href);
+        } else {
+          document.getElementById('qrcode').innerHTML = '<span style="color:red">QR code library not loaded</span>';
+        }
+      });
+    </script>
+</body>
+    </html>
