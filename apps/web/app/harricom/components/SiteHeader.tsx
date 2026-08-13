@@ -12,9 +12,9 @@ export function SiteHeader() {
         <a className={styles.navLink} href="#how-it-works">
           How it works
         </a>
-        <a className={styles.navLink} href="#templates">
+        <Link className={styles.navLink} href="/catalog">
           Templates
-        </a>
+        </Link>
         <Link className={`${styles.navLink} ${styles.navProdigal}`} href="/">
           The Prodigal Program
         </Link>

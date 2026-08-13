@@ -16,7 +16,7 @@ export function LaunchStrip() {
           kid with Canva. Telecom-grade uptime.
         </p>
         <div className={styles.actions}>
-          <CtaLink href="#templates">Browse templates</CtaLink>
+          <CtaLink href="/catalog">Browse templates</CtaLink>
           <CtaLink
             href={whatsappHref("Hi HarriCom, I want to launch in 7 days")}
             variant="secondary"

@@ -435,6 +435,10 @@
   color: var(--text-white);
 }
 
+.catalogMore {
+  margin: 28px 0 0;
+}
+
 .prodigal {
   max-width: 820px;
   margin: 0 auto;

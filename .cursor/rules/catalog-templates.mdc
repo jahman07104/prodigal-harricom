@@ -1,0 +1,30 @@
+---
+description: Catalog is easy to extend; customer site cloning is not built yet
+alwaysApply: true
+---
+
+# Catalog vs customer templates
+
+Two layers. Do not mix them up.
+
+## Catalog (`/catalog`)
+
+- Source of truth: `apps/web/app/catalog/templates.ts` plus thumbs in `apps/web/public/catalog/`
+- Adding a trade is one list item + a thumb. Do not add a new page, route, or CSS file per card
+- CTAs go to WhatsApp until a real preview route exists. Do not invent `/catalog/barber` (or similar) demos
+
+## Customer sites (not built)
+
+- Live masters are hardcoded HTML under `apps/harricom/` (`barber/`, `cook-shop/`, etc.)
+- Today a launch is copy the folder and swap name, photos, prices, WhatsApp by hand
+- There is no clone step: no customer records, no “drop in their pics and generate”
+
+## When asked to clone later
+
+Keep this split:
+
+1. Master template — layout, brand, WhatsApp booking (one per trade, stays in the repo)
+2. Customer record — name, parish, prices, photos, WhatsApp
+3. Build — render (1)+(2) onto the customer’s domain
+
+Do not start (2) or (3) until Patrick asks. Until then, keep the catalog list cheap to extend and leave HTML masters as copy-paste.

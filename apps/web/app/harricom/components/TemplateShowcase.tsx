@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { whatsappHref } from "../lib/brand";
 import styles from "../harricom.module.css";
 
@@ -79,6 +81,11 @@ export function TemplateShowcase() {
             </article>
           ))}
         </div>
+        <p className={styles.catalogMore}>
+          <Link className={styles.cardLink} href="/catalog">
+            See all templates →
+          </Link>
+        </p>
       </div>
     </section>
   );

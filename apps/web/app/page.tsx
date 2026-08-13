@@ -74,7 +74,7 @@ export default function HomePage() {
                 Barber, cook shop, and guest house templates that close fastest
                 in Jamaica. Customize in 7 days. You own the site.
               </p>
-              <Link href="/harricom#templates" className={styles.cardLink}>
+              <Link href="/catalog" className={styles.cardLink}>
                 View templates
               </Link>
             </article>
