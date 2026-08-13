@@ -60,6 +60,10 @@
   text-decoration: none;
 }
 
+.skip-link:focus {
+  top: 12px;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;

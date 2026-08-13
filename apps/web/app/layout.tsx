@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     template: "%s · Prodigal",
   },
   description:
-    "The Prodigal Program and HarriCom — returning resident reintegration and Jamaican business platforms.",
+    "The Prodigal Program — returning resident reintegration, with HarriCom as the digital studio for Jamaican MSMEs.",
 };
 
 export default function RootLayout({
