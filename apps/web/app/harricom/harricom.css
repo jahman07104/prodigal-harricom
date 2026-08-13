@@ -1,0 +1,87 @@
+/* HarriCom brand — Prodigal umbrella
+   Tokens and shared primitives. Component layout lives in harricom.module.css. */
+
+:root {
+  --hc-charcoal: #111111;
+  --hc-card: #1a1a1a;
+  --hc-soft: #1b2331;
+  --hc-deep: #141b27;
+  --hc-orange: #ff7a00;
+  --hc-orange-light: #ffb066;
+  --hc-green: #009b3a;
+  --hc-gold: #fed100;
+  --hc-text: #e6e6e6;
+  --hc-white: #ffffff;
+  --hc-border: #333333;
+  --hc-space-1: 8px;
+  --hc-space-2: 16px;
+  --hc-space-3: 24px;
+  --hc-space-4: 32px;
+  --hc-space-5: 48px;
+  --hc-space-6: 72px;
+}
+
+.trust-badge {
+  background: var(--hc-charcoal);
+  color: var(--hc-white);
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  display: inline-block;
+  margin: 4px;
+}
+
+.hero-cred {
+  background: rgba(0, 0, 0, 0.75);
+  border-left: 4px solid var(--hc-green);
+  padding: 12px 16px;
+  margin: 16px 0;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.security-strip {
+  background: #0a0a0a;
+  color: var(--hc-green);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  padding: 10px;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.btn-primary {
+  background: var(--hc-orange);
+  color: var(--hc-white);
+  padding: 12px 22px;
+  border-radius: 10px;
+  display: inline-block;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.btn-primary:hover {
+  background: var(--hc-orange-light);
+  box-shadow: 0 0 12px rgba(255, 122, 0, 0.5);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--hc-white);
+  padding: 12px 22px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  display: inline-block;
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.btn-secondary:hover {
+  border-color: var(--hc-orange);
+  color: var(--hc-orange-light);
+  box-shadow: 0 0 12px rgba(255, 122, 0, 0.3);
+}
