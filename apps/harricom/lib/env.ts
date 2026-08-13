@@ -4,6 +4,14 @@ import { z } from "zod";
 
 const optionalSecret = z.string().trim().min(1).optional();
 
+function readOptional(name: string) {
+  const value = process.env[name];
+  if (!value || !value.trim()) {
+    return undefined;
+  }
+  return value.trim();
+}
+
 const serverEnvSchema = z
   .object({
     GEMINI_API_KEY: optionalSecret,
@@ -17,14 +25,6 @@ const serverEnvSchema = z
     UPSTASH_REDIS_REST_TOKEN: optionalSecret,
   })
   .superRefine((value, context) => {
-    if (!value.GEMINI_API_KEY && !value.OPENAI_API_KEY) {
-      context.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: "Set GEMINI_API_KEY or OPENAI_API_KEY.",
-        path: ["GEMINI_API_KEY"],
-      });
-    }
-
     const firebaseCredentials = [
       value.FIREBASE_ADMIN_PROJECT_ID,
       value.FIREBASE_ADMIN_CLIENT_EMAIL,
@@ -61,17 +61,6 @@ const serverEnvSchema = z
         path: ["UPSTASH_REDIS_REST_URL"],
       });
     }
-    if (
-      process.env.NODE_ENV === "production" &&
-      configuredUpstashCredentials !== upstashCredentials.length
-    ) {
-      context.addIssue({
-        code: z.ZodIssueCode.custom,
-        message:
-          "UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN are required in production.",
-        path: ["UPSTASH_REDIS_REST_URL"],
-      });
-    }
   });
 
 function rejectPublicSecrets() {
@@ -91,36 +80,23 @@ function rejectPublicSecrets() {
 rejectPublicSecrets();
 
 const parsedEnv = serverEnvSchema.safeParse({
-  GEMINI_API_KEY: process.env.GEMINI_API_KEY,
-  GEMINI_MODEL: process.env.GEMINI_MODEL,
-  OPENAI_API_KEY: process.env.OPENAI_API_KEY,
-  OPENAI_MODEL: process.env.OPENAI_MODEL,
-  FIREBASE_ADMIN_PROJECT_ID: process.env.FIREBASE_ADMIN_PROJECT_ID,
-  FIREBASE_ADMIN_CLIENT_EMAIL: process.env.FIREBASE_ADMIN_CLIENT_EMAIL,
-  FIREBASE_ADMIN_PRIVATE_KEY: process.env.FIREBASE_ADMIN_PRIVATE_KEY,
-  UPSTASH_REDIS_REST_URL: process.env.UPSTASH_REDIS_REST_URL,
-  UPSTASH_REDIS_REST_TOKEN: process.env.UPSTASH_REDIS_REST_TOKEN,
+  GEMINI_API_KEY: readOptional("GEMINI_API_KEY"),
+  GEMINI_MODEL: readOptional("GEMINI_MODEL"),
+  OPENAI_API_KEY: readOptional("OPENAI_API_KEY"),
+  OPENAI_MODEL: readOptional("OPENAI_MODEL"),
+  FIREBASE_ADMIN_PROJECT_ID: readOptional("FIREBASE_ADMIN_PROJECT_ID"),
+  FIREBASE_ADMIN_CLIENT_EMAIL: readOptional("FIREBASE_ADMIN_CLIENT_EMAIL"),
+  FIREBASE_ADMIN_PRIVATE_KEY: readOptional("FIREBASE_ADMIN_PRIVATE_KEY"),
+  UPSTASH_REDIS_REST_URL: readOptional("UPSTASH_REDIS_REST_URL"),
+  UPSTASH_REDIS_REST_TOKEN: readOptional("UPSTASH_REDIS_REST_TOKEN"),
 });
 
 if (!parsedEnv.success) {
-  console.warn(
-    `Invalid server environment variables (allowing build to continue): ${parsedEnv.error.issues
+  throw new Error(
+    `Invalid server environment variables: ${parsedEnv.error.issues
       .map((issue) => `${issue.path.join(".")}: ${issue.message}`)
       .join("; ")}`,
   );
 }
-
-export const env = {
-  GEMINI_API_KEY: process.env.GEMINI_API_KEY || "",
-  GEMINI_MODEL: process.env.GEMINI_MODEL || "gemini-1.5-flash",
-  OPENAI_API_KEY: process.env.OPENAI_API_KEY || "",
-  OPENAI_MODEL: process.env.OPENAI_MODEL || "gpt-4o-mini",
-  FIREBASE_ADMIN_PROJECT_ID: process.env.FIREBASE_ADMIN_PROJECT_ID || "",
-  FIREBASE_ADMIN_CLIENT_EMAIL: process.env.FIREBASE_ADMIN_CLIENT_EMAIL || "",
-  FIREBASE_ADMIN_PRIVATE_KEY: process.env.FIREBASE_ADMIN_PRIVATE_KEY || "",
-  UPSTASH_REDIS_REST_URL: process.env.UPSTASH_REDIS_REST_URL || "",
-  UPSTASH_REDIS_REST_TOKEN: process.env.UPSTASH_REDIS_REST_TOKEN || "",
-  ...parsedEnv.data,
-} as typeof parsedEnv.data;
 
 export const env = parsedEnv.data;
