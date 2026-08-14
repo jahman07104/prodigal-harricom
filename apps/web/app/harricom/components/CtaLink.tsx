@@ -1,9 +1,7 @@
-import type { ReactNode } from "react";
-
 import styles from "../harricom.module.css";
 
 type Props = {
-  children: ReactNode;
+  children: string;
   href: string;
   variant?: "primary" | "secondary";
   external?: boolean;

@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, type ReactNode } from "react";
+import { createContext, useContext } from "react";
 
 import { dictionaries, type Dictionary, type Locale } from "./i18n";
 
@@ -19,7 +19,7 @@ export function LocaleProvider({
   children,
 }: {
   locale: Locale;
-  children: ReactNode;
+  children: React.ReactNode;
 }) {
   return (
     <I18nContext.Provider value={{ locale, t: dictionaries[locale] }}>
