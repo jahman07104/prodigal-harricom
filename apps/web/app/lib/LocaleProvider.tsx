@@ -11,7 +11,7 @@ import {
 import { usePathname } from "next/navigation";
 
 import {
-  dictionaries,
+  getDictionary,
   readBrowserLocale,
   writeBrowserLocale,
   type Dictionary,
@@ -26,7 +26,7 @@ type I18nValue = {
 
 const I18nContext = createContext<I18nValue>({
   locale: "en",
-  t: dictionaries.en,
+  t: getDictionary("en"),
   setLocale: () => {},
 });
 
@@ -57,7 +57,7 @@ export function LocaleProvider({
   const value = useMemo(
     () => ({
       locale: current,
-      t: dictionaries[current],
+      t: getDictionary(current),
       setLocale,
     }),
     [current, setLocale],
