@@ -173,6 +173,7 @@
   display: grid;
   gap: 4px;
   padding: 4px 16px 16px;
+  color: #ffffff;
 }
 
 .navMobile a {

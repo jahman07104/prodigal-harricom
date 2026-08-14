@@ -60,6 +60,7 @@ export function SiteHeader() {
       </div>
       {open ? (
         <nav className={styles.navMobile} aria-label="HarriCom">
+          <LanguageSwitch labeled />
           <a href="#how-it-works" onClick={() => setOpen(false)}>
             {t.nav.how}
           </a>

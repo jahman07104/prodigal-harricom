@@ -568,13 +568,27 @@ export function readBrowserLocale(): Locale {
     return "en";
   }
   const match = document.cookie.match(/(?:^|; )locale=([^;]*)/);
-  return parseLocale(match ? decodeURIComponent(match[1]) : null);
+  if (match) {
+    return parseLocale(decodeURIComponent(match[1]));
+  }
+  try {
+    return parseLocale(window.localStorage.getItem(LOCALE_COOKIE));
+  } catch {
+    return "en";
+  }
 }
 
 export function writeBrowserLocale(locale: Locale) {
   if (typeof document === "undefined") {
     return;
   }
+  const maxAge = 31536000;
+  const expires = new Date(Date.now() + maxAge * 1000).toUTCString();
   const secure = window.location.protocol === "https:" ? "; Secure" : "";
-  document.cookie = `${LOCALE_COOKIE}=${locale}; Path=/; Max-Age=31536000; SameSite=Lax${secure}`;
+  document.cookie = `${LOCALE_COOKIE}=${locale}; Path=/; Max-Age=${maxAge}; Expires=${expires}; SameSite=Lax${secure}`;
+  try {
+    window.localStorage.setItem(LOCALE_COOKIE, locale);
+  } catch {
+    // Private mode on some phones blocks storage; the cookie still holds.
+  }
 }

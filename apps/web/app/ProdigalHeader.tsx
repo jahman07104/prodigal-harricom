@@ -95,6 +95,7 @@ export function ProdigalHeader() {
 
       <div className={`${styles.mobile} ${open ? styles.mobileOpen : ""}`}>
         <div className={styles.mobileInner}>
+          <LanguageSwitch labeled />
           <Link href="/harricom">{t.nav.studioLong}</Link>
           {links.map((link) => (
             <Link

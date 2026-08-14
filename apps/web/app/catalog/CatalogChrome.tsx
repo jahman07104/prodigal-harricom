@@ -5,6 +5,7 @@ import Link from "next/link";
 import { LanguageSwitch } from "../lib/LanguageSwitch";
 import { useI18n } from "../lib/LocaleProvider";
 import { whatsappHref } from "../harricom/lib/brand";
+import chrome from "./CatalogChrome.module.css";
 
 type Css = Record<string, string>;
 
@@ -23,22 +24,24 @@ export function CatalogNav({
   const waHref = whatsappHref(whatsappMessage ?? t.catalog.launchWa);
 
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${chrome.safe}`}>
       <Link href="/" className={styles.brand}>
         {t.catalog.brand}
       </Link>
-      <nav className={styles.nav} aria-label={ariaLabel ?? t.catalog.navLabel}>
-        {variant === "preview" ? (
-          <Link href="/catalog">{t.preview.catalog}</Link>
-        ) : (
-          <Link href="/">{t.nav.prodigal}</Link>
-        )}
-        <Link href="/harricom">HarriCom</Link>
-        <a href={waHref} target="_blank" rel="noopener noreferrer">
-          {t.nav.whatsapp}
-        </a>
+      <div className={chrome.tools}>
+        <nav className={styles.nav} aria-label={ariaLabel ?? t.catalog.navLabel}>
+          {variant === "preview" ? (
+            <Link href="/catalog">{t.preview.catalog}</Link>
+          ) : (
+            <Link href="/">{t.nav.prodigal}</Link>
+          )}
+          <Link href="/harricom">HarriCom</Link>
+          <a href={waHref} target="_blank" rel="noopener noreferrer">
+            {t.nav.whatsapp}
+          </a>
+        </nav>
         <LanguageSwitch />
-      </nav>
+      </div>
     </header>
   );
 }
