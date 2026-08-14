@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import { whatsappHref } from "../harricom/lib/brand";
 import styles from "./catalog.module.css";
-import { catalogTemplates, templateWhatsAppHref } from "./templates";
+import { catalogTemplates } from "./templates";
 
 export const metadata: Metadata = {
   title: "Business templates",
@@ -66,14 +66,18 @@ export default function CatalogPage() {
                 ) : null}
                 <h2 className={styles.cardTitle}>{item.name}</h2>
                 <p className={styles.cardText}>{item.text}</p>
-                <a
-                  className={styles.cardLink}
-                  href={templateWhatsAppHref(item)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Get this on WhatsApp
-                </a>
+                {item.href ? (
+                  <Link className={styles.cardLink} href={item.href}>
+                    View template
+                  </Link>
+                ) : (
+                  <Link
+                    className={styles.cardLink}
+                    href={`/harricom/start?template=${item.slug}`}
+                  >
+                    Start a build
+                  </Link>
+                )}
               </article>
             ))}
           </div>

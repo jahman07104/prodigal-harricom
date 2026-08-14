@@ -1,0 +1,6 @@
+1:"$Sreact.fragment"
+2:I[22016,["/work/normans-kitchen/_next/static/chunks/01xlw8hd842-c.js","/work/normans-kitchen/_next/static/chunks/0d3shmwh5_nmn.js","/work/normans-kitchen/_next/static/chunks/0ka051yepewro.js"],""]
+3:I[97367,["/work/normans-kitchen/_next/static/chunks/01xlw8hd842-c.js","/work/normans-kitchen/_next/static/chunks/0d3shmwh5_nmn.js"],"OutletBoundary"]
+4:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","main",null,{"className":"mx-auto max-w-3xl px-6 py-16","children":[["$","p",null,{"className":"text-sm font-bold uppercase tracking-[0.2em] text-amber-900","children":"Demo"}],["$","h1",null,{"className":"mt-3 text-4xl font-bold","children":"Operator dashboard"}],["$","p",null,{"className":"mt-4 text-zinc-700","children":"This live demo shows the customer storefront. Kitchen tickets and order status run when the shop is launched with its database."}],["$","$L2",null,{"className":"mt-8 inline-block rounded-full bg-amber-900 px-5 py-3 text-amber-50","href":"/","children":"Back to storefront"}]]}],[["$","script","script-0",{"src":"/work/normans-kitchen/_next/static/chunks/0ka051yepewro.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"KHsabZjtYj0aJJNKjEtJA"}
+5:null

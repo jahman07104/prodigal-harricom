@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+  <title>Exquisite Roots Craft | Handmade Jamaican Goods</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #0f1115;
+      --card: #181b22;
+      --accent: #ff7a1a;
+      --accent-soft: rgba(255, 122, 26, 0.12);
+      --text: #f8f8f8;
+      --muted: #c0c4d0;
+      --border: #262a33;
+      --radius: 10px;
+      --shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+      --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    @media (max-width: 700px) {
+      .pill, .pill-row, .badge, .badge-dot, h1, .card, .card h3, .card p, .price-row span, .price-row strong, .footer-links a, .site-topbar-title, .btn, .btn-ghost, .btn-primary {
+        color: #fff !important;
+        font-weight: bold !important;
+        text-shadow: 0 2px 8px #000a;
+      }
+      body {
+        background: #0a0a0e !important;
+        color: #fff !important;
+      }
+      .card {
+        background: #181b22 !important;
+        border: 2px solid var(--border) !important;
+        color: #fff !important;
+        box-shadow: 0 4px 18px 0 #000 !important;
+      }
+      .card h3, .section h2, .section p, .hero-sub, .hero-footer, .footer, .footer a, .footer span {
+        color: #fff !important;
+        font-weight: bold !important;
+        text-shadow: 0 2px 8px #000a;
+      }
+      .btn-primary {
+        background: #ff7a1a !important;
+        color: #181b22 !important;
+        border: 2px solid transparent !important;
+        font-weight: bold !important;
+        text-shadow: none !important;
+      }
+      .btn-primary:hover {
+        background: #fff !important;
+        color: #ff7a1a !important;
+        border-color: #ff7a1a !important;
+      }
+    }
+    @media (min-width: 701px) {
+      .pill, .pill-row, .badge, .badge-dot, h1, .card, .card h3, .card p, .price-row span, .price-row strong, .footer-links a, .site-topbar-title, .btn, .btn-ghost, .btn-primary {
+        color: #fff !important;
+        font-weight: bold !important;
+        text-shadow: 0 2px 8px #000a;
+      }
+      body {
+        background: #0a0a0e !important;
+        color: #f8f8f8 !important;
+      }
+      .card {
+        background: #181b22 !important;
+        border: 2px solid var(--border) !important;
+        color: #f8f8f8 !important;
+        box-shadow: 0 4px 24px 0 #000 !important;
+      }
+      .card h3, .section h2, .section p, .hero-sub, .hero-footer, .footer, .footer a, .footer span {
+        color: #fff !important;
+        font-weight: bold !important;
+        text-shadow: 0 2px 8px #000a;
+      }
+      .btn-primary {
+        background: #ff7a1a !important;
+        color: #181b22 !important;
+        border: 2px solid transparent !important;
+        font-weight: bold !important;
+        text-shadow: none !important;
+      }
+      .btn-primary:hover {
+        background: #fff !important;
+        color: #ff7a1a !important;
+        border-color: #ff7a1a !important;
+      }
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font);
+      background: radial-gradient(circle at top, #1b1f29 0, #05060a 55%, #020308 100%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 40px 16px;
+    }
+    .page {
+      width: 100%;
+      max-width: 1100px;
+      background: linear-gradient(145deg, #11141b, #090b10);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      border: 1px solid #1f2430;
+      overflow: hidden;
+    }
+    .site-topbar {
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      display: grid;
+      grid-template-columns: 76px 1fr;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 16px;
+      margin-bottom: 20px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: linear-gradient(180deg, rgba(34, 46, 66, 0.9), rgba(24, 33, 49, 0.82));
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
+      backdrop-filter: blur(6px);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    }
+    .site-topbar-logo {
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid rgba(255, 235, 214, 0.92);
+      background: #f5efe4;
+      display: block;
+      box-shadow: 0 0 0 2px rgba(255, 122, 26, 0.12), 0 10px 22px rgba(0, 0, 0, 0.32), 0 0 20px rgba(255, 122, 26, 0.13);
+    }
+    .site-topbar-logo img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: 50% 49%;
+      transform: scale(1.6);
+      filter: brightness(1.08) contrast(1.36) saturate(1.4)
+        drop-shadow(0 1px 2px rgba(0, 0, 0, 0.58))
+        drop-shadow(0 0 10px rgba(255, 122, 26, 0.18));
+    }
+    .site-topbar-title {
+      margin: 0;
+      color: #ffffff;
+      font-size: clamp(1.15rem, 2.6vw, 1.7rem);
+      line-height: 1.1;
+      font-weight: 680;
+      letter-spacing: 0.01em;
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+    h1 { font-size: 32px; line-height: 1.2; }
+    .hero-sub { color: var(--muted); font-size: 14px; max-width: 460px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px; }
+    .btn {
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.18s ease;
+      text-decoration: none;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(255, 122, 26, 0.35);
+    }
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(255, 122, 26, 0.45);
+    }
+    .btn-ghost {
+      background: transparent;
+      color: #fff !important;
+      border: 1px solid #2a3040;
+      font-weight: bold !important;
+      text-shadow: 0 1px 8px #000a;
+    }
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 32px;
+      padding: 32px;
+    }
+    @media (max-width: 840px) {
+      .hero { grid-template-columns: 1fr; padding: 24px; }
+    }
+    .hero-right {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      background: radial-gradient(circle at top, #252b3a 0, #10131b 55%, #05060a 100%);
+      border: 1px solid #262b3a;
+      padding: 18px;
+    }
+    .hero-footer { margin-top: 12px; font-size: 12px; color: var(--muted); }
+    .section {
+      padding: 0 32px 28px;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 2fr);
+      gap: 28px;
+    }
+    @media (max-width: 900px) {
+      .section { grid-template-columns: 1fr; padding: 0 12px 24px; }
+    }
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 0 0;
+    }
+    .pill {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-radius: 999px;
+      padding: 6px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .card {
+      background: var(--card);
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.13);
+      padding: 18px 20px 16px 20px;
+      margin-bottom: 12px;
+      border: 1px solid var(--border);
+    }
+    .price-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+      font-size: 15px;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .gallery-item {
+      background: #23262e;
+      border-radius: 10px;
+      min-height: 70px;
+      border: 1px solid #23262e;
+    }
+    .footer {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 32px;
+      background: linear-gradient(90deg, #181b22 0, #181b22 100%);
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer-social-bar {
+      display: flex;
+      gap: 10px;
+    }
+    .footer-links {
+      display: flex;
+      gap: 16px;
+    }
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+  </style>
+
+</head>
+<body>
+  <div class="page">
+    <a class="site-topbar" href="/harricom" aria-label="Back to HarriCom home">
+      <div class="site-topbar-logo" aria-label="HarriCom Doctor Bird logo">
+        <img src="/harricom/images/doctorbird.jpg" alt="" loading="eager" decoding="async">
+      </div>
+      <p class="site-topbar-title">HarriCom Web Studio</p>
+    </a>
+    <!-- HERO -->
+    <header class="hero">
+      <div>
+        <div class="badge">
+          <span class="badge-dot"></span>
+          <span>Craft Shop</span>
+        </div>
+        <h1>Exquisite Roots Craft</h1>
+        <p class="hero-sub">Handmade Jamaican crafts, jewelry, and decor—crafted with culture and care.</p>
+        <div class="hero-actions">
+          <a href="https://wa.me/18763892243?text=Hi%20HarriCom%2C%20I%20am%20interested%20in%20the%20Craft%20Shop%20template." class="btn btn-primary">WhatsApp to Order</a>
+          <a href="tel:+18763892243" class="btn btn-ghost" style="color:#fff !important;font-weight:bold !important;text-shadow:0 2px 8px #000a;">Call to Schedule</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-footer">Islandwide shipping & custom orders available</div>
+      </div>
+    </header>
+
+    <!-- GALLERY -->
+    <!-- PRODUCTS -->
+    <section class="section">
+      <div>
+        <h2>Featured Products</h2>
+        <div class="pill-row">
+          <span class="pill">Beaded Bracelets</span>
+          <span class="pill">Wood Carvings</span>
+          <span class="pill">Gift Sets</span>
+          <span class="pill">Jewelry</span>
+          <span class="pill">Home Decor</span>
+        </div>
+      </div>
+      <div>
+        <div class="gallery-block" style="margin: 24px 0 18px 0;">
+          <h3 style="margin-bottom: 8px;">Recent Work</h3>
+          <div class="gallery-grid">
+            <div class="gallery-item"></div>
+            <div class="gallery-item"></div>
+            <div class="gallery-item"></div>
+            <div class="gallery-item"></div>
+            <div class="gallery-item"></div>
+            <div class="gallery-item"></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Beaded Bracelets</h3>
+          <div class="price-row"><span>Handcrafted</span><strong>JMD $1,500</strong></div>
+          <p>Colorful, handcrafted bracelets inspired by Jamaican heritage.</p>
+        </div>
+        <div class="card">
+          <h3>Wood Carvings</h3>
+          <div class="price-row"><span>Locally Made</span><strong>JMD $3,000</strong></div>
+          <p>Locally carved pieces perfect for home decor.</p>
+        </div>
+        <div class="card">
+          <h3>Custom Gift Sets</h3>
+          <div class="price-row"><span>Bundles</span><strong>From JMD $2,500</strong></div>
+          <p>Curated bundles for birthdays, anniversaries, and special occasions.</p>
+        </div>
+      </div>
+    </section>
+    <!-- GALLERY -->
+
+    <!-- GALLERY -->
+    <!-- HOW TO ORDER -->
+    <section class="section">
+      <div>
+        <h2>Order Steps</h2>
+        <p>Screenshot or describe the item you like, then WhatsApp us to confirm price, payment, and delivery or pickup.</p>
+        <div class="pill-row">
+          <span class="pill">Screenshot Item</span>
+          <span class="pill">WhatsApp Us</span>
+          <span class="pill">Confirm & Pay</span>
+        </div>
+      </div>
+    </section>
+    <!-- CONTACT -->
+    <section class="section">
+      <div>
+        <h2>Contact & Shipping</h2>
+        <p><strong>WhatsApp:</strong> (876) 389-2243</p>
+        <p><strong>Location:</strong> St. James, Jamaica</p>
+        <p><strong>Shipping:</strong> Island‑wide and select international destinations.</p>
+      </div>
+      <div>
+        <div class="card">
+          <h3>Custom Orders</h3>
+          <p>We accept custom requests for gifts, decor, and more. Contact us to discuss your ideas!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <!-- FOOTER -->
+    <footer class="footer">
+      <span>© <span id="year"></span> Exquisite Roots Craft · Website by HarriCom</span>
+      <div style="text-align:center; margin:1.5rem 0;">
+        <div style="font-size:0.95em; color:#555; margin-top:0.5em;">Scan to visit this page</div>
+        <canvas id="qrcode" style="display:block; margin:1em auto;"></canvas>
+      </div>
+      <div class="footer-links">
+        <a href="https://wa.me/18763892243?text=Hi%20HarriCom%2C%20I%20am%20interested%20in%20the%20Craft%20Shop%20template.">WhatsApp</a>
+        <a href="#">Call</a>
+      </div>
+    </footer>
+  </div>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+    // Simple QR code for this page
+    document.addEventListener('DOMContentLoaded', function() {
+      if (window.QRCode && typeof QRCode.toCanvas === 'function') {
+        QRCode.toCanvas(document.getElementById('qrcode'), window.location.href);
+      } else {
+        document.getElementById('qrcode').innerHTML = '<span style="color:red">QR code library not loaded</span>';
+      }
+    });
+</body>
+</html>

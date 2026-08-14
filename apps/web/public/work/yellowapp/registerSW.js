@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/work/yellowapp/sw.js', { scope: '/work/yellowapp/' })})}

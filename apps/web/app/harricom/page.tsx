@@ -5,7 +5,7 @@ import "./harricom.css";
 import { Hero } from "./components/Hero";
 import { HowItWorks } from "./components/HowItWorks";
 import { LaunchStrip } from "./components/LaunchStrip";
-import { ProdigalBand } from "./components/ProdigalBand";
+import { LiveWork } from "./components/LiveWork";
 import { SiteFooter } from "./components/SiteFooter";
 import { SiteHeader } from "./components/SiteHeader";
 import { TemplateShowcase } from "./components/TemplateShowcase";
@@ -22,15 +22,14 @@ export default function HarricomPage() {
   return (
     <div className={styles.page}>
       <p className={styles.strip}>
-        Telecom-grade security included · HTTPS · CSP · HSTS · No tracking ·
-        Built like Verizon infrastructure
+        Customize in 7 days · You own it · From J$35,000
       </p>
       <SiteHeader />
       <main id="main">
         <Hero />
         <HowItWorks />
         <Tiers />
-        <ProdigalBand />
+        <LiveWork />
         <TemplateShowcase />
         <LaunchStrip />
       </main>

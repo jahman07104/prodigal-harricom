@@ -1,6 +1,6 @@
 {
   "framework": "nextjs",
-  "buildCommand": "pnpm --filter harricom-templates build",
+  "buildCommand": "pnpm --filter @prodigal/web build",
   "installCommand": "corepack enable && corepack prepare pnpm@9.12.3 --activate && pnpm install --no-frozen-lockfile",
-  "outputDirectory": "apps/harricom/.next"
+  "outputDirectory": "apps/web/.next"
 }

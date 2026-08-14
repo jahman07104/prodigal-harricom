@@ -5,6 +5,7 @@ export type CatalogTemplate = {
   name: string;
   text: string;
   image: string;
+  href?: string;
   featured?: boolean;
   badge?: string;
   whatsapp: string;
@@ -16,6 +17,7 @@ export const catalogTemplates: CatalogTemplate[] = [
     name: "Barber shop",
     text: "WhatsApp booking AI. Customer books at 10pm. You wake up with appointments.",
     image: "/catalog/barber-thumb.png",
+    href: "/catalog/barber",
     featured: true,
     badge: "#1 closes fastest",
     whatsapp: "I want the Barber AI site",
@@ -42,29 +44,56 @@ export const catalogTemplates: CatalogTemplate[] = [
     slug: "beauty",
     name: "Hairdresser / beauty",
     text: "Service menu, gallery, and WhatsApp booking for salons and stylists.",
-    image: "/catalog/beauty-thumb.png",
+    image: "/catalog/hairdresser-thumb.png",
+    href: "/catalog/hairdresser",
     whatsapp: "I want the Hairdresser AI site",
+  },
+  {
+    slug: "nailtech",
+    name: "Nail tech",
+    text: "Acrylics, gel, nail art, and pedicures. WhatsApp booking for nail studios.",
+    image: "/catalog/nailtech-thumb.png",
+    href: "/catalog/nailtech",
+    whatsapp: "I want the Nail Tech AI site",
+  },
+  {
+    slug: "makeup",
+    name: "Makeup artist",
+    text: "Soft glam, bridal, and photoshoot looks. WhatsApp booking for MUAs.",
+    image: "/catalog/makeup-thumb.jpg",
+    href: "/catalog/makeup",
+    whatsapp: "I want the Makeup Artist AI site",
+  },
+  {
+    slug: "massage",
+    name: "Massage therapist",
+    text: "Swedish, deep tissue, and home visits. Clients book a time on WhatsApp.",
+    image: "/catalog/massage-thumb.jpg",
+    href: "/catalog/massage",
+    whatsapp: "I want the Massage Therapist AI site",
   },
   {
     slug: "home-business",
     name: "Home business",
-    text: "For bakers, crafters, tutors, and small home enterprises.",
-    image: "/catalog/homebiz-thumb.png",
+    text: "Packages, a price menu, and WhatsApp orders for crafters, kitchens, and small home shops.",
+    image: "/catalog/homepricing-thumb.png",
+    href: "/catalog/home-pricing",
     whatsapp: "I want the Home Business AI site",
   },
   {
     slug: "tradesman",
-    name: "Tradesman / industrial",
-    text: "Plumbers, masons, electricians, contractors. Lead capture that actually answers.",
+    name: "Industrial / technician",
+    text: "Electricians, block factories, plumbers, masons, contractors. Lead capture that actually answers.",
     image: "/catalog/industrial-thumb.png",
+    href: "/catalog/industrial",
     whatsapp: "I want the Tradesman AI site",
   },
   {
-    slug: "taxi",
-    name: "Taxi service",
-    text: "WhatsApp booking for airport runs, city rides, and tours.",
-    image: "/catalog/taxi.jpg",
-    whatsapp: "I want the Taxi AI site",
+    slug: "tour-operator",
+    name: "Tour operator",
+    text: "Airport runs, island tours, and private transport. WhatsApp booking for visitors and locals.",
+    image: "/catalog/tour-operator-thumb.jpg",
+    whatsapp: "I want the Tour Operator AI site",
   },
   {
     slug: "construction",
@@ -77,8 +106,33 @@ export const catalogTemplates: CatalogTemplate[] = [
     slug: "dressmaker",
     name: "Dressmaker",
     text: "Lookbook and WhatsApp orders for custom garments.",
-    image: "/catalog/dressmaker.jpg",
+    image: "/catalog/dressmaker-thumb.jpg",
+    href: "/catalog/dressmaker",
     whatsapp: "I want the Dressmaker AI site",
+  },
+  {
+    slug: "trainer",
+    name: "Personal trainer",
+    text: "Session packs and outdoor or gym coaching. Booked on WhatsApp.",
+    image: "/catalog/trainer-thumb.jpg",
+    href: "/catalog/trainer",
+    whatsapp: "I want the Personal Trainer AI site",
+  },
+  {
+    slug: "photographer",
+    name: "Photographer",
+    text: "Portfolio plus WhatsApp quotes for portraits, grads, and events.",
+    image: "/catalog/photographer-thumb.jpg",
+    href: "/catalog/photographer",
+    whatsapp: "I want the Photographer AI site",
+  },
+  {
+    slug: "event-planner",
+    name: "Event planner",
+    text: "Birthdays, weddings, and day-of coordination. Clients WhatsApp the date.",
+    image: "/catalog/event-thumb.jpg",
+    href: "/catalog/event-planner",
+    whatsapp: "I want the Event Planner AI site",
   },
 ];
 

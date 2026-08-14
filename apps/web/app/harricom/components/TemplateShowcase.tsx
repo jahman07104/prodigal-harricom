@@ -1,39 +1,36 @@
+import Image from "next/image";
 import Link from "next/link";
 
-import { whatsappHref } from "../lib/brand";
+import { startHref } from "../lib/brand";
 import styles from "../harricom.module.css";
 
 const templates = [
   {
     tag: "#1 closes fastest",
-    name: "Barbershop — WhatsApp booking",
-    desc: "Customer books at 10pm via WhatsApp AI. You wake up with appointments. No more “are you open?” lost sales.",
-    features: [
-      "WhatsApp AI answers pricing and hours",
-      "Books directly to your calendar",
-      "Secure · Mobile-first",
-    ],
-    tone: "community",
+    name: "Barber shop",
+    desc: "Customer books at 10pm. You wake up with appointments.",
+    image: "/catalog/barber-thumb.png",
+    preview: "/catalog/barber",
+    slug: "barber",
     featured: true,
-    href: whatsappHref("I want the Barber AI site"),
   },
   {
-    tag: "Cookshop — online ordering",
-    name: "Cook shop + restaurant",
-    desc: "Lunch rush handled via WhatsApp. Kitchen ticket system. No more phone chaos.",
-    features: ["Menu + ordering + WiPay", "Kitchen view + WhatsApp alerts"],
-    tone: "food",
+    tag: "#2 lunch rush",
+    name: "Cook shop",
+    desc: "Lunch rush on WhatsApp. Kitchen tickets. No phone chaos.",
+    image: "/catalog/cook-shop.jpg",
+    preview: "/catalog",
+    slug: "cook-shop",
     featured: false,
-    href: whatsappHref("I want the Cook Shop AI site"),
   },
   {
-    tag: "Guest house — tourism",
-    name: "Guest house — tourist dollars",
-    desc: "Tourists book on WhatsApp, pay deposit online. Built for Jamaica tourism.",
-    features: ["Booking + deposit + map", "WhatsApp concierge AI"],
-    tone: "community",
+    tag: "#3 tourist dollars",
+    name: "Guest house",
+    desc: "Tourists book on WhatsApp and pay a deposit online.",
+    image: "/catalog/guest-house.jpg",
+    preview: "/catalog",
+    slug: "guest-house",
     featured: false,
-    href: whatsappHref("I want the Guest House AI site"),
   },
 ];
 
@@ -46,38 +43,37 @@ export function TemplateShowcase() {
     >
       <div className={styles.container}>
         <h2 id="templates-title" className={styles.sectionTitle}>
-          3 templates that make money this week
+          3 templates that close this week
         </h2>
         <p className={styles.lead}>
-          Stop browsing 25 templates. These 3 close fastest in Jamaica. Pick
-          one — we customize it in 7 days.
+          Pick one. We customize in 7 days. You own it.
         </p>
         <div className={styles.grid}>
           {templates.map((item) => (
             <article
               key={item.name}
-              className={`${styles.card} ${
-                item.tone === "food" ? styles.food : styles.community
-              } ${item.featured ? styles.featured : ""}`}
+              className={`${styles.card} ${item.featured ? styles.featured : ""}`}
             >
+              <div className={styles.thumb}>
+                <Image
+                  src={item.image}
+                  alt={`${item.name} template`}
+                  fill
+                  sizes="(max-width: 900px) 100vw, 360px"
+                  className={styles.thumbImg}
+                />
+              </div>
               <p className={`${styles.tag} ${item.featured ? styles.tagHot : ""}`}>
                 {item.tag}
               </p>
               <h3 className={styles.cardTitle}>{item.name}</h3>
               <p className={styles.cardBody}>{item.desc}</p>
-              <ul className={styles.features}>
-                {item.features.map((feature) => (
-                  <li key={feature}>{feature}</li>
-                ))}
-              </ul>
-              <a
-                className={styles.cardLink}
-                href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Get this on WhatsApp
-              </a>
+              <Link className={styles.cardLink} href={item.preview}>
+                View template
+              </Link>
+              <Link className={styles.cardLink} href={startHref(item.slug)}>
+                Start a build
+              </Link>
             </article>
           ))}
         </div>

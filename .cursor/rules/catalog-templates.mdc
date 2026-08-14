@@ -10,8 +10,10 @@ Two layers. Do not mix them up.
 ## Catalog (`/catalog`)
 
 - Source of truth: `apps/web/app/catalog/templates.ts` plus thumbs in `apps/web/public/catalog/`
-- Adding a trade is one list item + a thumb. Do not add a new page, route, or CSS file per card
-- CTAs go to WhatsApp until a real preview route exists. Do not invent `/catalog/barber` (or similar) demos
+- Adding a catalog card is one list item + a thumb. Do not add a CSS file per card on the index
+- Preview pages live at `/catalog/[slug]` only after they are built. Live so far: `/catalog/barber`, `/catalog/hairdresser`, `/catalog/nailtech`, `/catalog/makeup`, `/catalog/massage`, `/catalog/home-pricing`, `/catalog/industrial`, `/catalog/dressmaker`, `/catalog/trainer`, `/catalog/photographer`, `/catalog/event-planner`
+- Set `href` on a template when its preview exists. Until then the card CTA stays WhatsApp
+- Previews are demos of the master (e.g. Island Cuts), not live customer shops
 
 ## Customer sites (not built)
 

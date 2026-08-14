@@ -5,18 +5,18 @@ import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "600", "700", "800"],
+  weight: ["400", "600", "700", "800", "900"],
   display: "swap",
   variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
   title: {
-    default: "Prodigal",
-    template: "%s · Prodigal",
+    default: "HarriCom | The Prodigal Program",
+    template: "%s · The Prodigal Program",
   },
   description:
-    "The Prodigal Program — returning resident reintegration, with HarriCom as the digital studio for Jamaican MSMEs.",
+    "The Prodigal Program by HarriCom helps Jamaican diaspora and returning residents navigate RR concessions, business setup, and encore entrepreneurship.",
 };
 
 export default function RootLayout({

@@ -2,19 +2,22 @@ import styles from "../harricom.module.css";
 
 const steps = [
   {
-    title: "1. Customer messages",
-    body: "“How much for a cut Saturday?” at 9pm when you’re closed.",
-    label: "Old way: lost customer",
+    n: "1",
+    title: "They message after hours",
+    body: "“How much for a cut Saturday?” at 9pm. You’re closed.",
+    label: "Old way: lost",
   },
   {
-    title: "2. AI answers instantly",
-    body: "“Cut is $3,000 JMD, 10am and 2pm open Saturday. Book 10am?” — replies in 3 seconds.",
+    n: "2",
+    title: "AI answers in 3 seconds",
+    body: "Price, times, and a YES to book — in your voice.",
     label: "New way: booked",
   },
   {
-    title: "3. You get paid",
-    body: "You wake up to a booked appointment. No extra work. Site plus AI does it.",
-    label: "Result: J$9k–15k extra / week",
+    n: "3",
+    title: "You wake up paid",
+    body: "Appointment on the list. No extra work.",
+    label: "J$9k–15k extra / week",
   },
 ];
 
@@ -27,17 +30,20 @@ export function HowItWorks() {
     >
       <div className={styles.container}>
         <h2 id="how-title" className={styles.sectionTitle}>
-          How we get you 3 more customers per week
+          How you get 3 more customers a week
         </h2>
-        <div className={styles.grid}>
+        <ol className={styles.steps}>
           {steps.map((step) => (
-            <article key={step.title} className={styles.card}>
+            <li key={step.n} className={styles.step}>
+              <span className={styles.stepNum} aria-hidden="true">
+                {step.n}
+              </span>
               <h3 className={styles.cardTitle}>{step.title}</h3>
               <p className={styles.cardBody}>{step.body}</p>
               <p className={styles.tierLabel}>{step.label}</p>
-            </article>
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   );

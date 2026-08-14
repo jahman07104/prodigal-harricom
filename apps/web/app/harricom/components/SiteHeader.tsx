@@ -12,6 +12,9 @@ export function SiteHeader() {
         <a className={styles.navLink} href="#how-it-works">
           How it works
         </a>
+        <a className={styles.navLink} href="#live-work">
+          Live shops
+        </a>
         <Link className={styles.navLink} href="/catalog">
           Templates
         </Link>
