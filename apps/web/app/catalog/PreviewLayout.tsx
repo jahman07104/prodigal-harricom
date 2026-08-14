@@ -1,7 +1,10 @@
-import Image from "next/image";
-import Link from "next/link";
+"use client";
 
-import { startHref, whatsappHref } from "../harricom/lib/brand";
+import Image from "next/image";
+
+import { startHref } from "../harricom/lib/brand";
+import { useI18n } from "../lib/LocaleProvider";
+import { CatalogFooter, CatalogNav, CatalogReadyBlock } from "./CatalogChrome";
 import styles from "./preview.module.css";
 
 export type PreviewService = {
@@ -40,29 +43,22 @@ export function PreviewLayout({
   templateSlug,
   heroSrc,
   heroAlt,
-  servicesTitle = "Services",
+  servicesTitle,
   services,
-  galleryTitle = "Gallery",
+  galleryTitle,
   gallery,
   ctaText,
 }: PreviewLayoutProps) {
-  const bookHref = whatsappHref(bookMessage);
+  const { t } = useI18n();
 
   return (
     <div className={styles.wrapper}>
       <p className={styles.strip}>{strip}</p>
-      <header className={styles.header}>
-        <Link href="/" className={styles.brand}>
-          The Prodigal
-        </Link>
-        <nav className={styles.nav} aria-label={navLabel}>
-          <Link href="/catalog">Catalog</Link>
-          <Link href="/harricom">HarriCom</Link>
-          <a href={bookHref} target="_blank" rel="noopener noreferrer">
-            WhatsApp
-          </a>
-        </nav>
-      </header>
+      <CatalogNav
+        styles={styles}
+        whatsappMessage={bookMessage}
+        ariaLabel={navLabel}
+      />
 
       <main id="main">
         <section className={styles.hero}>
@@ -83,7 +79,9 @@ export function PreviewLayout({
         </section>
 
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>{servicesTitle}</h2>
+          <h2 className={styles.sectionTitle}>
+            {servicesTitle ?? t.preview.services}
+          </h2>
           <div className={styles.grid}>
             {services.map((service) => (
               <article key={service.title} className={styles.card}>
@@ -96,7 +94,9 @@ export function PreviewLayout({
         </section>
 
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>{galleryTitle}</h2>
+          <h2 className={styles.sectionTitle}>
+            {galleryTitle ?? t.preview.gallery}
+          </h2>
           <div className={styles.galleryGrid}>
             {gallery.map((shot) => (
               <div key={shot.src} className={styles.thumb}>
@@ -112,21 +112,14 @@ export function PreviewLayout({
           </div>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Ready to use this template?</h2>
-          <p className={styles.ctaText}>{ctaText}</p>
-          <Link href={startHref(templateSlug)} className={styles.ctaButton}>
-            Start a build
-          </Link>
-        </section>
+        <CatalogReadyBlock
+          buildHref={startHref(templateSlug)}
+          lead={ctaText}
+          styles={styles}
+        />
       </main>
 
-      <footer className={styles.footer}>
-        <p>
-          © {new Date().getFullYear()} HarriCom ·{" "}
-          <Link href="/catalog">See all templates</Link>
-        </p>
-      </footer>
+      <CatalogFooter styles={styles} />
     </div>
   );
 }

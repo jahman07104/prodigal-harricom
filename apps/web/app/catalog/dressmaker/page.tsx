@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 
-import { startHref, whatsappHref } from "../../harricom/lib/brand";
+import { startHref } from "../../harricom/lib/brand";
+import {
+  CatalogFooter,
+  CatalogHeroActions,
+  CatalogNav,
+  CatalogReadyBlock,
+} from "../CatalogChrome";
 import styles from "./dressmaker.module.css";
 
 export const metadata: Metadata = {
@@ -11,7 +16,6 @@ export const metadata: Metadata = {
     "Island Stitch demo — a HarriCom dressmaker template. Custom dresses, alterations, uniforms, and WhatsApp orders.",
 };
 
-const bookHref = whatsappHref("I want the Dressmaker AI site");
 const buildHref = startHref("dressmaker");
 
 export default function DressmakerTemplate() {
@@ -20,18 +24,11 @@ export default function DressmakerTemplate() {
       <p className={styles.strip}>
         Template preview · Not a live shop · Customize in 7 days · You own it
       </p>
-      <header className={styles.header}>
-        <Link href="/" className={styles.brand}>
-          The Prodigal
-        </Link>
-        <nav className={styles.nav} aria-label="Dressmaker template">
-          <Link href="/catalog">Catalog</Link>
-          <Link href="/harricom">HarriCom</Link>
-          <a href={bookHref} target="_blank" rel="noopener noreferrer">
-            WhatsApp
-          </a>
-        </nav>
-      </header>
+      <CatalogNav
+        styles={styles}
+        whatsappMessage="I want the Dressmaker AI site"
+        ariaLabel="Dressmaker template"
+      />
 
       <main id="main">
         <section className={styles.hero} aria-labelledby="dressmaker-title">
@@ -76,14 +73,7 @@ export default function DressmakerTemplate() {
                 <strong>From J$2,000</strong>
               </div>
             </div>
-            <div className={styles.actions}>
-              <Link
-                className={`${styles.btn} ${styles.btnPrimary}`}
-                href={buildHref}
-              >
-                Start a build
-              </Link>
-            </div>
+            <CatalogHeroActions buildHref={buildHref} styles={styles} />
           </div>
           <div className={styles.visual}>
             <div className={styles.photo}>
@@ -152,28 +142,14 @@ export default function DressmakerTemplate() {
           </div>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Ready to use this template?</h2>
-          <p className={styles.ctaText}>
-            This is the master layout for dressmakers and tailors. WhatsApp us
-            with the shop name, lookbook, and prices. We customize in 7 days.
-            You own it.
-          </p>
-          <Link
-            className={`${styles.btn} ${styles.btnPrimary}`}
-            href={buildHref}
-          >
-            Start a build
-          </Link>
-        </section>
+        <CatalogReadyBlock
+          buildHref={buildHref}
+          lead="This is the master layout for dressmakers and tailors. WhatsApp us with the shop name, lookbook, and prices. We customize in 7 days. You own it."
+          styles={styles}
+        />
       </main>
 
-      <footer className={styles.footer}>
-        <p>
-          © {new Date().getFullYear()} HarriCom ·{" "}
-          <Link href="/catalog">See all templates</Link>
-        </p>
-      </footer>
+      <CatalogFooter styles={styles} />
     </div>
   );
 }

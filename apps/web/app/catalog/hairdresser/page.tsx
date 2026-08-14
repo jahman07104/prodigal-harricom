@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 
-import { startHref, whatsappHref } from "../../harricom/lib/brand";
+import { startHref } from "../../harricom/lib/brand";
+import {
+  CatalogFooter,
+  CatalogNav,
+  CatalogReadyBlock,
+} from "../CatalogChrome";
 import styles from "./hairdresser.module.css";
 
 export const metadata: Metadata = {
@@ -11,7 +15,6 @@ export const metadata: Metadata = {
     "Professional styling for the modern Jamaican woman. A HarriCom beauty-industry layout for salons, stylists, and hair care studios.",
 };
 
-const bookHref = whatsappHref("I want the Hairdresser AI site");
 const buildHref = startHref("beauty");
 
 export default function HairdresserTemplate() {
@@ -20,18 +23,11 @@ export default function HairdresserTemplate() {
       <p className={styles.strip}>
         Template preview · Not a live salon · Customize in 7 days · You own it
       </p>
-      <header className={styles.header}>
-        <Link href="/" className={styles.brand}>
-          The Prodigal
-        </Link>
-        <nav className={styles.nav} aria-label="Hairdresser template">
-          <Link href="/catalog">Catalog</Link>
-          <Link href="/harricom">HarriCom</Link>
-          <a href={bookHref} target="_blank" rel="noopener noreferrer">
-            WhatsApp
-          </a>
-        </nav>
-      </header>
+      <CatalogNav
+        styles={styles}
+        whatsappMessage="I want the Hairdresser AI site"
+        ariaLabel="Hairdresser template"
+      />
 
       <main id="main">
         <section className={styles.hero}>
@@ -114,24 +110,14 @@ export default function HairdresserTemplate() {
           </div>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Ready to use this template?</h2>
-          <p className={styles.ctaText}>
-            This is the master layout for salons and stylists. WhatsApp us with
-            the shop name, menu, and photos. We customize in 7 days. You own it.
-          </p>
-          <Link href={buildHref} className={styles.ctaButton}>
-            Start a build
-          </Link>
-        </section>
+        <CatalogReadyBlock
+          buildHref={buildHref}
+          lead="This is the master layout for salons and stylists. WhatsApp us with the shop name, menu, and photos. We customize in 7 days. You own it."
+          styles={styles}
+        />
       </main>
 
-      <footer className={styles.footer}>
-        <p>
-          © {new Date().getFullYear()} HarriCom ·{" "}
-          <Link href="/catalog">See all templates</Link>
-        </p>
-      </footer>
+      <CatalogFooter styles={styles} />
     </div>
   );
 }

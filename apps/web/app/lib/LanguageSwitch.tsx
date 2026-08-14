@@ -2,20 +2,19 @@
 
 import { useRouter } from "next/navigation";
 
-import { LOCALE_COOKIE, type Locale } from "./i18n";
+import type { Locale } from "./i18n";
 import { useI18n } from "./LocaleProvider";
 import styles from "./LanguageSwitch.module.css";
 
 export function LanguageSwitch() {
-  const { locale, t } = useI18n();
+  const { locale, t, setLocale } = useI18n();
   const router = useRouter();
 
-  function setLocale(next: Locale) {
+  function choose(next: Locale) {
     if (next === locale) {
       return;
     }
-    document.cookie = `${LOCALE_COOKIE}=${next}; Path=/; Max-Age=31536000; SameSite=Lax`;
-    document.documentElement.lang = next;
+    setLocale(next);
     router.refresh();
   }
 
@@ -24,7 +23,7 @@ export function LanguageSwitch() {
       <button
         type="button"
         aria-pressed={locale === "en"}
-        onClick={() => setLocale("en")}
+        onClick={() => choose("en")}
       >
         {t.lang.en}
       </button>
@@ -32,7 +31,7 @@ export function LanguageSwitch() {
       <button
         type="button"
         aria-pressed={locale === "de"}
-        onClick={() => setLocale("de")}
+        onClick={() => choose("de")}
       >
         {t.lang.de}
       </button>

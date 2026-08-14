@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 
-import { startHref, whatsappHref } from "../../harricom/lib/brand";
+import { startHref } from "../../harricom/lib/brand";
+import {
+  CatalogFooter,
+  CatalogHeroActions,
+  CatalogNav,
+} from "../CatalogChrome";
 import styles from "./barber.module.css";
 
 export const metadata: Metadata = {
@@ -11,7 +15,6 @@ export const metadata: Metadata = {
     "Island Cuts demo — a HarriCom barber template with WhatsApp booking AI. Customer books at 10pm. You wake up with appointments.",
 };
 
-const bookHref = whatsappHref("I want the Barber AI site");
 const buildHref = startHref("barber");
 
 export default function BarberTemplatePage() {
@@ -20,18 +23,11 @@ export default function BarberTemplatePage() {
       <p className={styles.strip}>
         Template preview · Not a live shop · Customize in 7 days · You own it
       </p>
-      <header className={styles.header}>
-        <Link href="/" className={styles.brand}>
-          The Prodigal
-        </Link>
-        <nav className={styles.nav} aria-label="Barber template">
-          <Link href="/catalog">Catalog</Link>
-          <Link href="/harricom">HarriCom</Link>
-          <a href={bookHref} target="_blank" rel="noopener noreferrer">
-            WhatsApp
-          </a>
-        </nav>
-      </header>
+      <CatalogNav
+        styles={styles}
+        whatsappMessage="I want the Barber AI site"
+        ariaLabel="Barber template"
+      />
 
       <main id="main">
         <section className={styles.hero} aria-labelledby="barber-title">
@@ -70,20 +66,11 @@ export default function BarberTemplatePage() {
                 <strong>J$1,500</strong>
               </div>
             </div>
-            <div className={styles.actions}>
-              <Link
-                className={`${styles.btn} ${styles.btnPrimary}`}
-                href={buildHref}
-              >
-                Start a build
-              </Link>
-              <Link
-                className={`${styles.btn} ${styles.btnSecondary}`}
-                href="/catalog"
-              >
-                All templates
-              </Link>
-            </div>
+            <CatalogHeroActions
+              buildHref={buildHref}
+              styles={styles}
+              showAll
+            />
             <p className={styles.trust}>
               <strong>Built by Patrick Harrison, HarriCom.</strong> Field
               systems tech — 32 years Verizon, 10 years airport tech including
@@ -192,12 +179,7 @@ export default function BarberTemplatePage() {
         </section>
       </main>
 
-      <footer className={styles.footer}>
-        <p>
-          Demo by HarriCom ·{" "}
-          <Link href="/catalog">See all templates</Link>
-        </p>
-      </footer>
+      <CatalogFooter styles={styles} prefix="Demo by HarriCom" />
     </div>
   );
 }

@@ -201,6 +201,76 @@ export const en = {
     float: "Chat with HarriCom on WhatsApp",
     homeAria: "HarriCom The Prodigal Program home",
   },
+  shopCta: "I want this for my shop",
+  insights: {
+    title: "Insights",
+    heading: "Market Insights",
+    description:
+      "Real guidance from a returning resident who built HarriCom on the ground in Jamaica — plus the sectors where diaspora expertise converts fastest.",
+    founderTitle: "Founder Story",
+    founderIntro: "The Prodigal Program exists because I lived this journey.",
+    founderRole: "Returning Resident · Founder, HarriCom",
+    quote:
+      "“I left Jamaica, built a career abroad, and made the decision to come home for good. The paperwork was one thing — Customs, Land Titles, TAJ — but the real work was figuring out how to earn here with skills I developed overseas. I started HarriCom to give Jamaican MSMEs professional websites, and launched The Prodigal Program so no returnee has to figure it out alone.”",
+    chip: "HarriCom Web Studio · The Prodigal Program",
+    pathsTitle: "Paths We Guide",
+    paths: [
+      {
+        name: "Encore Entrepreneurship",
+        role: "Consulting & Professional Services",
+        story:
+          "Many returnees don't want retirement — they want a second act. Exporting international SOPs into Jamaica's growing KPO, fintech, and professional services sectors is a proven path we guide you through.",
+        impact: "Business setup + HarriCom web presence",
+      },
+      {
+        name: "Property & Relocation",
+        role: "Returning Resident Concessions",
+        story:
+          "RR status unlocks duty-free imports on tools of trade, vehicles, and household effects — but timing and documentation matter. We help you plan before you ship, not after you're stuck at the port.",
+        impact: "Customs · JCA · vendor network",
+      },
+      {
+        name: "Agribusiness & Local Industry",
+        role: "Hands-on Enterprise",
+        story:
+          "Jamaica's agribusiness and food-tech sectors are growing fast. Returnees with operations, logistics, or tech backgrounds are well placed — if you understand local supply chains and MSME realities.",
+        impact: "Sector mapping + local partnerships",
+      },
+    ],
+  },
+  community: {
+    title: "Community",
+    heading: "Peer Network",
+    description:
+      "Connect with returning residents and diaspora entrepreneurs sharing real leads, vendors, and lessons from the ground in Jamaica.",
+    intro:
+      "The Prodigal community is WhatsApp-first. Tell us who you are and where you are in the journey home — we add you to the group.",
+    join: "Join Community",
+  },
+  catalog: {
+    brand: "The Prodigal",
+    navLabel: "Catalog",
+    kicker: "HarriCom Web Studio",
+    title: "Business templates catalog",
+    subtitle:
+      "Ready-made MSME starter sites for Jamaican entrepreneurs. The three that close fastest are pinned first. We customize in 7 days. You own it.",
+    view: "View template",
+    start: "Start a build",
+    all: "All templates",
+    launchWa: "Hi HarriCom, I want to launch a template",
+    footer: "The Prodigal Program",
+  },
+  preview: {
+    catalog: "Catalog",
+    ready: "Ready to use this template?",
+    all: "See all templates",
+    services: "Services",
+    gallery: "Gallery",
+  },
+  demo: {
+    back: "← Back to HarriCom",
+    note: "Demo site · not a live customer shop",
+  },
   lang: {
     label: "Language",
     en: "EN",
@@ -404,6 +474,76 @@ export const de: typeof en = {
     float: "Mit HarriCom auf WhatsApp schreiben",
     homeAria: "HarriCom The Prodigal Program Startseite",
   },
+  shopCta: "Das will ich für meinen Laden",
+  insights: {
+    title: "Einblicke",
+    heading: "Markt-Einblicke",
+    description:
+      "Echte Orientierung von einem Rückkehrer, der HarriCom vor Ort in Jamaika aufgebaut hat — plus die Branchen, in denen Diaspora-Expertise am schnellsten zählt.",
+    founderTitle: "Gründergeschichte",
+    founderIntro: "The Prodigal Program gibt es, weil ich diesen Weg selbst gegangen bin.",
+    founderRole: "Rückkehrer · Gründer, HarriCom",
+    quote:
+      "„Ich habe Jamaika verlassen, im Ausland Karriere gemacht und mich entschieden, für immer heimzukommen. Die Papiere waren eine Sache — Zoll, Land Titles, TAJ — die eigentliche Arbeit war, hier mit Fähigkeiten zu verdienen, die ich draußen aufgebaut habe. Ich habe HarriCom gestartet, damit jamaikanische Kleinbetriebe professionelle Websites bekommen, und The Prodigal Program, damit kein Rückkehrer das allein rausfinden muss.“",
+    chip: "HarriCom Web Studio · The Prodigal Program",
+    pathsTitle: "Wege, die wir begleiten",
+    paths: [
+      {
+        name: "Encore-Unternehmertum",
+        role: "Beratung und professionelle Dienste",
+        story:
+          "Viele Rückkehrer wollen keinen Ruhestand — sie wollen einen zweiten Akt. Internationale Abläufe in Jamaikas wachsende KPO-, Fintech- und Dienstleistungsbranchen zu bringen, ist ein Weg, den wir mit dir gehen.",
+        impact: "Firmengründung + HarriCom-Webpräsenz",
+      },
+      {
+        name: "Immobilien und Umzug",
+        role: "Returning-Resident-Vergünstigungen",
+        story:
+          "RR-Status öffnet zollfreie Einfuhr von Berufsausrüstung, Fahrzeugen und Hausrat — aber Timing und Papiere zählen. Wir planen vor dem Versand, nicht wenn du am Hafen feststeckst.",
+        impact: "Zoll · JCA · Anbieternetz",
+      },
+      {
+        name: "Agribusiness und lokale Industrie",
+        role: "Praktisches Unternehmen",
+        story:
+          "Jamaikas Agribusiness und Food-Tech wachsen schnell. Rückkehrer mit Operations-, Logistik- oder Tech-Hintergrund sind gut aufgestellt — wenn sie lokale Lieferketten und MSME-Realität verstehen.",
+        impact: "Branchenkarte + lokale Partnerschaften",
+      },
+    ],
+  },
+  community: {
+    title: "Community",
+    heading: "Peer-Netzwerk",
+    description:
+      "Austausch mit Rückkehrern und Diaspora-Unternehmern: echte Leads, Anbieter und Lektionen aus Jamaika.",
+    intro:
+      "Die Prodigal-Community läuft über WhatsApp. Sag uns, wer du bist und wo du auf dem Weg nach Hause stehst — wir nehmen dich in die Gruppe auf.",
+    join: "Community beitreten",
+  },
+  catalog: {
+    brand: "The Prodigal",
+    navLabel: "Katalog",
+    kicker: "HarriCom Web Studio",
+    title: "Katalog der Geschäftsvorlagen",
+    subtitle:
+      "Fertige MSME-Startseiten für jamaikanische Unternehmer. Die drei, die am schnellsten schließen, stehen zuerst. In 7 Tagen fertig. Dir gehört sie.",
+    view: "Vorlage ansehen",
+    start: "Auftrag starten",
+    all: "Alle Vorlagen",
+    launchWa: "Hallo HarriCom, ich möchte eine Vorlage starten",
+    footer: "The Prodigal Program",
+  },
+  preview: {
+    catalog: "Katalog",
+    ready: "Diese Vorlage nutzen?",
+    all: "Alle Vorlagen ansehen",
+    services: "Leistungen",
+    gallery: "Galerie",
+  },
+  demo: {
+    back: "← Zurück zu HarriCom",
+    note: "Demo-Seite · kein echter Kundenladen",
+  },
   lang: {
     label: "Sprache",
     en: "EN",
@@ -417,4 +557,20 @@ export type Dictionary = typeof en;
 
 export function getDictionary(locale?: string | null): Dictionary {
   return dictionaries[parseLocale(locale)];
+}
+
+export function readBrowserLocale(): Locale {
+  if (typeof document === "undefined") {
+    return "en";
+  }
+  const match = document.cookie.match(/(?:^|; )locale=([^;]*)/);
+  return parseLocale(match ? decodeURIComponent(match[1]) : null);
+}
+
+export function writeBrowserLocale(locale: Locale) {
+  if (typeof document === "undefined") {
+    return;
+  }
+  const secure = window.location.protocol === "https:" ? "; Secure" : "";
+  document.cookie = `${LOCALE_COOKIE}=${locale}; Path=/; Max-Age=31536000; SameSite=Lax${secure}`;
 }

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { getLiveDemo, liveDemos } from "../../demos";
+import { DemoBar } from "../DemoBar";
 import styles from "../demo.module.css";
 
 type DemoPageProps = {
@@ -34,17 +34,7 @@ export default function DemoPage({ params }: DemoPageProps) {
 
   return (
     <div className={styles.shell}>
-      <header className={styles.bar}>
-        <Link className={styles.back} href="/harricom#live-work">
-          ← Back to HarriCom
-        </Link>
-        <p className={styles.meta}>
-          <span className={styles.name}>{demo.name}</span>
-          <span className={styles.note}>
-            {` · ${demo.note ?? "Demo site · not a live customer shop"}`}
-          </span>
-        </p>
-      </header>
+      <DemoBar demo={demo} />
       <iframe
         className={styles.frame}
         src={demo.src}

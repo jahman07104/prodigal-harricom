@@ -1,6 +1,11 @@
+"use client";
+
+import { useI18n } from "../../lib/LocaleProvider";
 import styles from "../harricom.module.css";
 
 export function WhatsAppDemo() {
+  const { t } = useI18n();
+
   return (
     <aside className={styles.phone} aria-label="Miss T's Cook Shop WhatsApp demo">
       <div className={styles.phoneHead}>
@@ -27,7 +32,7 @@ export function WhatsAppDemo() {
       </div>
       <div className={styles.phoneFoot}>
         <a className={`${styles.btn} ${styles.btnPrimary}`} href="/harricom/start">
-          I want this for my shop
+          {t.shopCta}
         </a>
       </div>
     </aside>
