@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { cookies } from "next/headers";
 
-import { getDictionary, parseLocale } from "../lib/i18n";
+import { getDictionary } from "../lib/i18n";
 import { CommunityBody } from "./CommunityBody";
 
 export const dynamic = "force-dynamic";
@@ -15,6 +15,5 @@ export function generateMetadata(): Metadata {
 }
 
 export default function CommunityPage() {
-  const locale = parseLocale(cookies().get("locale")?.value);
-  return <CommunityBody locale={locale} />;
+  return <CommunityBody />;
 }

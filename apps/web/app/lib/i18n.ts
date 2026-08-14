@@ -584,8 +584,10 @@ export function writeBrowserLocale(locale: Locale) {
   }
   const maxAge = 31536000;
   const expires = new Date(Date.now() + maxAge * 1000).toUTCString();
-  const secure = window.location.protocol === "https:" ? "; Secure" : "";
-  document.cookie = `${LOCALE_COOKIE}=${locale}; Path=/; Max-Age=${maxAge}; Expires=${expires}; SameSite=Lax${secure}`;
+  document.cookie = `${LOCALE_COOKIE}=${locale}; Path=/; Max-Age=${maxAge}; Expires=${expires}; SameSite=Lax`;
+  if (window.location.protocol === "https:") {
+    document.cookie = `${LOCALE_COOKIE}=${locale}; Path=/; Max-Age=${maxAge}; Expires=${expires}; SameSite=Lax; Secure`;
+  }
   try {
     window.localStorage.setItem(LOCALE_COOKIE, locale);
   } catch {

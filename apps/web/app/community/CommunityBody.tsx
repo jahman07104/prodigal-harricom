@@ -1,14 +1,12 @@
 import { ProdigalFooter, WhatsAppFloat } from "../ProdigalChrome";
 import { ProdigalHeader } from "../ProdigalHeader";
 import { whatsappHref } from "../harricom/lib/brand";
-import { de, en, type Locale } from "../lib/i18n";
+import { bothCopy } from "../lib/bothCopy";
+import { de, en } from "../lib/i18n";
 import styles from "../prodigal.module.css";
 
-export function CommunityBody({ locale }: { locale: Locale }) {
-  const community = locale === "de" ? de.community : en.community;
-  const joinHref = whatsappHref(
-    locale === "de" ? de.wa.community : en.wa.community,
-  );
+export function CommunityBody() {
+  const community = bothCopy().community;
 
   return (
     <div className={styles.page}>
@@ -22,12 +20,20 @@ export function CommunityBody({ locale }: { locale: Locale }) {
           <div className={`${styles.inner} ${styles.center}`}>
             <p className={styles.intro}>{community.intro}</p>
             <a
-              className={styles.join}
-              href={joinHref}
+              className={`${styles.join} i18n-en`}
+              href={whatsappHref(en.wa.community)}
               target="_blank"
               rel="noopener noreferrer"
             >
-              {community.join}
+              {en.community.join}
+            </a>
+            <a
+              className={`${styles.join} i18n-de`}
+              href={whatsappHref(de.wa.community)}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {de.community.join}
             </a>
           </div>
         </section>

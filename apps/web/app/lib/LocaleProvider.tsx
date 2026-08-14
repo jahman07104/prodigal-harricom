@@ -47,9 +47,7 @@ export function LocaleProvider({
   children: React.ReactNode;
 }) {
   useLayoutEffect(() => {
-    const stored = readMemory() ?? readBrowserLocale();
-    const next = stored === "en" ? locale : stored;
-    applyLocale(next);
+    applyLocale(readMemory() ?? readBrowserLocale());
   }, [locale]);
 
   return children;
