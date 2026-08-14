@@ -1,0 +1,5 @@
+{
+  "framework": "nextjs",
+  "installCommand": "cd ../.. && corepack enable && corepack prepare pnpm@9.12.3 --activate && pnpm install --filter @prodigal/web... --filter '!harricom-templates' --no-frozen-lockfile",
+  "buildCommand": "pnpm build"
+}
