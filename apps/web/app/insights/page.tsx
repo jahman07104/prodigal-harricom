@@ -4,6 +4,8 @@ import { cookies } from "next/headers";
 import { getDictionary } from "../lib/i18n";
 import { InsightsBody } from "./InsightsBody";
 
+export const dynamic = "force-dynamic";
+
 export function generateMetadata(): Metadata {
   const t = getDictionary(cookies().get("locale")?.value);
   return {

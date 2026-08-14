@@ -2,11 +2,13 @@
 
 import { ProdigalFooter, WhatsAppFloat } from "../ProdigalChrome";
 import { ProdigalHeader } from "../ProdigalHeader";
-import { bothCopy } from "../lib/bothCopy";
+import { de, en } from "../lib/i18n";
+import { useHtmlLang } from "../lib/useHtmlLang";
 import styles from "../prodigal.module.css";
 
 export function InsightsBody() {
-  const insights = bothCopy().insights;
+  const lang = useHtmlLang();
+  const insights = lang === "de" ? de.insights : en.insights;
 
   return (
     <div className={styles.page}>
@@ -35,8 +37,8 @@ export function InsightsBody() {
             </article>
             <h2 className={styles.sectionTitle}>{insights.pathsTitle}</h2>
             <div className={styles.pathGrid}>
-              {insights.paths.map((path, index) => (
-                <article key={index} className={styles.path}>
+              {insights.paths.map((path) => (
+                <article key={path.name} className={styles.path}>
                   <h3>{path.name}</h3>
                   <p className={styles.role}>{path.role}</p>
                   <p>{path.story}</p>
