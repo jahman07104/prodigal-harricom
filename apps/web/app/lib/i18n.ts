@@ -556,11 +556,7 @@ export const dictionaries = { en, de };
 export type Dictionary = typeof en;
 
 export function getDictionary(locale?: string | null): Dictionary {
-  const key = parseLocale(locale);
-  if (key === "de" && de.insights?.heading && de.community?.heading) {
-    return de;
-  }
-  return en;
+  return parseLocale(locale) === "de" ? de : en;
 }
 
 export function readBrowserLocale(): Locale {

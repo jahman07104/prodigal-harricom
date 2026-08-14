@@ -2,13 +2,12 @@
 
 import { ProdigalFooter, WhatsAppFloat } from "../ProdigalChrome";
 import { ProdigalHeader } from "../ProdigalHeader";
-import { getDictionary } from "../lib/i18n";
 import { useI18n } from "../lib/LocaleProvider";
 import styles from "../prodigal.module.css";
 
 export function InsightsBody() {
   const { t } = useI18n();
-  const insights = t.insights ?? getDictionary("en").insights;
+  const insights = t.insights;
 
   return (
     <div className={styles.page}>

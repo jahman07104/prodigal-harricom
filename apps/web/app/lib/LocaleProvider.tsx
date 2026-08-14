@@ -4,7 +4,7 @@ import {
   createContext,
   useCallback,
   useContext,
-  useEffect,
+  useLayoutEffect,
   useMemo,
   useState,
 } from "react";
@@ -40,8 +40,10 @@ export function LocaleProvider({
   const pathname = usePathname();
   const [current, setCurrent] = useState<Locale>(locale);
 
-  useEffect(() => {
-    setCurrent(readBrowserLocale());
+  useLayoutEffect(() => {
+    const stored = readBrowserLocale();
+    setCurrent(stored);
+    document.documentElement.lang = stored;
   }, [pathname]);
 
   const setLocale = useCallback((next: Locale) => {

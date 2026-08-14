@@ -3,13 +3,12 @@
 import { ProdigalFooter, WhatsAppFloat } from "../ProdigalChrome";
 import { ProdigalHeader } from "../ProdigalHeader";
 import { whatsappHref } from "../harricom/lib/brand";
-import { getDictionary } from "../lib/i18n";
 import { useI18n } from "../lib/LocaleProvider";
 import styles from "../prodigal.module.css";
 
 export function CommunityBody() {
   const { t } = useI18n();
-  const community = t.community ?? getDictionary("en").community;
+  const community = t.community;
   const joinHref = whatsappHref(t.wa.community);
 
   return (
