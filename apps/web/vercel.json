@@ -1,5 +1,5 @@
 {
   "framework": "nextjs",
-  "installCommand": "cd ../.. && corepack enable && corepack prepare pnpm@9.12.3 --activate && pnpm install --filter @prodigal/web... --filter '!harricom-templates' --no-frozen-lockfile",
-  "buildCommand": "pnpm build && mkdir -p apps/web/.next && cp -R .next/. apps/web/.next/"
+  "installCommand": "cd ../.. && corepack enable && corepack prepare pnpm@9.12.3 --activate && pnpm install --filter @prodigal/web... --filter '!harricom-templates' --no-frozen-lockfile && mkdir -p apps/web/node_modules && rm -rf apps/web/node_modules/.pnpm && ln -sfn ../../../node_modules/.pnpm apps/web/node_modules/.pnpm",
+  "buildCommand": "pnpm build && mkdir -p apps/web/.next apps/web/node_modules && cp -R .next/. apps/web/.next/ && rm -rf node_modules/.pnpm && ln -sfn ../../../node_modules/.pnpm node_modules/.pnpm"
 }
