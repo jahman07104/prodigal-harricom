@@ -3,13 +3,12 @@
 import { ProdigalFooter, WhatsAppFloat } from "../ProdigalChrome";
 import { ProdigalHeader } from "../ProdigalHeader";
 import { whatsappHref } from "../harricom/lib/brand";
-import { useI18n } from "../lib/LocaleProvider";
+import { bothCopy } from "../lib/bothCopy";
+import { de, en } from "../lib/i18n";
 import styles from "../prodigal.module.css";
 
 export function CommunityBody() {
-  const { t, msg } = useI18n();
-  const community = t.community;
-  const joinHref = whatsappHref(msg.wa.community);
+  const community = bothCopy().community;
 
   return (
     <div className={styles.page}>
@@ -23,12 +22,20 @@ export function CommunityBody() {
           <div className={`${styles.inner} ${styles.center}`}>
             <p className={styles.intro}>{community.intro}</p>
             <a
-              className={styles.join}
-              href={joinHref}
+              className={`${styles.join} i18n-en`}
+              href={whatsappHref(en.wa.community)}
               target="_blank"
               rel="noopener noreferrer"
             >
-              {community.join}
+              {en.community.join}
+            </a>
+            <a
+              className={`${styles.join} i18n-de`}
+              href={whatsappHref(de.wa.community)}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {de.community.join}
             </a>
           </div>
         </section>

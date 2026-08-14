@@ -105,5 +105,5 @@ html[data-locale="de"] .i18n-en {
 
 html[lang="de"] .i18n-de,
 html[data-locale="de"] .i18n-de {
-  display: inline !important;
+  display: revert !important;
 }
