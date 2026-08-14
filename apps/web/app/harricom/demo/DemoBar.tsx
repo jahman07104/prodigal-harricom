@@ -5,7 +5,7 @@ import Link from "next/link";
 import { LanguageSwitch } from "../../lib/LanguageSwitch";
 import { useI18n } from "../../lib/LocaleProvider";
 import type { LiveDemo } from "../demos";
-import styles from "../demo.module.css";
+import styles from "./demo.module.css";
 
 export function DemoBar({ demo }: { demo: LiveDemo }) {
   const { t } = useI18n();
