@@ -5,25 +5,29 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import { LanguageSwitch } from "./lib/LanguageSwitch";
+import { useI18n } from "./lib/LocaleProvider";
 import { whatsappHref } from "./harricom/lib/brand";
 import styles from "./prodigal.module.css";
 
-const consultHref = whatsappHref(
-  "Hi HarriCom, I'm interested in The Prodigal Program for returning residents.",
-);
-
-const links = [
-  { href: "/", label: "Home" },
-  { href: "/insights", label: "Insights" },
-  { href: "/community", label: "Community" },
+const linkHrefs = [
+  { href: "/", key: "home" as const },
+  { href: "/insights", key: "insights" as const },
+  { href: "/community", key: "community" as const },
 ];
 
 export function ProdigalHeader() {
+  const { t } = useI18n();
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const home = pathname === "/";
   const solid = scrolled || !home;
+  const consultHref = whatsappHref(t.wa.consult);
+  const links = linkHrefs.map((link) => ({
+    ...link,
+    label: t.nav[link.key],
+  }));
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -39,7 +43,7 @@ export function ProdigalHeader() {
   return (
     <nav className={`${styles.nav} ${solid ? styles.navSolid : styles.navClear}`}>
       <div className={styles.navInner}>
-        <Link href="/" className={styles.brand} aria-label="HarriCom The Prodigal Program home">
+        <Link href="/" className={styles.brand} aria-label={t.prodigal.homeAria}>
           <span className={styles.brandMark}>
             <Image
               src="/harricom/images/doctorbird.jpg"
@@ -58,7 +62,7 @@ export function ProdigalHeader() {
 
         <div className={styles.navLinks}>
           <Link href="/harricom" className={styles.studioLink}>
-            Web Studio
+            {t.nav.studio}
           </Link>
           {links.map((link) => (
             <Link
@@ -71,24 +75,27 @@ export function ProdigalHeader() {
             </Link>
           ))}
           <a className={styles.consult} href={consultHref} target="_blank" rel="noopener noreferrer">
-            Consultation
+            {t.nav.consult}
           </a>
         </div>
 
-        <button
-          type="button"
-          className={styles.menuBtn}
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          onClick={() => setOpen((value) => !value)}
-        >
-          {open ? "✕" : "☰"}
-        </button>
+        <div className={styles.headerTools}>
+          <LanguageSwitch />
+          <button
+            type="button"
+            className={styles.menuBtn}
+            aria-label={open ? t.nav.closeMenu : t.nav.openMenu}
+            aria-expanded={open}
+            onClick={() => setOpen((value) => !value)}
+          >
+            {open ? "✕" : "☰"}
+          </button>
+        </div>
       </div>
 
       <div className={`${styles.mobile} ${open ? styles.mobileOpen : ""}`}>
         <div className={styles.mobileInner}>
-          <Link href="/harricom">HarriCom Web Studio</Link>
+          <Link href="/harricom">{t.nav.studioLong}</Link>
           {links.map((link) => (
             <Link
               key={link.href}
@@ -99,7 +106,7 @@ export function ProdigalHeader() {
             </Link>
           ))}
           <a href={consultHref} target="_blank" rel="noopener noreferrer">
-            Consultation
+            {t.nav.consult}
           </a>
         </div>
       </div>

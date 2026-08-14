@@ -18,6 +18,7 @@ export function BrandMark() {
       </span>
       <span className={styles.titleWrap}>
         <span className={styles.title}>HarriCom Web Studio</span>
+        <span className={styles.titleShort}>HarriCom</span>
         <span className={styles.dot} aria-hidden="true" />
         <span className="sr-only">Live studio</span>
       </span>

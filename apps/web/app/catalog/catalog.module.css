@@ -1,5 +1,6 @@
 .wrapper {
   min-height: 100vh;
+  min-height: 100dvh;
   background: #0d0d0d;
   color: #ffffff;
   padding-bottom: 4rem;
@@ -78,7 +79,7 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   gap: 2rem;
 }
 
@@ -169,5 +170,26 @@
   .gridSection {
     padding-left: 1.25rem;
     padding-right: 1.25rem;
+  }
+
+  .header {
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+
+  .hero {
+    padding-top: 2rem;
+  }
+
+  .nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 48px;
+  }
+
+  .cardLink {
+    display: inline-flex;
+    align-items: center;
+    min-height: 48px;
   }
 }

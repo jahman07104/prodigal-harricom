@@ -1,40 +1,27 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 
+import { useI18n } from "../../lib/LocaleProvider";
 import { startHref } from "../lib/brand";
 import styles from "../harricom.module.css";
 
-const templates = [
-  {
-    tag: "#1 closes fastest",
-    name: "Barber shop",
-    desc: "Customer books at 10pm. You wake up with appointments.",
-    image: "/catalog/barber-thumb.png",
-    preview: "/catalog/barber",
-    slug: "barber",
-    featured: true,
-  },
-  {
-    tag: "#2 lunch rush",
-    name: "Cook shop",
-    desc: "Lunch rush on WhatsApp. Kitchen tickets. No phone chaos.",
-    image: "/catalog/cook-shop.jpg",
-    preview: "/catalog",
-    slug: "cook-shop",
-    featured: false,
-  },
-  {
-    tag: "#3 tourist dollars",
-    name: "Guest house",
-    desc: "Tourists book on WhatsApp and pay a deposit online.",
-    image: "/catalog/guest-house.jpg",
-    preview: "/catalog",
-    slug: "guest-house",
-    featured: false,
-  },
-];
+const previews: Record<string, string> = {
+  barber: "/catalog/barber",
+  "cook-shop": "/catalog",
+  "guest-house": "/catalog",
+};
+
+const images: Record<string, string> = {
+  barber: "/catalog/barber-thumb.png",
+  "cook-shop": "/catalog/cook-shop.jpg",
+  "guest-house": "/catalog/guest-house.jpg",
+};
 
 export function TemplateShowcase() {
+  const { t } = useI18n();
+
   return (
     <section
       id="templates"
@@ -43,43 +30,41 @@ export function TemplateShowcase() {
     >
       <div className={styles.container}>
         <h2 id="templates-title" className={styles.sectionTitle}>
-          3 templates that close this week
+          {t.templates.title}
         </h2>
-        <p className={styles.lead}>
-          Pick one. We customize in 7 days. You own it.
-        </p>
+        <p className={styles.lead}>{t.templates.lead}</p>
         <div className={styles.grid}>
-          {templates.map((item) => (
+          {t.templates.items.map((item, index) => (
             <article
-              key={item.name}
-              className={`${styles.card} ${item.featured ? styles.featured : ""}`}
+              key={item.slug}
+              className={`${styles.card} ${index === 0 ? styles.featured : ""}`}
             >
               <div className={styles.thumb}>
                 <Image
-                  src={item.image}
+                  src={images[item.slug]}
                   alt={`${item.name} template`}
                   fill
                   sizes="(max-width: 900px) 100vw, 360px"
                   className={styles.thumbImg}
                 />
               </div>
-              <p className={`${styles.tag} ${item.featured ? styles.tagHot : ""}`}>
+              <p className={`${styles.tag} ${index === 0 ? styles.tagHot : ""}`}>
                 {item.tag}
               </p>
               <h3 className={styles.cardTitle}>{item.name}</h3>
               <p className={styles.cardBody}>{item.desc}</p>
-              <Link className={styles.cardLink} href={item.preview}>
-                View template
+              <Link className={styles.cardLink} href={previews[item.slug]}>
+                {t.templates.view}
               </Link>
               <Link className={styles.cardLink} href={startHref(item.slug)}>
-                Start a build
+                {t.templates.start}
               </Link>
             </article>
           ))}
         </div>
         <p className={styles.catalogMore}>
           <Link className={styles.cardLink} href="/catalog">
-            See all templates →
+            {t.templates.more}
           </Link>
         </p>
       </div>

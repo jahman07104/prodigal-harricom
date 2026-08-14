@@ -44,13 +44,15 @@
 .field textarea {
   width: 100%;
   box-sizing: border-box;
-  padding: 12px 14px;
+  padding: 14px;
   border-radius: 10px;
   border: 1px solid #333;
   background: #161616;
   color: #fff;
   font: inherit;
+  font-size: 16px;
   font-weight: 500;
+  color-scheme: dark;
 }
 
 .field textarea {
@@ -62,6 +64,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  min-height: 48px;
   padding: 14px 22px;
   border: 0;
   border-radius: 10px;

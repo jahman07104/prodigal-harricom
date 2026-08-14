@@ -1,5 +1,6 @@
 .wrapper {
   min-height: 100vh;
+  min-height: 100dvh;
   background: #0d0d0d;
   color: #ffffff;
   padding-bottom: 4rem;
@@ -141,7 +142,7 @@
 
 .galleryGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
   gap: 1.5rem;
 }
 
@@ -207,5 +208,20 @@
   .footer {
     padding-left: 1.25rem;
     padding-right: 1.25rem;
+  }
+
+  .ctaButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 48px;
   }
 }

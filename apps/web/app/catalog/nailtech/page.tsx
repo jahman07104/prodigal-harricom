@@ -61,22 +61,22 @@ export default function NailTechTemplate() {
             <article className={styles.card}>
               <h3>Acrylic full set</h3>
               <p>Custom shapes, lengths, and designs.</p>
-              <p className={styles.price}>J$3,500</p>
+              <p className={styles.price}>J$4,500</p>
             </article>
             <article className={styles.card}>
               <h3>Gel polish</h3>
               <p>Long-lasting gel polish with a glossy finish.</p>
-              <p className={styles.price}>J$2,000</p>
+              <p className={styles.price}>J$3,000</p>
             </article>
             <article className={styles.card}>
               <h3>Nail art</h3>
               <p>Creative designs, gems, foils, and custom artwork.</p>
-              <p className={styles.price}>From J$500</p>
+              <p className={styles.price}>From J$800</p>
             </article>
             <article className={styles.card}>
               <h3>Pedicure</h3>
               <p>Relaxing foot care with polish or gel finish.</p>
-              <p className={styles.price}>J$2,500</p>
+              <p className={styles.price}>J$3,500</p>
             </article>
           </div>
         </section>

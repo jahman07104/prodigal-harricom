@@ -1,16 +1,21 @@
+"use client";
+
+import { useI18n } from "../../lib/LocaleProvider";
 import styles from "../harricom.module.css";
 import { CtaLink } from "./CtaLink";
 
 export function LaunchStrip() {
+  const { t } = useI18n();
+
   return (
     <section id="launch" className={styles.stripCard} aria-labelledby="launch-title">
       <div className={styles.stripInner}>
-        <h2 id="launch-title">Ready to launch in 7 days?</h2>
-        <p>Tell us the name, parish, and what you need. We pick it up on WhatsApp.</p>
+        <h2 id="launch-title">{t.launch.title}</h2>
+        <p>{t.launch.body}</p>
         <div className={styles.actions}>
-          <CtaLink href="/catalog">Browse templates</CtaLink>
+          <CtaLink href="/catalog">{t.launch.browse}</CtaLink>
           <CtaLink href="/harricom/start" variant="secondary">
-            Start a build
+            {t.launch.start}
           </CtaLink>
         </div>
       </div>

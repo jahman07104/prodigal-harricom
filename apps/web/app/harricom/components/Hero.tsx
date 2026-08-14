@@ -1,10 +1,15 @@
+"use client";
+
 import Image from "next/image";
 
+import { useI18n } from "../../lib/LocaleProvider";
 import styles from "../harricom.module.css";
 import { CtaLink } from "./CtaLink";
 import { WhatsAppDemo } from "./WhatsAppDemo";
 
 export function Hero() {
+  const { t } = useI18n();
+
   return (
     <section className={styles.heroWrap} aria-labelledby="harricom-hero-title">
       <div className={styles.heroFrame}>
@@ -19,27 +24,19 @@ export function Hero() {
         <div className={styles.heroOverlay} />
         <div className={styles.heroGrid}>
           <div className={styles.heroCopy}>
-            <p className={styles.kicker}>HarriCom Web Studio</p>
+            <p className={styles.kicker}>{t.hero.kicker}</p>
             <h1 id="harricom-hero-title" className={styles.heroTitle}>
-              Your shop answers WhatsApp at 10pm.
+              {t.hero.title}
             </h1>
-            <p className={styles.audience}>
-              Barbers, cook shops, guest houses — anywhere in Jamaica. We
-              customize in 7 days. You own it.
-            </p>
+            <p className={styles.audience}>{t.hero.audience}</p>
             <div className={styles.actions}>
-              <CtaLink href="/harricom/start">Start a build</CtaLink>
+              <CtaLink href="/harricom/start">{t.hero.start}</CtaLink>
               <CtaLink href="#templates" variant="secondary">
-                See templates
+                {t.hero.templates}
               </CtaLink>
             </div>
-            <p className={styles.subtext}>
-              From J$35,000 · No monthly Wix fees
-            </p>
-            <p className={styles.quiet}>
-              Patrick Harrison · 32 years Verizon field tech, now building in
-              Jamaica.
-            </p>
+            <p className={styles.subtext}>{t.hero.subtext}</p>
+            <p className={styles.quiet}>{t.hero.quiet}</p>
           </div>
           <WhatsAppDemo />
         </div>

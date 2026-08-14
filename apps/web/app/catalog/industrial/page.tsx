@@ -60,12 +60,12 @@ export default function IndustrialTemplate() {
             <article className={styles.card}>
               <h3>Pipe repair / leak fix</h3>
               <p>Stop the leak and get the line running again.</p>
-              <p className={styles.price}>From J$3,500</p>
+              <p className={styles.price}>From J$5,000</p>
             </article>
             <article className={styles.card}>
               <h3>Electrical outlet install</h3>
               <p>Safe new outlets for homes and shops.</p>
-              <p className={styles.price}>From J$2,500</p>
+              <p className={styles.price}>From J$4,000</p>
             </article>
             <article className={styles.card}>
               <h3>Tiling</h3>

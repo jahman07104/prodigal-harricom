@@ -23,17 +23,17 @@ export default function EventPlannerTemplate() {
         {
           title: "Birthday styling",
           text: "Decor, layout, and vendor list.",
-          price: "From J$15,000",
+          price: "From J$25,000",
         },
         {
           title: "Day-of coordination",
           text: "We run the timeline so you can be in it.",
-          price: "From J$20,000",
+          price: "From J$40,000",
         },
         {
           title: "Corporate",
           text: "Launches, staff days, and dinners.",
-          price: "From J$35,000",
+          price: "From J$60,000",
         },
         {
           title: "Wedding planning",

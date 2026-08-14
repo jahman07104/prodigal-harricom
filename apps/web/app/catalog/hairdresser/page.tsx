@@ -61,22 +61,22 @@ export default function HairdresserTemplate() {
             <article className={styles.card}>
               <h3>Wash &amp; style</h3>
               <p>Clean, moisturize, and style your hair to perfection.</p>
-              <p className={styles.price}>J$2,500</p>
+              <p className={styles.price}>J$5,000</p>
             </article>
             <article className={styles.card}>
               <h3>Relaxer</h3>
               <p>Smooth, silky finish with premium relaxer products.</p>
-              <p className={styles.price}>J$4,500</p>
+              <p className={styles.price}>From J$8,000</p>
             </article>
             <article className={styles.card}>
               <h3>Silk press</h3>
               <p>Shiny, bouncy, heat-styled perfection.</p>
-              <p className={styles.price}>J$5,000</p>
+              <p className={styles.price}>J$8,000</p>
             </article>
             <article className={styles.card}>
               <h3>Braids</h3>
               <p>Knotless, box braids, twists, and more.</p>
-              <p className={styles.price}>From J$3,000</p>
+              <p className={styles.price}>From J$7,000</p>
             </article>
           </div>
         </section>

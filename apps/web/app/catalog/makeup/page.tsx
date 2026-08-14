@@ -23,22 +23,22 @@ export default function MakeupTemplate() {
         {
           title: "Soft glam",
           text: "Everyday polish for work, church, and dates.",
-          price: "J$4,500",
+          price: "J$6,500",
         },
         {
           title: "Full glam",
           text: "Night-out and photoshoot ready.",
-          price: "J$6,500",
+          price: "J$8,000",
         },
         {
           title: "Bridal",
           text: "Trial plus wedding-day makeup.",
-          price: "From J$12,000",
+          price: "From J$15,000",
         },
         {
           title: "Photoshoot",
           text: "Camera-ready looks for studio or outdoor.",
-          price: "From J$8,000",
+          price: "From J$10,000",
         },
       ]}
       gallery={[

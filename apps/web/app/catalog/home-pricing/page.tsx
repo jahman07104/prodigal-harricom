@@ -60,21 +60,21 @@ export default function HomePricingTemplate() {
           <div className={styles.grid}>
             <article className={styles.card}>
               <h3>Starter</h3>
-              <p className={styles.price}>From J$1,000</p>
+              <p className={styles.price}>From J$1,500</p>
               <ul className={styles.list}>
-                <li>1 service included</li>
-                <li>WhatsApp to book</li>
+                <li>Dozen patties or a small batch</li>
+                <li>WhatsApp to order</li>
                 <li>Pickup at the house</li>
                 <li>Same-week turnaround</li>
               </ul>
             </article>
             <article className={styles.cardHighlight}>
               <h3>Professional</h3>
-              <p className={styles.price}>From J$4,000</p>
+              <p className={styles.price}>From J$6,500</p>
               <ul className={styles.list}>
-                <li>Up to 4 services</li>
+                <li>Birthday cake or a full tray</li>
                 <li>Photos of your work</li>
-                <li>Local delivery</li>
+                <li>Kingston / St. Andrew drop</li>
                 <li>Repeat-customer rate</li>
               </ul>
             </article>
@@ -113,7 +113,7 @@ export default function HomePricingTemplate() {
               Norman&apos;s Kitchen
             </Link>
             <Link className={styles.exampleLink} href="/harricom/demo/yellow">
-              Yellow App
+              Yellow App · e-commerce demo
             </Link>
             <Link
               className={styles.exampleLink}

@@ -24,17 +24,17 @@ export default function PhotographerTemplate() {
         {
           title: "Portrait hour",
           text: "One location, edited selects.",
-          price: "From J$8,000",
+          price: "From J$15,000",
         },
         {
           title: "Graduation",
           text: "Campus or home, family shots included.",
-          price: "From J$10,000",
+          price: "From J$12,000",
         },
         {
           title: "Event coverage",
           text: "Birthdays, church, and small weddings.",
-          price: "From J$25,000",
+          price: "From J$35,000",
         },
         {
           title: "Custom shoot",

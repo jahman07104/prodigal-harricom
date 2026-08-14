@@ -23,22 +23,22 @@ export default function MassageTemplate() {
         {
           title: "60 min Swedish",
           text: "Full-body relaxation session.",
-          price: "J$6,000",
+          price: "J$7,000",
         },
         {
           title: "Deep tissue",
           text: "Focused work for tight shoulders and back.",
-          price: "J$7,500",
+          price: "J$8,500",
         },
         {
           title: "Couples session",
           text: "Two tables, one booking.",
-          price: "From J$12,000",
+          price: "From J$14,000",
         },
         {
           title: "Home visit",
           text: "Travel extra for Kingston and St. Andrew.",
-          price: "From J$1,500 extra",
+          price: "From J$2,500 extra",
         },
       ]}
       gallery={[

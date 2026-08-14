@@ -20,7 +20,9 @@ export function generateMetadata({ params }: DemoPageProps): Metadata {
   }
   return {
     title: `${demo.name} demo`,
-    description: `Live HarriCom demo of ${demo.name}.`,
+    description: demo.note
+      ? `${demo.name} — ${demo.note}.`
+      : `Live HarriCom demo of ${demo.name}.`,
   };
 }
 
@@ -38,7 +40,9 @@ export default function DemoPage({ params }: DemoPageProps) {
         </Link>
         <p className={styles.meta}>
           <span className={styles.name}>{demo.name}</span>
-          <span className={styles.note}> · Demo site · not a live customer shop</span>
+          <span className={styles.note}>
+            {` · ${demo.note ?? "Demo site · not a live customer shop"}`}
+          </span>
         </p>
       </header>
       <iframe

@@ -61,19 +61,19 @@ export default function DressmakerTemplate() {
             <div className={styles.prices}>
               <div className={styles.priceRow}>
                 <span>Dress alterations</span>
-                <strong>From J$1,500</strong>
+                <strong>From J$2,000</strong>
               </div>
               <div className={styles.priceRow}>
                 <span>Custom dress</span>
-                <strong>From J$8,000</strong>
+                <strong>From J$15,000</strong>
               </div>
               <div className={styles.priceRow}>
                 <span>Pants hem</span>
-                <strong>J$800</strong>
+                <strong>J$1,000</strong>
               </div>
               <div className={styles.priceRow}>
                 <span>Uniform tailoring</span>
-                <strong>From J$1,200</strong>
+                <strong>From J$2,000</strong>
               </div>
             </div>
             <div className={styles.actions}>
@@ -97,7 +97,7 @@ export default function DressmakerTemplate() {
               />
             </div>
             <p className={styles.heroNote}>
-              Custom pieces from <strong>J$5,000</strong>
+              Custom pieces from <strong>J$15,000</strong>
             </p>
           </div>
         </section>
@@ -137,14 +137,14 @@ export default function DressmakerTemplate() {
                   Need a church dress by Easter, size 12, gold
                 </p>
                 <p className={styles.outbound}>
-                  Yes — custom dress from J$8,000. Send 2 photos of a style you
+                  Yes — custom dress from J$15,000. Send 2 photos of a style you
                   like and we book a fitting.
                 </p>
                 <p className={styles.inbound}>
                   Can you hem a suit pants too?
                 </p>
                 <p className={styles.outbound}>
-                  Pants hem is J$800. Dress alterations from J$1,500. Come
+                  Pants hem is J$1,000. Dress alterations from J$2,000. Come
                   Saturday 10am?
                 </p>
               </div>

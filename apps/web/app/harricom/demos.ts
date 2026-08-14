@@ -6,6 +6,8 @@ export type LiveDemo = {
   image: string;
   src: string;
   template: string;
+  note?: string;
+  cta?: string;
 };
 
 export const liveDemos: LiveDemo[] = [
@@ -39,11 +41,13 @@ export const liveDemos: LiveDemo[] = [
   {
     slug: "yellow",
     name: "Yellow App",
-    trade: "Marketplace",
-    text: "A working shop customers can browse. Products, collections, and cart.",
+    trade: "E-commerce example",
+    text: "Demo of an online shop — products, collections, and cart. Example only, not a live customer store.",
     image: "/catalog/yellow-thumb.jpg",
     src: "/work/yellowapp/",
     template: "/catalog/home-pricing",
+    note: "E-commerce demo · example shop · not a live store",
+    cta: "Open the demo",
   },
   {
     slug: "ganja-gourmet",

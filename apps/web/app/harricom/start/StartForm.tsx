@@ -4,6 +4,7 @@ import { FormEvent, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
 import { catalogTemplates } from "../../catalog/templates";
+import { useI18n } from "../../lib/LocaleProvider";
 import { whatsappHref } from "../lib/brand";
 import styles from "./start.module.css";
 
@@ -22,10 +23,10 @@ const PARISHES = [
   "Manchester",
   "Clarendon",
   "St. Catherine",
-  "Not in Jamaica / diaspora",
 ];
 
 export function StartForm() {
+  const { t } = useI18n();
   const searchParams = useSearchParams();
   const preset = searchParams.get("template") ?? "";
   const knownSlug = catalogTemplates.some((item) => item.slug === preset)
@@ -45,15 +46,15 @@ export function StartForm() {
   function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const lines = [
-      "Hi HarriCom, I want a site.",
+      t.start.waIntro,
       "",
-      `Name: ${name.trim()}`,
-      `Business: ${business.trim()}`,
-      `Parish: ${parish}`,
-      `Template: ${selectedName ?? "Not sure yet"}`,
+      `${t.start.waName}: ${name.trim()}`,
+      `${t.start.waBusiness}: ${business.trim()}`,
+      `${t.start.waParish}: ${parish}`,
+      `${t.start.waTemplate}: ${selectedName ?? t.start.unsure}`,
     ];
     if (request.trim()) {
-      lines.push(`Request: ${request.trim()}`);
+      lines.push(`${t.start.waRequest}: ${request.trim()}`);
     }
     window.location.href = whatsappHref(lines.join("\n"));
   }
@@ -61,7 +62,7 @@ export function StartForm() {
   return (
     <form className={styles.form} onSubmit={onSubmit}>
       <label className={styles.field}>
-        <span>Your name</span>
+        <span>{t.start.name}</span>
         <input
           name="name"
           value={name}
@@ -71,7 +72,7 @@ export function StartForm() {
         />
       </label>
       <label className={styles.field}>
-        <span>Business name</span>
+        <span>{t.start.business}</span>
         <input
           name="business"
           value={business}
@@ -81,29 +82,30 @@ export function StartForm() {
         />
       </label>
       <label className={styles.field}>
-        <span>Parish</span>
+        <span>{t.start.parish}</span>
         <select
           name="parish"
           value={parish}
           onChange={(event) => setParish(event.target.value)}
           required
         >
-          <option value="">Select parish</option>
+          <option value="">{t.start.parishSelect}</option>
           {PARISHES.map((item) => (
             <option key={item} value={item}>
               {item}
             </option>
           ))}
+          <option value={t.start.diaspora}>{t.start.diaspora}</option>
         </select>
       </label>
       <label className={styles.field}>
-        <span>Template</span>
+        <span>{t.start.template}</span>
         <select
           name="template"
           value={template}
           onChange={(event) => setTemplate(event.target.value)}
         >
-          <option value="">Not sure yet</option>
+          <option value="">{t.start.unsure}</option>
           {catalogTemplates.map((item) => (
             <option key={item.slug} value={item.slug}>
               {item.name}
@@ -112,22 +114,19 @@ export function StartForm() {
         </select>
       </label>
       <label className={styles.field}>
-        <span>What do you need?</span>
+        <span>{t.start.need}</span>
         <textarea
           name="request"
           rows={4}
           value={request}
           onChange={(event) => setRequest(event.target.value)}
-          placeholder="Photos, menu, hours, anything we should know"
+          placeholder={t.start.placeholder}
         />
       </label>
       <button className={styles.submit} type="submit">
-        Send on WhatsApp
+        {t.start.submit}
       </button>
-      <p className={styles.note}>
-        This opens WhatsApp with your details already filled in. We reply there.
-        No account. No form sitting in a database.
-      </p>
+      <p className={styles.note}>{t.start.note}</p>
     </form>
   );
 }

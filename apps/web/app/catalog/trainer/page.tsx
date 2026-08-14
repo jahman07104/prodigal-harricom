@@ -23,22 +23,22 @@ export default function TrainerTemplate() {
         {
           title: "Single session",
           text: "One-on-one, gym or outdoor.",
-          price: "J$3,500",
+          price: "J$5,000",
         },
         {
           title: "4-session pack",
           text: "A starter month. Use within 5 weeks.",
-          price: "J$12,000",
+          price: "J$18,000",
         },
         {
           title: "8-session pack",
           text: "Best rate for people who show up.",
-          price: "J$22,000",
+          price: "J$32,000",
         },
         {
           title: "Nutrition add-on",
           text: "Simple meal plan alongside training.",
-          price: "From J$2,000",
+          price: "From J$3,000",
         },
       ]}
       gallery={[
