@@ -2,7 +2,6 @@
 
 import { useI18n } from "../../lib/LocaleProvider";
 import styles from "../harricom.module.css";
-import { CtaLink } from "./CtaLink";
 
 export function LaunchStrip() {
   const { t } = useI18n();
@@ -13,10 +12,12 @@ export function LaunchStrip() {
         <h2 id="launch-title">{t.launch.title}</h2>
         <p>{t.launch.body}</p>
         <div className={styles.actions}>
-          <CtaLink href="/catalog">{t.launch.browse}</CtaLink>
-          <CtaLink href="/harricom/start" variant="secondary">
+          <a className={`${styles.btn} ${styles.btnPrimary}`} href="/catalog">
+            {t.launch.browse}
+          </a>
+          <a className={`${styles.btn} ${styles.btnSecondary}`} href="/harricom/start">
             {t.launch.start}
-          </CtaLink>
+          </a>
         </div>
       </div>
     </section>

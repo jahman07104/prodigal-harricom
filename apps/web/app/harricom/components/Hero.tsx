@@ -4,7 +4,6 @@ import Image from "next/image";
 
 import { useI18n } from "../../lib/LocaleProvider";
 import styles from "../harricom.module.css";
-import { CtaLink } from "./CtaLink";
 import { WhatsAppDemo } from "./WhatsAppDemo";
 
 export function Hero() {
@@ -30,10 +29,12 @@ export function Hero() {
             </h1>
             <p className={styles.audience}>{t.hero.audience}</p>
             <div className={styles.actions}>
-              <CtaLink href="/harricom/start">{t.hero.start}</CtaLink>
-              <CtaLink href="#templates" variant="secondary">
+              <a className={`${styles.btn} ${styles.btnPrimary}`} href="/harricom/start">
+                {t.hero.start}
+              </a>
+              <a className={`${styles.btn} ${styles.btnSecondary}`} href="#templates">
                 {t.hero.templates}
-              </CtaLink>
+              </a>
             </div>
             <p className={styles.subtext}>{t.hero.subtext}</p>
             <p className={styles.quiet}>{t.hero.quiet}</p>
