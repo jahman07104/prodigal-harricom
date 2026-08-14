@@ -567,15 +567,19 @@ export function readBrowserLocale(): Locale {
   if (typeof document === "undefined") {
     return "en";
   }
+  try {
+    const stored = window.localStorage.getItem(LOCALE_COOKIE);
+    if (stored === "de" || stored === "en") {
+      return stored;
+    }
+  } catch {
+    // Private browsing on some phones blocks localStorage.
+  }
   const match = document.cookie.match(/(?:^|; )locale=([^;]*)/);
   if (match) {
     return parseLocale(decodeURIComponent(match[1]));
   }
-  try {
-    return parseLocale(window.localStorage.getItem(LOCALE_COOKIE));
-  } catch {
-    return "en";
-  }
+  return "en";
 }
 
 export function writeBrowserLocale(locale: Locale) {

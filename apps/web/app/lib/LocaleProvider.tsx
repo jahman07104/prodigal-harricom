@@ -41,10 +41,6 @@ export function LocaleProvider({
   const [current, setCurrent] = useState<Locale>(locale);
 
   useEffect(() => {
-    setCurrent(locale);
-  }, [locale]);
-
-  useEffect(() => {
     setCurrent(readBrowserLocale());
   }, [pathname]);
 
