@@ -18,7 +18,10 @@ export function DemoBar({ demo }: { demo: LiveDemo }) {
       </Link>
       <p className={styles.meta}>
         <span className={styles.name}>{demo.name}</span>
-        <span className={styles.note}>{` · ${note}`}</span>
+        <span className={styles.note}>
+          {" · "}
+          {note}
+        </span>
       </p>
       <LanguageSwitch />
     </header>

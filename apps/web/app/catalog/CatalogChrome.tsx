@@ -20,8 +20,8 @@ export function CatalogNav({
   whatsappMessage?: string;
   ariaLabel?: string;
 }) {
-  const { t } = useI18n();
-  const waHref = whatsappHref(whatsappMessage ?? t.catalog.launchWa);
+  const { t, msg } = useI18n();
+  const waHref = whatsappHref(whatsappMessage ?? msg.catalog.launchWa);
 
   return (
     <header className={`${styles.header} ${chrome.safe}`}>
@@ -29,7 +29,7 @@ export function CatalogNav({
         {t.catalog.brand}
       </Link>
       <div className={chrome.tools}>
-        <nav className={styles.nav} aria-label={ariaLabel ?? t.catalog.navLabel}>
+        <nav className={styles.nav} aria-label={ariaLabel ?? msg.catalog.navLabel}>
           {variant === "preview" ? (
             <Link href="/catalog">{t.preview.catalog}</Link>
           ) : (

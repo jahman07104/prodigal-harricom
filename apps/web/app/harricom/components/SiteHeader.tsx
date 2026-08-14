@@ -15,9 +15,9 @@ export function TopStrip() {
 }
 
 export function SiteHeader() {
-  const { t } = useI18n();
+  const { t, msg } = useI18n();
   const [open, setOpen] = useState(false);
-  const chatHref = whatsappHref(t.wa.chat);
+  const chatHref = whatsappHref(msg.wa.chat);
 
   return (
     <header className={styles.header}>
@@ -28,7 +28,7 @@ export function SiteHeader() {
           <button
             type="button"
             className={styles.menuBtn}
-            aria-label={open ? t.nav.closeMenu : t.nav.openMenu}
+            aria-label={open ? msg.nav.closeMenu : msg.nav.openMenu}
             aria-expanded={open}
             onClick={() => setOpen((value) => !value)}
           >

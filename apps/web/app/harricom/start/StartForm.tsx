@@ -26,7 +26,7 @@ const PARISHES = [
 ];
 
 export function StartForm() {
-  const { t } = useI18n();
+  const { t, msg } = useI18n();
   const searchParams = useSearchParams();
   const preset = searchParams.get("template") ?? "";
   const knownSlug = catalogTemplates.some((item) => item.slug === preset)
@@ -46,15 +46,15 @@ export function StartForm() {
   function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const lines = [
-      t.start.waIntro,
+      msg.start.waIntro,
       "",
-      `${t.start.waName}: ${name.trim()}`,
-      `${t.start.waBusiness}: ${business.trim()}`,
-      `${t.start.waParish}: ${parish}`,
-      `${t.start.waTemplate}: ${selectedName ?? t.start.unsure}`,
+      `${msg.start.waName}: ${name.trim()}`,
+      `${msg.start.waBusiness}: ${business.trim()}`,
+      `${msg.start.waParish}: ${parish}`,
+      `${msg.start.waTemplate}: ${selectedName ?? msg.start.unsure}`,
     ];
     if (request.trim()) {
-      lines.push(`${t.start.waRequest}: ${request.trim()}`);
+      lines.push(`${msg.start.waRequest}: ${request.trim()}`);
     }
     window.location.href = whatsappHref(lines.join("\n"));
   }
@@ -89,13 +89,13 @@ export function StartForm() {
           onChange={(event) => setParish(event.target.value)}
           required
         >
-          <option value="">{t.start.parishSelect}</option>
+          <option value="">{msg.start.parishSelect}</option>
           {PARISHES.map((item) => (
             <option key={item} value={item}>
               {item}
             </option>
           ))}
-          <option value={t.start.diaspora}>{t.start.diaspora}</option>
+          <option value="diaspora">{msg.start.diaspora}</option>
         </select>
       </label>
       <label className={styles.field}>
@@ -105,7 +105,7 @@ export function StartForm() {
           value={template}
           onChange={(event) => setTemplate(event.target.value)}
         >
-          <option value="">{t.start.unsure}</option>
+          <option value="">{msg.start.unsure}</option>
           {catalogTemplates.map((item) => (
             <option key={item.slug} value={item.slug}>
               {item.name}
@@ -120,7 +120,7 @@ export function StartForm() {
           rows={4}
           value={request}
           onChange={(event) => setRequest(event.target.value)}
-          placeholder={t.start.placeholder}
+          placeholder={msg.start.placeholder}
         />
       </label>
       <button className={styles.submit} type="submit">

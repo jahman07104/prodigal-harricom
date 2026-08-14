@@ -9,7 +9,7 @@ import styles from "./catalog.module.css";
 import { catalogTemplates } from "./templates";
 
 export function CatalogPageBody() {
-  const { t } = useI18n();
+  const { t, msg } = useI18n();
 
   return (
     <div className={styles.wrapper}>
@@ -24,7 +24,7 @@ export function CatalogPageBody() {
           <p className={styles.subtitle}>{t.catalog.subtitle}</p>
         </section>
 
-        <section className={styles.gridSection} aria-label={t.nav.templates}>
+        <section className={styles.gridSection} aria-label={msg.nav.templates}>
           <div className={styles.grid}>
             {catalogTemplates.map((item) => (
               <article

@@ -17,13 +17,13 @@ const linkHrefs = [
 ];
 
 export function ProdigalHeader() {
-  const { t } = useI18n();
+  const { t, msg } = useI18n();
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const home = pathname === "/";
   const solid = scrolled || !home;
-  const consultHref = whatsappHref(t.wa.consult);
+  const consultHref = whatsappHref(msg.wa.consult);
   const links = linkHrefs.map((link) => ({
     ...link,
     label: t.nav[link.key],
@@ -43,7 +43,7 @@ export function ProdigalHeader() {
   return (
     <nav className={`${styles.nav} ${solid ? styles.navSolid : styles.navClear}`}>
       <div className={styles.navInner}>
-        <Link href="/" className={styles.brand} aria-label={t.prodigal.homeAria}>
+        <Link href="/" className={styles.brand} aria-label={msg.prodigal.homeAria}>
           <span className={styles.brandMark}>
             <Image
               src="/harricom/images/doctorbird.jpg"
@@ -84,7 +84,7 @@ export function ProdigalHeader() {
           <button
             type="button"
             className={styles.menuBtn}
-            aria-label={open ? t.nav.closeMenu : t.nav.openMenu}
+            aria-label={open ? msg.nav.closeMenu : msg.nav.openMenu}
             aria-expanded={open}
             onClick={() => setOpen((value) => !value)}
           >

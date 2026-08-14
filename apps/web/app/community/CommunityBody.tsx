@@ -7,9 +7,9 @@ import { useI18n } from "../lib/LocaleProvider";
 import styles from "../prodigal.module.css";
 
 export function CommunityBody() {
-  const { t } = useI18n();
+  const { t, msg } = useI18n();
   const community = t.community;
-  const joinHref = whatsappHref(t.wa.community);
+  const joinHref = whatsappHref(msg.wa.community);
 
   return (
     <div className={styles.page}>

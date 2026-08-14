@@ -14,9 +14,9 @@ export function Tiers() {
         </h2>
         <p className={styles.lead}>{t.tiers.lead}</p>
         <div className={styles.grid}>
-          {t.tiers.items.map((tier) => (
+          {t.tiers.items.map((tier, index) => (
             <article
-              key={tier.name}
+              key={index}
               className={`${styles.card} ${tier.featured ? styles.featured : ""}`}
             >
               {tier.featured ? (

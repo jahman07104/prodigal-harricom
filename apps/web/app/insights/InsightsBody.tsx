@@ -36,8 +36,8 @@ export function InsightsBody() {
             </article>
             <h2 className={styles.sectionTitle}>{insights.pathsTitle}</h2>
             <div className={styles.pathGrid}>
-              {insights.paths.map((path) => (
-                <article key={path.name} className={styles.path}>
+              {insights.paths.map((path, index) => (
+                <article key={index} className={styles.path}>
                   <h3>{path.name}</h3>
                   <p className={styles.role}>{path.role}</p>
                   <p>{path.story}</p>

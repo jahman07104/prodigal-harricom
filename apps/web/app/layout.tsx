@@ -1,10 +1,15 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import { cookies } from "next/headers";
 
+import { bothCopy } from "./lib/bothCopy";
 import { LocaleProvider } from "./lib/LocaleProvider";
-import { getDictionary, parseLocale } from "./lib/i18n";
+import { parseLocale } from "./lib/i18n";
 import "./globals.css";
+
+const LOCALE_BOOT =
+  '(function(){try{var l=localStorage.getItem("locale");if(l!=="de"&&l!=="en"){var m=document.cookie.match(/(?:^|; )locale=([^;]*)/);l=m?decodeURIComponent(m[1]):""}if(l==="de"||l==="en"){document.documentElement.lang=l;document.documentElement.setAttribute("data-locale",l)}}catch(e){}})();';
 
 const inter = Inter({
   subsets: ["latin", "latin-ext"],
@@ -36,11 +41,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const locale = parseLocale(cookies().get("locale")?.value);
-  const t = getDictionary(locale);
+  const t = bothCopy();
 
   return (
-    <html lang={locale} className={inter.variable}>
+    <html lang={locale} className={inter.variable} suppressHydrationWarning>
       <body className="font-sans antialiased">
+        <Script id="locale-boot" strategy="beforeInteractive">
+          {LOCALE_BOOT}
+        </Script>
         <LocaleProvider locale={locale}>
           <a className="skip-link" href="#main">
             {t.skip}

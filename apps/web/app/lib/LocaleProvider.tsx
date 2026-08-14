@@ -1,12 +1,8 @@
 "use client";
 
-import {
-  Fragment,
-  useCallback,
-  useLayoutEffect,
-  useSyncExternalStore,
-} from "react";
+import { useCallback, useLayoutEffect, useState } from "react";
 
+import { bothCopy } from "./bothCopy";
 import {
   getDictionary,
   readBrowserLocale,
@@ -31,31 +27,12 @@ function writeMemory(next: Locale) {
     next;
 }
 
-function subscribe(onChange: () => void) {
-  if (typeof window === "undefined") {
-    return () => {};
-  }
-  window.addEventListener(EVENT, onChange);
-  window.addEventListener("storage", onChange);
-  return () => {
-    window.removeEventListener(EVENT, onChange);
-    window.removeEventListener("storage", onChange);
-  };
-}
-
-function getSnapshot(): Locale {
-  return readMemory() ?? readBrowserLocale();
-}
-
-function getServerSnapshot(): Locale {
-  return "en";
-}
-
-function setAppLocale(next: Locale) {
+export function applyLocale(next: Locale) {
   writeMemory(next);
   writeBrowserLocale(next);
   if (typeof document !== "undefined") {
     document.documentElement.lang = next;
+    document.documentElement.setAttribute("data-locale", next);
   }
   if (typeof window !== "undefined") {
     window.dispatchEvent(new Event(EVENT));
@@ -69,37 +46,44 @@ export function LocaleProvider({
   locale: Locale;
   children: React.ReactNode;
 }) {
-  const current = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
-
   useLayoutEffect(() => {
-    if (readMemory()) {
-      return;
-    }
-    const stored = readBrowserLocale();
+    const stored = readMemory() ?? readBrowserLocale();
     const next = stored === "en" ? locale : stored;
-    writeMemory(next);
-    document.documentElement.lang = next;
-    if (next !== current) {
-      window.dispatchEvent(new Event(EVENT));
-    }
-  }, [current, locale]);
+    applyLocale(next);
+  }, [locale]);
 
-  return <Fragment key={current}>{children}</Fragment>;
+  return children;
 }
 
 export function useI18n(): {
   locale: Locale;
   t: Dictionary;
+  msg: Dictionary;
   setLocale: (next: Locale) => void;
 } {
-  const locale = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const [locale, setLocaleState] = useState<Locale>("en");
+
+  useLayoutEffect(() => {
+    const sync = () => {
+      setLocaleState(readMemory() ?? readBrowserLocale());
+    };
+    sync();
+    window.addEventListener(EVENT, sync);
+    window.addEventListener("storage", sync);
+    return () => {
+      window.removeEventListener(EVENT, sync);
+      window.removeEventListener("storage", sync);
+    };
+  }, []);
+
   const setLocale = useCallback((next: Locale) => {
-    setAppLocale(next);
+    applyLocale(next);
   }, []);
 
   return {
     locale,
-    t: getDictionary(locale),
+    t: bothCopy(),
+    msg: getDictionary(locale),
     setLocale,
   };
 }

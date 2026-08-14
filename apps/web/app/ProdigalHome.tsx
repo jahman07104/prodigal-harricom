@@ -56,8 +56,8 @@ function CheckIcon() {
 }
 
 export function ProdigalHome() {
-  const { t } = useI18n();
-  const communityHref = whatsappHref(t.wa.community);
+  const { t, msg } = useI18n();
+  const communityHref = whatsappHref(msg.wa.community);
 
   return (
     <div className={styles.page}>
