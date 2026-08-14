@@ -1,16 +1,20 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 import type { Locale } from "./i18n";
 import { useI18n } from "./LocaleProvider";
 import styles from "./LanguageSwitch.module.css";
 
 export function LanguageSwitch({ labeled = false }: { labeled?: boolean }) {
   const { locale, t, msg, setLocale } = useI18n();
+  const router = useRouter();
 
   function choose(next: Locale) {
     document.documentElement.lang = next;
     document.documentElement.setAttribute("data-locale", next);
     setLocale(next);
+    router.refresh();
   }
 
   return (

@@ -1,17 +1,13 @@
-"use client";
-
 import { ProdigalFooter, WhatsAppFloat } from "../ProdigalChrome";
 import { ProdigalHeader } from "../ProdigalHeader";
 import { whatsappHref } from "../harricom/lib/brand";
-import { de, en } from "../lib/i18n";
-import { useHtmlLang } from "../lib/useHtmlLang";
+import { de, en, type Locale } from "../lib/i18n";
 import styles from "../prodigal.module.css";
 
-export function CommunityBody() {
-  const lang = useHtmlLang();
-  const community = lang === "de" ? de.community : en.community;
+export function CommunityBody({ locale }: { locale: Locale }) {
+  const community = locale === "de" ? de.community : en.community;
   const joinHref = whatsappHref(
-    lang === "de" ? de.wa.community : en.wa.community,
+    locale === "de" ? de.wa.community : en.wa.community,
   );
 
   return (

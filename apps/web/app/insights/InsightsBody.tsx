@@ -1,14 +1,10 @@
-"use client";
-
 import { ProdigalFooter, WhatsAppFloat } from "../ProdigalChrome";
 import { ProdigalHeader } from "../ProdigalHeader";
-import { de, en } from "../lib/i18n";
-import { useHtmlLang } from "../lib/useHtmlLang";
+import { de, en, type Locale } from "../lib/i18n";
 import styles from "../prodigal.module.css";
 
-export function InsightsBody() {
-  const lang = useHtmlLang();
-  const insights = lang === "de" ? de.insights : en.insights;
+export function InsightsBody({ locale }: { locale: Locale }) {
+  const insights = locale === "de" ? de.insights : en.insights;
 
   return (
     <div className={styles.page}>
