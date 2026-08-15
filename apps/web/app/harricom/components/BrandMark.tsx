@@ -1,11 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { STUDIO_HREF } from "../lib/brand";
 import styles from "../harricom.module.css";
 
 export function BrandMark() {
   return (
-    <Link href="/harricom" className={styles.brand}>
+    <Link href={STUDIO_HREF} className={styles.brand}>
       <span className={styles.logo}>
         <Image
           src="/harricom/images/doctorbird.jpg"

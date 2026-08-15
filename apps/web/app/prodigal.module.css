@@ -347,9 +347,15 @@
 }
 
 .byline {
+  display: block;
   margin: 0 auto 48px;
   max-width: 36rem;
   color: #94a3b8;
+  text-decoration: none;
+}
+
+.byline:hover {
+  color: #e2e8f0;
 }
 
 .join {

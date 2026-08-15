@@ -200,6 +200,7 @@ export const en = {
       "A Harrison Communications initiative helping returning residents and diaspora professionals reintegrate, build businesses, and thrive in Jamaica.",
     float: "Chat with HarriCom on WhatsApp",
     homeAria: "HarriCom The Prodigal Program home",
+    profile: "Patrick Harrison",
   },
   shopCta: "I want this for my shop",
   insights: {
@@ -213,6 +214,7 @@ export const en = {
     quote:
       "“I left Jamaica, built a career abroad, and made the decision to come home for good. The paperwork was one thing — Customs, Land Titles, TAJ — but the real work was figuring out how to earn here with skills I developed overseas. I started HarriCom to give Jamaican MSMEs professional websites, and launched The Prodigal Program so no returnee has to figure it out alone.”",
     chip: "HarriCom Web Studio · The Prodigal Program",
+    profile: "Full profile & CV →",
     pathsTitle: "Paths We Guide",
     paths: [
       {
@@ -473,6 +475,7 @@ export const de: typeof en = {
       "Eine Initiative von Harrison Communications für Rückkehrer und Diaspora-Profis, die in Jamaika wieder ankommen, Unternehmen aufbauen und bestehen.",
     float: "Mit HarriCom auf WhatsApp schreiben",
     homeAria: "HarriCom The Prodigal Program Startseite",
+    profile: "Patrick Harrison",
   },
   shopCta: "Das will ich für meinen Laden",
   insights: {
@@ -486,6 +489,7 @@ export const de: typeof en = {
     quote:
       "„Ich habe Jamaika verlassen, im Ausland Karriere gemacht und mich entschieden, für immer heimzukommen. Die Papiere waren eine Sache — Zoll, Land Titles, TAJ — die eigentliche Arbeit war, hier mit Fähigkeiten zu verdienen, die ich draußen aufgebaut habe. Ich habe HarriCom gestartet, damit jamaikanische Kleinbetriebe professionelle Websites bekommen, und The Prodigal Program, damit kein Rückkehrer das allein rausfinden muss.“",
     chip: "HarriCom Web Studio · The Prodigal Program",
+    profile: "Profil und Lebenslauf →",
     pathsTitle: "Wege, die wir begleiten",
     paths: [
       {

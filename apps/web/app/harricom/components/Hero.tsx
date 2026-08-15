@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 
+import { PORTFOLIO_HREF } from "../lib/brand";
 import { useI18n } from "../../lib/LocaleProvider";
 import styles from "../harricom.module.css";
 import { WhatsAppDemo } from "./WhatsAppDemo";
@@ -37,7 +38,14 @@ export function Hero() {
               </a>
             </div>
             <p className={styles.subtext}>{t.hero.subtext}</p>
-            <p className={styles.quiet}>{t.hero.quiet}</p>
+            <a
+              className={styles.quiet}
+              href={PORTFOLIO_HREF}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t.hero.quiet}
+            </a>
           </div>
           <WhatsAppDemo />
         </div>

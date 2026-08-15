@@ -2,11 +2,51 @@
   publish = "."
   command = "echo 'No build needed - vanilla JS'"
 
-# SPA routing for The Prodigal React app at /prodigal/
+# The live site is Vercel. Send leftover Netlify traffic there.
 [[redirects]]
   from = "/prodigal/*"
-  to = "/prodigal/index.html"
-  status = 200
+  to = "https://prodigal-harricom.vercel.app/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/catalog"
+  to = "https://prodigal-harricom.vercel.app/catalog"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/catalog/*"
+  to = "https://prodigal-harricom.vercel.app/catalog/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "https://prodigal-harricom.vercel.app/harricom"
+  status = 301
+  force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+    Content-Security-Policy = "default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https:; frame-ancestors 'none';"
+
+[[headers]]
+  for = "*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
 
 [[headers]]
   for = "/*"

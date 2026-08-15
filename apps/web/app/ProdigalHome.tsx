@@ -5,7 +5,7 @@ import Link from "next/link";
 
 import { ProdigalFooter, WhatsAppFloat } from "./ProdigalChrome";
 import { ProdigalHeader } from "./ProdigalHeader";
-import { whatsappHref } from "./harricom/lib/brand";
+import { PORTFOLIO_HREF, whatsappHref } from "./harricom/lib/brand";
 import { useI18n } from "./lib/LocaleProvider";
 import styles from "./prodigal.module.css";
 
@@ -85,7 +85,14 @@ export function ProdigalHome() {
               THE <span className={styles.gold}>PRODIGAL</span>
             </h1>
             <p className={styles.quote}>{t.prodigal.quote}</p>
-            <p className={styles.byline}>{t.prodigal.byline}</p>
+            <a
+              className={styles.byline}
+              href={PORTFOLIO_HREF}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t.prodigal.byline}
+            </a>
             <a
               className={styles.join}
               href={communityHref}

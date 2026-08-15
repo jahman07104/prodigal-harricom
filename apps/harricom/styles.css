@@ -643,6 +643,7 @@ abbr:hover {
   grid-column: 1;
   justify-self: start;
   position: relative;
+  display: block;
   width: clamp(72px, 10vw, 100px);
   aspect-ratio: 1 / 1;
   padding: 1px;
@@ -652,6 +653,8 @@ abbr:hover {
   background: rgba(14, 14, 14, 0.97);
   border: 1px solid rgba(255,255,255,0.64);
   filter: drop-shadow(0 4px 12px rgba(0,0,0,0.7));
+  text-decoration: none;
+  color: inherit;
 }
 
 .home-page .catalog-header-logo {

@@ -17,7 +17,7 @@ export const liveDemos: LiveDemo[] = [
     trade: "Security / technician",
     text: "Working company site. Services, quote form, shop. Tap through like a customer.",
     image: "/catalog/boss-thumb.png",
-    src: "https://code-companion-jahman07104.replit.app/",
+    src: "/work/boss-installations/",
     template: "/catalog/industrial",
   },
   {
@@ -26,7 +26,7 @@ export const liveDemos: LiveDemo[] = [
     trade: "Blocks / paving",
     text: "Paving and block factory site. See how a trades crew presents the work.",
     image: "/catalog/tmt-thumb.jpg",
-    src: "https://code-companion-jahman07104.replit.app/tmt-jamaica/",
+    src: "/work/block-factory/",
     template: "/catalog/industrial",
   },
   {
@@ -35,7 +35,7 @@ export const liveDemos: LiveDemo[] = [
     trade: "Cook shop",
     text: "Jamaican menu, prices, checkout. This is the live cookshop app, not a mockup.",
     image: "/catalog/normans-thumb.jpg",
-    src: "https://normans-kitchen.vercel.app/",
+    src: "/work/normans-kitchen/",
     template: "/catalog/home-pricing",
   },
   {
@@ -55,7 +55,7 @@ export const liveDemos: LiveDemo[] = [
     trade: "Shop / menu",
     text: "A working catalog customers can browse. Tap through the products.",
     image: "/catalog/ganjagourmet-thumb.jpg",
-    src: "https://ganja-gourmet.replit.app/",
+    src: "/work/ganja-gourmet/",
     template: "/catalog/home-pricing",
   },
   {
@@ -64,7 +64,7 @@ export const liveDemos: LiveDemo[] = [
     trade: "Home business",
     text: "Custom wood kitchens and furniture. Full working site with gallery.",
     image: "/catalog/exquisite-thumb.jpg",
-    src: "https://exquisite-roots-craft.lovable.app/",
+    src: "/work/exquisite-roots-craft/",
     template: "/catalog/home-pricing",
   },
   {
@@ -73,7 +73,7 @@ export const liveDemos: LiveDemo[] = [
     trade: "Community hub",
     text: "A live community site. News, events, and a local directory.",
     image: "/catalog/community-thumb.jpg",
-    src: "https://greenwood-community-hub.replit.app/",
+    src: "/work/community-hub/",
     template: "/catalog/home-pricing",
   },
 ];

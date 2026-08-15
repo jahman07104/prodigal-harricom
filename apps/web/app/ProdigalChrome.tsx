@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { whatsappHref } from "./harricom/lib/brand";
+import { PORTFOLIO_HREF, whatsappHref } from "./harricom/lib/brand";
 import { bothCopy } from "./lib/bothCopy";
 import { de, en } from "./lib/i18n";
 import styles from "./prodigal.module.css";
@@ -30,6 +30,9 @@ export function ProdigalFooter() {
       <div className={styles.footerLinks}>
         <Link href="/harricom">{t.nav.studioLong}</Link>
         <Link href="/community">{t.prodigal.join}</Link>
+        <a href={PORTFOLIO_HREF} target="_blank" rel="noopener noreferrer">
+          {t.prodigal.profile}
+        </a>
         <a
           className={`${styles.waLink} i18n-en`}
           href={consultEn}

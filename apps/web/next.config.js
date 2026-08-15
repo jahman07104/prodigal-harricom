@@ -13,6 +13,9 @@ const nextConfig = {
     const demos = [
       "/work/boss-installations",
       "/work/exquisite-roots-craft",
+      "/work/ganja-gourmet",
+      "/work/community-hub",
+      "/work/block-factory",
       "/work/normans-kitchen",
       "/work/normans-kitchen/order",
       "/work/normans-kitchen/order/confirmation",

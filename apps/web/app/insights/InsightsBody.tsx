@@ -1,6 +1,7 @@
 import { ProdigalFooter, WhatsAppFloat } from "../ProdigalChrome";
 import { ProdigalHeader } from "../ProdigalHeader";
 import { bothCopy } from "../lib/bothCopy";
+import { PORTFOLIO_HREF } from "../harricom/lib/brand";
 import styles from "../prodigal.module.css";
 
 export function InsightsBody() {
@@ -30,6 +31,16 @@ export function InsightsBody() {
               </div>
               <blockquote>{insights.quote}</blockquote>
               <p className={styles.chip}>{insights.chip}</p>
+              <p>
+                <a
+                  className={styles.storyLink}
+                  href={PORTFOLIO_HREF}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {insights.profile}
+                </a>
+              </p>
             </article>
             <h2 className={styles.sectionTitle}>{insights.pathsTitle}</h2>
             <div className={styles.pathGrid}>
