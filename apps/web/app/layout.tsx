@@ -20,11 +20,11 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "HarriCom | The Prodigal Program",
-    template: "%s · The Prodigal Program",
+    default: "The Prodigal",
+    template: "%s · The Prodigal",
   },
   description:
-    "The Prodigal Program by HarriCom helps Jamaican diaspora and returning residents navigate RR concessions, business setup, and encore entrepreneurship.",
+    "The Prodigal is a Jamaica-connected platform helping people around the world and at home return, build, invest, work, manage property and create opportunity in Jamaica.",
 };
 
 export const dynamic = "force-dynamic";

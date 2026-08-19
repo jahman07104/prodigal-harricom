@@ -55,8 +55,8 @@ export function ProdigalHeader() {
             />
           </span>
           <span>
-            <span className={styles.brandName}>HarriCom</span>
-            <span className={styles.brandSub}>The Prodigal Program</span>
+            <span className={styles.brandName}>The Prodigal</span>
+            <span className={styles.brandSub}>Harrison Communications</span>
           </span>
         </Link>
 

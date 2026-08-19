@@ -20,5 +20,5 @@ export function startHref(templateSlug?: string) {
 export const brand = {
   name: "HarriCom",
   studio: "HarriCom Web Studio",
-  umbrella: "The Prodigal Program",
+  umbrella: "The Prodigal",
 } as const;

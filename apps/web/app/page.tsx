@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import { ProdigalHome } from "./ProdigalHome";
 
 export const metadata: Metadata = {
-  title: "The Prodigal Program",
+  title: "The Prodigal",
   description:
-    "The Prodigal Program by HarriCom helps Jamaican diaspora and returning residents navigate RR concessions, business setup, and encore entrepreneurship. Built by a returnee, for returnees.",
+    "The Prodigal is a Jamaica-connected platform helping people around the world and at home return, build, invest, work, manage property and create opportunity in Jamaica.",
 };
 
 export default function HomePage() {

@@ -24,12 +24,13 @@ export function ProdigalFooter() {
           className={styles.brandImg}
         />
       </div>
-      <p className={styles.footerName}>HarriCom</p>
-      <p className={styles.footerSub}>The Prodigal Program</p>
+      <p className={styles.footerName}>The Prodigal</p>
+      <p className={styles.footerSub}>Harrison Communications</p>
       <p className={styles.footerText}>{t.prodigal.footerText}</p>
+      <p className={styles.disclaimer}>{t.prodigal.disclaimer}</p>
       <div className={styles.footerLinks}>
         <Link href="/harricom">{t.nav.studioLong}</Link>
-        <Link href="/community">{t.prodigal.join}</Link>
+        <Link href="/community">{t.nav.community}</Link>
         <a href={PORTFOLIO_HREF} target="_blank" rel="noopener noreferrer">
           {t.prodigal.profile}
         </a>

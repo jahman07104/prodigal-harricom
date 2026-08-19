@@ -66,7 +66,7 @@ export function ProdigalHome() {
         <section className={styles.hero} aria-labelledby="prodigal-title">
           <Image
             src="/prodigal/boat.jpg"
-            alt="Jamaica — returning home by sea"
+            alt="Jamaica from the sea"
             fill
             priority
             sizes="100vw"
@@ -85,6 +85,8 @@ export function ProdigalHome() {
               THE <span className={styles.gold}>PRODIGAL</span>
             </h1>
             <p className={styles.quote}>{t.prodigal.quote}</p>
+            <p className={styles.heroLead}>{t.prodigal.lead}</p>
+            <p className={styles.heroPillars}>{t.prodigal.pillars}</p>
             <a
               className={styles.byline}
               href={PORTFOLIO_HREF}
@@ -93,14 +95,19 @@ export function ProdigalHome() {
             >
               {t.prodigal.byline}
             </a>
-            <a
-              className={styles.join}
-              href={communityHref}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {t.prodigal.join}
-            </a>
+            <div className={styles.heroActions}>
+              <Link className={styles.join} href="/insights">
+                {t.prodigal.explore}
+              </Link>
+              <a
+                className={styles.joinGhost}
+                href={communityHref}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {t.prodigal.join}
+              </a>
+            </div>
           </div>
         </section>
 
