@@ -19,22 +19,26 @@ export function CommunityBody() {
         <section className={styles.stone}>
           <div className={`${styles.inner} ${styles.center}`}>
             <p className={styles.intro}>{community.intro}</p>
-            <a
-              className={`${styles.join} i18n-en`}
-              href={whatsappHref(en.wa.community)}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {en.community.join}
-            </a>
-            <a
-              className={`${styles.join} i18n-de`}
-              href={whatsappHref(de.wa.community)}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {de.community.join}
-            </a>
+            <span className="i18n-en">
+              <a
+                className={styles.communityCta}
+                href={whatsappHref(en.wa.community)}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {en.community.join}
+              </a>
+            </span>
+            <span className="i18n-de">
+              <a
+                className={styles.communityCta}
+                href={whatsappHref(de.wa.community)}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {de.community.join}
+              </a>
+            </span>
           </div>
         </section>
       </main>

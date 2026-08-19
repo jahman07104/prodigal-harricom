@@ -222,6 +222,7 @@ export const en = {
       "“I left Jamaica, built a career abroad, and came home to build a life here. The hard part was turning overseas experience into action on the ground. I started The Prodigal so people around the world — and at home — have a practical, human layer between information and action. HarriCom Web Studio is how I help Jamaican businesses show up online.”",
     chip: "The Prodigal · HarriCom Web Studio",
     profile: "Full profile & CV →",
+    back: "← Back to The Prodigal",
     pathsTitle: "Who it is for",
     paths: [
       {
@@ -506,6 +507,7 @@ export const de: typeof en = {
       "„Ich habe Jamaika verlassen, im Ausland Karriere gemacht und bin heimgekommen, um hier aufzubauen. Das Schwere war, Auslandserfahrung in Handlung vor Ort zu verwandeln. Ich habe The Prodigal gestartet, damit Menschen auf der ganzen Welt — und zu Hause — eine praktische, menschliche Schicht zwischen Information und Handlung haben. HarriCom Web Studio ist, wie ich jamaikanischen Betrieben helfe, online sichtbar zu sein.“",
     chip: "The Prodigal · HarriCom Web Studio",
     profile: "Profil und Lebenslauf →",
+    back: "← Zurück zu The Prodigal",
     pathsTitle: "Für wen",
     paths: [
       {

@@ -3,9 +3,10 @@ import Link from "next/link";
 import { ProdigalFooter, WhatsAppFloat } from "../ProdigalChrome";
 import { ProdigalHeader } from "../ProdigalHeader";
 import { bothCopy } from "../lib/bothCopy";
+import { de, en } from "../lib/i18n";
 import styles from "../prodigal.module.css";
 
-export function InsightsBody() {
+export function ProfileBody() {
   const insights = bothCopy().insights;
 
   return (
@@ -13,13 +14,19 @@ export function InsightsBody() {
       <ProdigalHeader />
       <main id="main">
         <section className={styles.subHero}>
-          <h1>{insights.heading}</h1>
-          <p>{insights.description}</p>
+          <p>
+            <Link className={`${styles.backLink} i18n-en`} href="/">
+              {en.insights.back}
+            </Link>
+            <Link className={`${styles.backLink} i18n-de`} href="/">
+              {de.insights.back}
+            </Link>
+          </p>
+          <h1>{insights.founderTitle}</h1>
+          <p>{insights.founderIntro}</p>
         </section>
         <section className={styles.stone}>
           <div className={styles.inner}>
-            <h2 className={styles.sectionTitle}>{insights.founderTitle}</h2>
-            <p className={styles.intro}>{insights.founderIntro}</p>
             <article className={styles.storyCard}>
               <div className={styles.storyHead}>
                 <div className={styles.avatar} aria-hidden="true">
@@ -33,22 +40,14 @@ export function InsightsBody() {
               <blockquote>{insights.quote}</blockquote>
               <p className={styles.chip}>{insights.chip}</p>
               <p>
-                <Link className={styles.storyLink} href="/profile">
-                  {insights.profile}
+                <Link className={`${styles.backLink} i18n-en`} href="/">
+                  {en.insights.back}
+                </Link>
+                <Link className={`${styles.backLink} i18n-de`} href="/">
+                  {de.insights.back}
                 </Link>
               </p>
             </article>
-            <h2 className={styles.sectionTitle}>{insights.pathsTitle}</h2>
-            <div className={styles.pathGrid}>
-              {insights.paths.map((path, index) => (
-                <article key={index} className={styles.path}>
-                  <h3>{path.name}</h3>
-                  <p className={styles.role}>{path.role}</p>
-                  <p>{path.story}</p>
-                  <p className={styles.chip}>{path.impact}</p>
-                </article>
-              ))}
-            </div>
           </div>
         </section>
       </main>
