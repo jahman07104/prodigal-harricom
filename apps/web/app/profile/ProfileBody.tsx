@@ -10,7 +10,7 @@ const FULL_PORTFOLIO_HREF = "https://dev-personal-project.vercel.app/";
 
 const PROJECT_DEMOS = [
   "https://greenwood-community-hub.replit.app/",
-  "https://code-companion-jahman07104.replit.app/tmt-jamaica/",
+  "https://924aada6-09cb-41e3-b7cc-27e7b2e2a1c7-00-30zua1kkcqb2q.worf.replit.dev/tmt-jamaica/",
   "https://code-companion-jahman07104.replit.app/",
 ] as const;
 
