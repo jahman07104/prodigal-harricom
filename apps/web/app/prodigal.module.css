@@ -822,6 +822,82 @@
   outline-offset: 3px;
 }
 
+.subHero p.profileRole {
+  margin-top: 0;
+  color: #b48e2e;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.profileStory {
+  margin: 0 auto 64px;
+  max-width: 42rem;
+  text-align: center;
+  color: #334155;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.profileFacts {
+  list-style: none;
+  margin: 0 auto 72px;
+  max-width: 36rem;
+  padding: 0;
+}
+
+.profileFacts li {
+  position: relative;
+  padding: 14px 0 14px 28px;
+  border-bottom: 1px solid #e2e8f0;
+  color: #334155;
+  line-height: 1.5;
+}
+
+.profileFacts li:last-child {
+  border-bottom: none;
+}
+
+.profileFacts li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.25em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #b48e2e;
+}
+
+.workLink {
+  color: #166534;
+  font-weight: 800;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.workLink:hover,
+.workLink:focus-visible {
+  color: #14532d;
+  text-decoration: underline;
+}
+
+.portfolioBlock {
+  text-align: center;
+  margin-top: 72px;
+  padding-top: 48px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.portfolioNote {
+  margin: 16px auto 0;
+  max-width: 32rem;
+  color: #64748b;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
 @media (min-width: 800px) {
   .navLinks {
     display: flex;

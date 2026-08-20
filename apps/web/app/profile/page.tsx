@@ -9,8 +9,8 @@ export const dynamic = "force-dynamic";
 export function generateMetadata(): Metadata {
   const t = getDictionary(cookies().get("locale")?.value);
   return {
-    title: t.insights.founderTitle,
-    description: t.insights.founderIntro,
+    title: t.profile.title,
+    description: t.profile.story,
   };
 }
 

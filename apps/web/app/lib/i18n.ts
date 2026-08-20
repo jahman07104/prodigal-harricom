@@ -248,6 +248,50 @@ export const en = {
       },
     ],
   },
+  profile: {
+    title: "Patrick Harrison",
+    name: "Patrick Harrison",
+    role: "Founder · The Prodigal",
+    story:
+      "Patrick left Jamaica, built a career abroad in telecommunications, and developed extensive technical and international experience before returning home to build again. The Prodigal grew from that journey: overseas experience, skills, relationships, property, capital, and ideas can create value in Jamaica when there is a practical bridge between information and action.",
+    credibilityTitle: "Background",
+    facts: [
+      "32+ years of telecommunications experience",
+      "Telecommunications, systems, and field operations background",
+      "Software development",
+      "React, JavaScript, and full-stack web development",
+      "Infrastructure and systems mindset",
+      "Practical problem-solving",
+    ],
+    workTitle: "Selected work",
+    workIntro:
+      "A few Jamaican business sites that show the same practical approach behind The Prodigal.",
+    projects: [
+      {
+        name: "Greenwood Community Hub",
+        category: "Community hub",
+        description:
+          "A digital community hub with local news, events, a business directory, a photo gallery, and WhatsApp community access.",
+        demo: "View live demo →",
+      },
+      {
+        name: "TMT Jamaica",
+        category: "Block factory and paving",
+        description:
+          "Factory and paving contractor site with quote flows, service pages, and a payment-ready customer journey.",
+        demo: "View live demo →",
+      },
+      {
+        name: "Boss Installations",
+        category: "Installation services",
+        description:
+          "A service-business site for networks, cameras, intercom, AC, and solar, with inquiry and payment workflows.",
+        demo: "View live demo →",
+      },
+    ],
+    portfolioCta: "View My Full Professional Portfolio →",
+    portfolioNote: "Opens Patrick Harrison’s complete professional portfolio.",
+  },
   community: {
     title: "Community",
     heading: "Join the Prodigal Community",
@@ -532,6 +576,50 @@ export const de: typeof en = {
         impact: "Immobiliendienste entdecken",
       },
     ],
+  },
+  profile: {
+    title: "Patrick Harrison",
+    name: "Patrick Harrison",
+    role: "Gründer · The Prodigal",
+    story:
+      "Patrick hat Jamaika verlassen, im Ausland eine Karriere in der Telekommunikation aufgebaut und umfangreiche technische und internationale Erfahrung gesammelt, bevor er heimgekehrt ist, um wieder aufzubauen. The Prodigal ist aus diesem Weg entstanden: Auslandserfahrung, Fähigkeiten, Beziehungen, Immobilien, Kapital und Ideen können in Jamaika Wert schaffen, wenn es eine praktische Brücke zwischen Information und Handlung gibt.",
+    credibilityTitle: "Hintergrund",
+    facts: [
+      "Mehr als 32 Jahre Erfahrung in der Telekommunikation",
+      "Hintergrund in Telekommunikation, Systemen und Außeneinsatz",
+      "Softwareentwicklung",
+      "React, JavaScript und Full-Stack-Webentwicklung",
+      "Denken in Infrastruktur und Systemen",
+      "Praktische Problemlösung",
+    ],
+    workTitle: "Ausgewählte Arbeiten",
+    workIntro:
+      "Einige jamaikanische Unternehmensseiten, die denselben praktischen Ansatz hinter The Prodigal zeigen.",
+    projects: [
+      {
+        name: "Greenwood Community Hub",
+        category: "Community-Hub",
+        description:
+          "Ein digitaler Community-Hub mit lokalen Nachrichten, Terminen, einem Unternehmensverzeichnis, einer Fotogalerie und WhatsApp-Zugang.",
+        demo: "Live-Demo ansehen →",
+      },
+      {
+        name: "TMT Jamaica",
+        category: "Blockwerk und Pflasterbau",
+        description:
+          "Seite für ein Blockwerk und Pflasterunternehmen mit Angebotsabläufen, Leistungsseiten und einem zahlungsbereiten Kundenweg.",
+        demo: "Live-Demo ansehen →",
+      },
+      {
+        name: "Boss Installations",
+        category: "Installationsdienste",
+        description:
+          "Eine Dienstleistungsseite für Netzwerke, Kameras, Sprechanlagen, Klimaanlagen und Solar, mit Anfrage- und Zahlungsabläufen.",
+        demo: "Live-Demo ansehen →",
+      },
+    ],
+    portfolioCta: "Mein vollständiges berufliches Portfolio ansehen →",
+    portfolioNote: "Öffnet das vollständige berufliche Portfolio von Patrick Harrison.",
   },
   community: {
     title: "Community",
