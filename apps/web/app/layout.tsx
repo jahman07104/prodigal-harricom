@@ -6,6 +6,7 @@ import { cookies } from "next/headers";
 import { bothCopy } from "./lib/bothCopy";
 import { LocaleProvider } from "./lib/LocaleProvider";
 import { parseLocale } from "./lib/i18n";
+import { getSiteUrl } from "./lib/site";
 import "./globals.css";
 
 const LOCALE_BOOT =
@@ -19,6 +20,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(getSiteUrl()),
   title: {
     default: "The Prodigal",
     template: "%s · The Prodigal",
