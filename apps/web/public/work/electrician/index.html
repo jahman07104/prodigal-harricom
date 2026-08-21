@@ -376,11 +376,12 @@
             <div class="hero-right">
                 <div class="hero-image"></div>
                 <h2 style="margin:10px 0 4px 0;">Request a Quote</h2>
-                <form class="card" name="electrician-quote-request" method="POST" data-netlify="true" netlify-honeypot="bot-field" style="display:flex;flex-direction:column;gap:10px;max-width:420px;margin-top:0;">
+                <form class="card" name="electrician-quote-request" method="POST" action="/api/forms/electrician-quote" style="display:flex;flex-direction:column;gap:10px;max-width:420px;margin-top:0;">
                     <input type="hidden" name="form-name" value="electrician-quote-request">
                     <p hidden>
                         <label>Do not fill this out if you are human: <input name="bot-field"></label>
                     </p>
+                    <p id="form-status" hidden role="status" style="margin:0;padding:8px 10px;border-radius:6px;font-size:0.92rem;"></p>
                     <label for="contact-name-hero">Your Name</label>
                     <input id="contact-name-hero" name="name" type="text" required style="padding:6px;border-radius:6px;background:#181b22;color:#fff;">
                     <label for="contact-email-hero">Email</label>
@@ -473,7 +474,24 @@
             </div>
         </footer>
     </div>
-</body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var status = document.getElementById('form-status');
+            if (!status) return;
+            var params = new URLSearchParams(window.location.search);
+            if (params.get('sent') === '1') {
+                status.hidden = false;
+                status.textContent = 'Thanks — your quote request was sent. We will reply soon.';
+                status.style.background = 'rgba(0, 155, 58, 0.18)';
+                status.style.color = '#b8f5c8';
+            } else if (params.get('error') === '1') {
+                status.hidden = false;
+                status.textContent = 'Something went wrong. Please try again or WhatsApp us directly.';
+                status.style.background = 'rgba(255, 122, 0, 0.18)';
+                status.style.color = '#ffd2a8';
+            }
+        });
+    </script>
     <script>
         // Simple QR code for this page
         document.addEventListener('DOMContentLoaded', function() {
@@ -484,4 +502,5 @@
             }
         });
     </script>
+</body>
 </html>
